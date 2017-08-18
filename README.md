@@ -1,6 +1,6 @@
-# sphinx-sitemap
+# Sphinx Sitemap Generator Extension
 
-**sphinx-sitemap** is an extension to the [Sphinx documentation tool](http://sphinx-doc.org/) that builds a sitemap.xml for the HTML version of your documentation.
+*[Sphinx](http://sphinx-doc.org/) extension to silently generate a sitemaps.org compliant sitemap for the HTML version of your Sphinx Documentation.*
 
 ## Installing
 
