@@ -7,12 +7,13 @@
 # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
 
 import xml.etree.ElementTree as ET
 from sphinx.writers.html import HTMLTranslator
+
 
 def setup(app):
     """Setup conntects events to the sitemap builder"""
@@ -21,11 +22,13 @@ def setup(app):
     app.set_translator('html', HTMLTranslator)
     app.sitemap_links = []
 
+
 def add_html_link(app, pagename, templatename, context, doctree):
     """As each page is built, collect page names for the sitemap"""
-    base_url = 'http://my-site.com/docs/' 
+    base_url = 'http://my-site.com/docs/'
     if base_url:
         app.sitemap_links.append(base_url + pagename + ".html")
+
 
 def create_sitemap(app, exception):
     """Generates the sitemap.xml from the collected HTML page links"""
@@ -38,12 +41,14 @@ def create_sitemap(app, exception):
     root = ET.Element("urlset")
     root.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
     root.set("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
-    root.set("xsi:schemaLocation", "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd")
-    
+    root.set("xsi:schemaLocation", "http://www.sitemaps.org/schemas/sitemap/0.9 \
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd")
+
     for link in app.sitemap_links:
         url = ET.SubElement(root, "url")
         ET.SubElement(url, "loc").text = link
 
     ET.ElementTree(root).write(filename,
-           xml_declaration=True,encoding='utf-8',
-           method="xml")
+                               xml_declaration=True,
+                               encoding='utf-8',
+                               method="xml")
