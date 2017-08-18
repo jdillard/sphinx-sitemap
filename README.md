@@ -6,6 +6,8 @@
 
 To use it, copy the `sphinx_sitemap` directory into your extensions directory or **sys.path**, then add `sphinx_sitemap` to the `extensions` array in your Sphinx **conf.py**.
 
+Change the value of `base_url` in **__init__.py** to the current base URL of your documentation.
+
 **sphinx-sitemap** supports Sphinx 1.2 and later, and Python 2.7, 3.3, and 3.4.
 
 ## License
