@@ -11,7 +11,7 @@ CHANGELOG = open(os.path.join(here, 'CHANGELOG.md')).read()
 setup(
     name='sphinx-sitemap',
     description='Sitemap generator for Sphinx',
-    long_description=README + '\n\n' + NEWS,
+    long_description=README + '\n\n' + CHANGELOG,
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Topic :: Documentation',
