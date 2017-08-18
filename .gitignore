@@ -1,1 +1,3 @@
 *.pyc
+.tox
+sphinx_sitemap.egg-info
