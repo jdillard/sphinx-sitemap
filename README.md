@@ -2,6 +2,8 @@
 
 *[Sphinx](http://sphinx-doc.org/) extension to silently generate a sitemaps.org compliant sitemap for the HTML version of your Sphinx Documentation.*
 
+[![Build Status](https://travis-ci.org/jdillard/sphinx-sitemap.svg?branch=master)](https://travis-ci.org/jdillard/sphinx-sitemap)
+
 ## Installing
 
 To use it, copy the `sphinx_sitemap` directory into your extensions directory or **sys.path**, then add `sphinx_sitemap` to the `extensions` array in your Sphinx **conf.py**.
