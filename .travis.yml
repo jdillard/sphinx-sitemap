@@ -14,3 +14,6 @@ install:
 before_script:
   - git config --global user.email "jared.dillard+travis@gmail.com"
   - git config --global user.name "Travis Build"
+
+script:
+    - tox
