@@ -8,6 +8,7 @@ env:
   - SPHINX_SPEC=git+https://github.com/sphinx-doc/sphinx.git#egg=Sphinx-dev
 
 install:
+  - pip install tox
   - pip install $SPHINX_SPEC
   - python setup.py install
 
