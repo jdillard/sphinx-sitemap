@@ -17,6 +17,7 @@ from sphinx.writers.html import HTMLTranslator
 
 def setup(app):
     """Setup conntects events to the sitemap builder"""
+    app.add_config_value('site_url', default='https://my-site.com/docs/', rebuild=False)
     app.connect('html-page-context', add_html_link)
     app.connect('build-finished', create_sitemap)
     app.set_translator('html', HTMLTranslator)
@@ -25,7 +26,7 @@ def setup(app):
 
 def add_html_link(app, pagename, templatename, context, doctree):
     """As each page is built, collect page names for the sitemap"""
-    base_url = 'http://my-site.com/docs/'
+    base_url = app.builder.config.site_url
     if base_url:
         app.sitemap_links.append(base_url + pagename + ".html")
 
