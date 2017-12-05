@@ -6,7 +6,7 @@
 
 ## Installing
 
-1. Add/set the value of **base_url** in your Sphinx **conf.py** to the current base URL of your documentation. For example, `https://my-site.com/docs/`.
+1. Add/set the value of **site_url** in your Sphinx **conf.py** to the current base URL of your documentation. For example, `https://my-site.com/docs/`.
 
 2. Copy the **sphinx_sitemap** directory into your extensions directory or **sys.path**, then add `sphinx_sitemap` to the **extensions** array in your Sphinx **conf.py**.
 
