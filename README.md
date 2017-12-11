@@ -6,10 +6,18 @@
 
 ## Installing
 
-1. Add/set the value of **site_url** in your Sphinx **conf.py** to the current base URL of your documentation. For example, `https://my-site.com/docs/`.
+Directly install via pip by using:
 
-2. Copy the **sphinx_sitemap** directory into your extensions directory or **sys.path**, then add `sphinx_sitemap` to the **extensions** array in your Sphinx **conf.py**.
+    pip install sphinx_sitemap
 
+Set the value of **site_url** in your Sphinx **conf.py** to the current base URL of your documentation. For example:
+
+    site_url = 'https://my-site.com/docs/'
+
+Add `sphinx_sitemap` to the **extensions** array in your Sphinx **conf.py**. For example:
+
+    extensions = ['sphinx_sitemap']
+    
 > **Note:** sphinx-sitemap supports Sphinx 1.2 and later, and Python 2.7, 3.3, and 3.4.
 
 ## License
