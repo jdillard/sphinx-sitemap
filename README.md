@@ -3,6 +3,7 @@
 *[Sphinx](http://sphinx-doc.org/) extension to silently generate a sitemaps.org compliant sitemap for the HTML version of your Sphinx Documentation.*
 
 [![Build Status](https://travis-ci.org/jdillard/sphinx-sitemap.svg?branch=master)](https://travis-ci.org/jdillard/sphinx-sitemap)
+[![PyPI version](https://badge.fury.io/py/sphinx-sitemap.svg)](https://badge.fury.io/py/sphinx-sitemap)
 
 ## Installing
 
