@@ -24,7 +24,6 @@ def setup(app):
     )
     app.connect('html-page-context', add_html_link)
     app.connect('build-finished', create_sitemap)
-    app.set_translator('html', HTMLTranslator)
     app.sitemap_links = []
 
 
