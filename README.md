@@ -14,6 +14,7 @@ Directly install via pip by using:
 
 Set the value of **site_url** in your Sphinx **conf.py** to the current base URL of your documentation. For example:
 
+    #site base url
     site_url = 'https://my-site.com/docs/'
 
 Add `sphinx_sitemap` to the **extensions** array in your Sphinx **conf.py**. For example:
