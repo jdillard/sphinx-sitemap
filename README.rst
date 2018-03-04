@@ -1,8 +1,8 @@
 Sphinx Sitemap Generator Extension
 ==================================
 
-*`Sphinx`_ extension to silently generate a sitemaps.org compliant sitemap for
-the HTML version of your Sphinx Documentation.*
+A `Sphinx`_ extension to silently generate a sitemaps.org compliant sitemap for
+the HTML version of your Sphinx Documentation.
 
 |Build Status| |PyPI version| |License: MIT|
 
@@ -16,15 +16,13 @@ Directly install via pip by using::
 Set the value of **site_url** in your Sphinx **conf.py** to the current base URL
 of your documentation. For example::
 
+    #site base url
     site_url = 'https://my-site.com/docs/'
 
 Add ``sphinx_sitemap`` to the **extensions** array in your Sphinx **conf.py**.
 For example::
 
     extensions = ['sphinx_sitemap']
-
-> **Note:** sphinx-sitemap supports Sphinx 1.2 and later, and Python 2.7, 3.3,
-and 3.4.
 
 License
 -------
