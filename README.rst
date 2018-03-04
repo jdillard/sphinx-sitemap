@@ -24,6 +24,21 @@ For example::
 
     extensions = ['sphinx_sitemap']
 
+Maintaining PyPI Version
+------------------------
+
+These are the steps for making a new Python package release.
+
+#. Rev versions in **sphinx_sitemap/version.py** and **setup.py**.
+#. Create a tag and push to GitHub::
+
+       git tag -a vX.Y.Z -m "Release vX.Y.Z"
+       git push --tags origin master
+
+#. Upload the latest distribution::
+
+       python setup.py sdist upload -r pypi
+
 License
 -------
 
