@@ -1,7 +1,7 @@
 Sphinx Sitemap Generator Extension
 ==================================
 
-A `Sphinx`_ extension to silently generate a [sitemaps.org](https://www.sitemaps.org/protocol.html) compliant sitemap for
+A `Sphinx`_ extension to silently generate a `sitemaps.org`_ compliant sitemap for
 the HTML version of your Sphinx Documentation.
 
 |Build Status| |PyPI version| |License: MIT|
@@ -52,6 +52,7 @@ sphinx-sitemap is made available under a MIT license; see LICENSE for details.
 Originally based on the sitemap generator in the `guzzle_sphinx_theme`_ project
 licensed under the MIT license.
 
+.. _sitemaps.org: https://www.sitemaps.org/protocol.html
 .. _Sphinx: http://sphinx-doc.org/
 .. _GitHub search: https://github.com/search?utf8=%E2%9C%93&q=sphinx-sitemap+extension%3Atxt&type=
 .. _guzzle_sphinx_theme: https://github.com/guzzle/guzzle_sphinx_theme
