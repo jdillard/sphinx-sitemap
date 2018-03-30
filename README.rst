@@ -1,7 +1,7 @@
 Sphinx Sitemap Generator Extension
 ==================================
 
-A `Sphinx`_ extension to silently generate a sitemaps.org compliant sitemap for
+A `Sphinx`_ extension to silently generate a [sitemaps.org](https://www.sitemaps.org/protocol.html) compliant sitemap for
 the HTML version of your Sphinx Documentation.
 
 |Build Status| |PyPI version| |License: MIT|
