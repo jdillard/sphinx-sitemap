@@ -11,7 +11,7 @@ Installing
 
 Directly install via pip by using::
 
-    pip install sphinx_sitemap
+    pip install sphinx-sitemap
 
 Set the value of **site_url** in your Sphinx **conf.py** to the current base URL
 of your documentation. For example::
