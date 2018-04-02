@@ -16,7 +16,7 @@ from sphinx.writers.html import HTMLTranslator
 
 
 def setup(app):
-    """Setup conntects events to the sitemap builder"""
+    """Setup connects events to the sitemap builder"""
     app.add_config_value(
         'site_url',
         default='https://my-site.com/docs/',
