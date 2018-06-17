@@ -19,7 +19,7 @@ def setup(app):
     """Setup connects events to the sitemap builder"""
     app.add_config_value(
         'site_url',
-        default='None',
+        default=None,
         rebuild=False
     )
     app.connect('html-page-context', add_html_link)
@@ -34,8 +34,9 @@ def add_html_link(app, pagename, templatename, context, doctree):
 
 def create_sitemap(app, exception):
     """Generates the sitemap.xml from the collected HTML page links"""
-    if app.builder.config.site_url == "None":
-        print("sphinx-sitemap error: site_url is not set in conf.py. Sitemap not built.")
+    if app.builder.config.site_url is None:
+        print("sphinx-sitemap error: site_url is not set in conf.py. Sitemap "
+              "not built.")
         return
     if (not app.sitemap_links):
         print("sphinx-sitemap error: No pages generated for sitemap.xml")
