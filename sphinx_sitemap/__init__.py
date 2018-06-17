@@ -19,7 +19,7 @@ def setup(app):
     """Setup connects events to the sitemap builder"""
     app.add_config_value(
         'site_url',
-        default='https://my-site.com/docs/',
+        default='None',
         rebuild=False
     )
     app.connect('html-page-context', add_html_link)
@@ -29,18 +29,17 @@ def setup(app):
 
 def add_html_link(app, pagename, templatename, context, doctree):
     """As each page is built, collect page names for the sitemap"""
-    base_url = app.builder.config.site_url
-    if base_url:
-        app.sitemap_links.append(base_url + pagename + ".html")
+    app.sitemap_links.append(pagename + ".html")
 
 
 def create_sitemap(app, exception):
     """Generates the sitemap.xml from the collected HTML page links"""
-    if (not app.sitemap_links):
+    if app.builder.config.site_url == "None":
+        print("sphinx-sitemap error: site_url is not set in conf.py. Sitemap not built.")
         return
-
-    filename = app.outdir + "/sitemap.xml"
-    print("Generating sitemap.xml in %s" % filename)
+    if (not app.sitemap_links):
+        print("sphinx-sitemap error: No pages generated for sitemap.xml")
+        return
 
     root = ET.Element("urlset")
     root.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
@@ -50,9 +49,11 @@ def create_sitemap(app, exception):
 
     for link in app.sitemap_links:
         url = ET.SubElement(root, "url")
-        ET.SubElement(url, "loc").text = link
+        ET.SubElement(url, "loc").text = app.builder.config.site_url + link
 
+    filename = app.outdir + "/sitemap.xml"
     ET.ElementTree(root).write(filename,
                                xml_declaration=True,
                                encoding='utf-8',
                                method="xml")
+    print("sitemap.xml was generated in %s" % filename)
