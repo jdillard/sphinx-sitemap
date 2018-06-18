@@ -21,7 +21,7 @@ For example::
 Set the value of **site_url** in your Sphinx **conf.py** to the current base URL
 of your documentation. For example::
 
-    #site base url
+    # Site base url
     site_url = 'https://my-site.com/docs/'
 
 See Who Is Using It
