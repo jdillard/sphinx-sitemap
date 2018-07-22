@@ -33,23 +33,21 @@ being built, and `locale_dirs` for the directory of alternate languages.
 **Note:** It is currently opinionated, in that it will also use the `version`
 config value in the generated URL.
 
-The end result is something like the following for each language/version build:
+The end result is something like the following for each language/version build::
 
-```
-<?xml version="1.0" encoding="utf-8"?>
-<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://my-site.com/docs/en/latest/index.html</loc>
-    <xhtml:link href="https://my-site.com/docs/es/latest/index.html" hreflang="es" rel="alternate"/>
-    <xhtml:link href="https://my-site.com/docs/fr/latest/index.html" hreflang="fr" rel="alternate"/>
-  </url>
-  <url>
-    <loc>https://my-site.com/docs/en/latest/about.html</loc>
-    <xhtml:link href="https://my-site.com/docs/es/latest/about.html" hreflang="es" rel="alternate"/>
-    <xhtml:link href="https://my-site.com/docs/fr/latest/about.html" hreflang="fr" rel="alternate"/>
-  </url>
-</urlset>
-```
+  <?xml version="1.0" encoding="utf-8"?>
+  <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+      <loc>https://my-site.com/docs/en/latest/index.html</loc>
+      <xhtml:link href="https://my-site.com/docs/es/latest/index.html" hreflang="es" rel="alternate"/>
+      <xhtml:link href="https://my-site.com/docs/fr/latest/index.html" hreflang="fr" rel="alternate"/>
+    </url>
+    <url>
+      <loc>https://my-site.com/docs/en/latest/about.html</loc>
+      <xhtml:link href="https://my-site.com/docs/es/latest/about.html" hreflang="es" rel="alternate"/>
+      <xhtml:link href="https://my-site.com/docs/fr/latest/about.html" hreflang="fr" rel="alternate"/>
+    </url>
+  </urlset>
 
 See Who Is Using It
 -------------------
