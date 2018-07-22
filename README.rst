@@ -29,6 +29,11 @@ See Who Is Using It
 
 You can use `GitHub search`_ to see who is using **sphinx-sitemap**.
 
+Contributing
+------------
+
+Pull Requests welcome! See `CONTRIBUTING`_ for instructions on how best to contribute.
+
 Maintaining PyPI Version
 ------------------------
 
@@ -52,6 +57,7 @@ License
 Originally based on the sitemap generator in the `guzzle_sphinx_theme`_ project
 licensed under the MIT license.
 
+.. _CONTRIBUTING: CONTRIBUTING.md
 .. _GitHub search: https://github.com/search?utf8=%E2%9C%93&q=sphinx-sitemap+extension%3Atxt&type=
 .. _guzzle_sphinx_theme: https://github.com/guzzle/guzzle_sphinx_theme
 .. _LICENSE: LICENSE
