@@ -26,7 +26,7 @@ You need to add **sphinx-sitemap** as a
 
    ```extensions = ['sphinx_sitemap_dev']```
 
-You can now make changes to `sphinx_sitemap_dev`
+You can now make changes to `sphinx_sitemap_dev`.
 
 ### Testing your changes
 
