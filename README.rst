@@ -24,6 +24,33 @@ of your documentation. For example::
     # Site base url
     site_url = 'https://my-site.com/docs/'
 
+For multilingual sitemaps, you have to generate a sitemap per language/locale
+and then manually add them to a `sitemapindex`_ file.
+
+The extension will look at the `language` config value for the current language
+being built, and `locale_dirs` for the directory of alternate languages.
+
+**Note:** It is currently opinionated, in that it will also use the `version`
+config value in the generated URL.
+
+The end result is something like the following for each language/version build:
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://my-site.com/docs/en/latest/index.html</loc>
+    <xhtml:link href="https://my-site.com/docs/es/latest/index.html" hreflang="es" rel="alternate"/>
+    <xhtml:link href="https://my-site.com/docs/fr/latest/index.html" hreflang="fr" rel="alternate"/>
+  </url>
+  <url>
+    <loc>https://my-site.com/docs/en/latest/about.html</loc>
+    <xhtml:link href="https://my-site.com/docs/es/latest/about.html" hreflang="es" rel="alternate"/>
+    <xhtml:link href="https://my-site.com/docs/fr/latest/about.html" hreflang="fr" rel="alternate"/>
+  </url>
+</urlset>
+```
+
 See Who Is Using It
 -------------------
 
@@ -52,15 +79,17 @@ These are the steps for making a new Python package release.
 License
 -------
 
-**sphinx-sitemap** is made available under a **MIT license**; see `LICENSE`_ for details.
+**sphinx-sitemap** is made available under a **MIT license**; see `LICENSE`_ for
+details.
 
-Originally based on the sitemap generator in the `guzzle_sphinx_theme`_ project
-licensed under the MIT license.
+Originally based on the sitemap generator in the `guzzle_sphinx_theme`_ project,
+also licensed under the MIT license.
 
 .. _CONTRIBUTING: CONTRIBUTING.md
 .. _GitHub search: https://github.com/search?utf8=%E2%9C%93&q=sphinx-sitemap+extension%3Atxt&type=
 .. _guzzle_sphinx_theme: https://github.com/guzzle/guzzle_sphinx_theme
 .. _LICENSE: LICENSE
+.. _sitemapindex: https://support.google.com/webmasters/answer/75712?hl=en
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
 .. _Sphinx: http://sphinx-doc.org/
 
