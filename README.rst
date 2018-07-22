@@ -47,15 +47,16 @@ These are the steps for making a new Python package release.
 License
 -------
 
-sphinx-sitemap is made available under a MIT license; see LICENSE for details.
+**sphinx-sitemap** is made available under a **MIT license**; see `LICENSE`_ for details.
 
 Originally based on the sitemap generator in the `guzzle_sphinx_theme`_ project
 licensed under the MIT license.
 
-.. _sitemaps.org: https://www.sitemaps.org/protocol.html
-.. _Sphinx: http://sphinx-doc.org/
 .. _GitHub search: https://github.com/search?utf8=%E2%9C%93&q=sphinx-sitemap+extension%3Atxt&type=
 .. _guzzle_sphinx_theme: https://github.com/guzzle/guzzle_sphinx_theme
+.. _LICENSE: LICENSE
+.. _sitemaps.org: https://www.sitemaps.org/protocol.html
+.. _Sphinx: http://sphinx-doc.org/
 
 .. |Build Status| image:: https://travis-ci.org/jdillard/sphinx-sitemap.svg?branch=master
    :target: https://travis-ci.org/jdillard/sphinx-sitemap
