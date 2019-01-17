@@ -11,6 +11,7 @@
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
 
+import os
 import xml.etree.ElementTree as ET
 from sphinx.writers.html import HTMLTranslator
 
@@ -25,6 +26,16 @@ def setup(app):
     app.connect('html-page-context', add_html_link)
     app.connect('build-finished', create_sitemap)
     app.sitemap_links = []
+    app.locales = []
+
+
+def get_locales(app, exception):
+    for locale_dir in app.builder.config.locale_dirs:
+        locale_dir = os.path.join(app.confdir, locale_dir)
+        if os.path.isdir(locale_dir):
+            for locale in os.listdir(locale_dir):
+                if os.path.isdir(os.path.join(locale_dir, locale)):
+                    app.locales.append(locale)
 
 
 def add_html_link(app, pagename, templatename, context, doctree):
@@ -40,18 +51,36 @@ def create_sitemap(app, exception):
               "are set in conf.py. Sitemap not built.")
         return
     if (not app.sitemap_links):
-        print("sphinx-sitemap error: No pages generated for sitemap.xml")
+        print("sphinx-sitemap warning: No pages generated for sitemap.xml")
         return
+
+    ET.register_namespace('xhtml', "http://www.w3.org/1999/xhtml")
 
     root = ET.Element("urlset")
     root.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
-    root.set("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
-    root.set("xsi:schemaLocation", "http://www.sitemaps.org/schemas/sitemap/0.9 \
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd")
+
+    get_locales(app, exception)
 
     for link in app.sitemap_links:
         url = ET.SubElement(root, "url")
-        ET.SubElement(url, "loc").text = site_url + link
+        if app.builder.config.language is not None:
+            ET.SubElement(url, "loc").text = site_url + \
+                  app.builder.config.language + '/' + \
+                  app.builder.config.version + '/' + link
+            if len(app.locales) > 0:
+                for lang in app.locales:
+                    if lang != app.builder.config.language:
+                        linktag = ET.SubElement(
+                            url,
+                            "{http://www.w3.org/1999/xhtml}link"
+                        )
+                        linktag.set("rel", "alternate")
+                        linktag.set("hreflang", lang)
+                        linktag.set("href", site_url +
+                                    lang + '/' + app.builder.config.version +
+                                    '/' + link)
+        else:
+            ET.SubElement(url, "loc").text = site_url + link
 
     filename = app.outdir + "/sitemap.xml"
     ET.ElementTree(root).write(filename,
