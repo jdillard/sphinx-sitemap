@@ -31,7 +31,7 @@ def setup(app):
 
 def get_locales(app, exception):
     for locale_dir in app.builder.config.locale_dirs:
-        locale_dir = os.path.join(os.path.dirname(app.confdir), locale_dir)
+        locale_dir = os.path.join(app.confdir, locale_dir)
         if os.path.isdir(locale_dir):
             for locale in os.listdir(locale_dir):
                 if os.path.isdir(os.path.join(locale_dir, locale)):
@@ -45,9 +45,10 @@ def add_html_link(app, pagename, templatename, context, doctree):
 
 def create_sitemap(app, exception):
     """Generates the sitemap.xml from the collected HTML page links"""
-    if app.builder.config.site_url is None:
-        print("sphinx-sitemap error: site_url is not set in conf.py. Sitemap "
-              "not built.")
+    site_url = app.builder.config.html_baseurl or app.builder.config.site_url
+    if not site_url:
+        print("sphinx-sitemap error: neither html_baseurl nor site_url "
+              "are set in conf.py. Sitemap not built.")
         return
     if (not app.sitemap_links):
         print("sphinx-sitemap warning: No pages generated for sitemap.xml")
@@ -63,7 +64,7 @@ def create_sitemap(app, exception):
     for link in app.sitemap_links:
         url = ET.SubElement(root, "url")
         if app.builder.config.language is not None:
-            ET.SubElement(url, "loc").text = app.builder.config.site_url + \
+            ET.SubElement(url, "loc").text = site_url + \
                   app.builder.config.language + '/' + \
                   app.builder.config.version + '/' + link
             if len(app.locales) > 0:
@@ -75,15 +76,15 @@ def create_sitemap(app, exception):
                         )
                         linktag.set("rel", "alternate")
                         linktag.set("hreflang", lang)
-                        linktag.set("href", app.builder.config.site_url +
+                        linktag.set("href", site_url +
                                     lang + '/' + app.builder.config.version +
                                     '/' + link)
         else:
-            ET.SubElement(url, "loc").text = app.builder.config.site_url + link
+            ET.SubElement(url, "loc").text = site_url + link
 
     filename = app.outdir + "/sitemap.xml"
     ET.ElementTree(root).write(filename,
                                xml_declaration=True,
                                encoding='utf-8',
                                method="xml")
-    print("sitemap.xml was generated in %s" % filename)
+    print("sitemap.xml was generated for URL %s in %s" % (site_url, filename))

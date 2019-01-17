@@ -18,11 +18,10 @@ For example::
 
     extensions = ['sphinx_sitemap']
 
-Set the value of **site_url** in your Sphinx **conf.py** to the current base URL
-of your documentation. For example::
+Set the value of **html_baseurl** in your Sphinx **conf.py** to the current
+base URL of your documentation. For example::
 
-    # Site base url
-    site_url = 'https://my-site.com/docs/'
+    html_baseurl = 'https://my-site.com/docs/'
 
 For multilingual sitemaps, you have to generate a sitemap per language/locale
 and then manually add them to a `sitemapindex`_ file.
