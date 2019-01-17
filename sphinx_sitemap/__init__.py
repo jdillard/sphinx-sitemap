@@ -34,9 +34,10 @@ def add_html_link(app, pagename, templatename, context, doctree):
 
 def create_sitemap(app, exception):
     """Generates the sitemap.xml from the collected HTML page links"""
-    if app.builder.config.site_url is None:
-        print("sphinx-sitemap error: site_url is not set in conf.py. Sitemap "
-              "not built.")
+    site_url = app.builder.config.html_baseurl or app.builder.config.site_url
+    if not site_url:
+        print("sphinx-sitemap error: neither html_baseurl nor site_url "
+              "are set in conf.py. Sitemap not built.")
         return
     if (not app.sitemap_links):
         print("sphinx-sitemap error: No pages generated for sitemap.xml")
@@ -50,11 +51,11 @@ def create_sitemap(app, exception):
 
     for link in app.sitemap_links:
         url = ET.SubElement(root, "url")
-        ET.SubElement(url, "loc").text = app.builder.config.site_url + link
+        ET.SubElement(url, "loc").text = site_url + link
 
     filename = app.outdir + "/sitemap.xml"
     ET.ElementTree(root).write(filename,
                                xml_declaration=True,
                                encoding='utf-8',
                                method="xml")
-    print("sitemap.xml was generated in %s" % filename)
+    print("sitemap.xml was generated for URL %s in %s" % (site_url, filename))
