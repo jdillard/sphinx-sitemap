@@ -1,6 +1,15 @@
 Changelog
 =========
 
+1.0.0
+-----
+
+*Release date: 2019-01-17*
+
+* Use native `html_baseurl` config value, instead of the custom `site_url`. It
+  checks for both for backwards compatiability.
+* Add support for multiple languages.
+
 0.3.1
 -----
 
