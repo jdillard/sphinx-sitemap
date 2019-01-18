@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.0.1
+-----
+
+* Fix for `AttributeError: No such config value: html_baseurl` on versions of
+  sphinx older than 1.8.0.
+
 1.0.0
 -----
 

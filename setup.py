@@ -20,6 +20,6 @@ setup(
     author_email='jared.dillard@gmail.com',
     install_requires=['six', 'sphinx >= 1.2'],
     url="https://github.com/jdillard/sphinx-sitemap",
-    download_url="https://github.com/jdillard/sphinx-sitemap/archive/v1.0.0.tar.gz",
+    download_url="https://github.com/jdillard/sphinx-sitemap/archive/v1.0.1.tar.gz",
     packages=['sphinx_sitemap'],
  )
