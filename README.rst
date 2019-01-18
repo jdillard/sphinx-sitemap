@@ -23,8 +23,8 @@ base URL of your documentation. For example::
 
     html_baseurl = 'https://my-site.com/docs/'
 
-**Note:** `html_baseurl` was introduced in Sphinx 1.8.0. If you are using a
-version prior to that you must set your base URL to `site_url` instead.
+**Note:** ``html_baseurl`` was introduced in Sphinx 1.8.0. If you are using a
+version prior to that you must set your base URL to ``site_url`` instead.
 
 For multilingual sitemaps, you have to generate a sitemap per language/locale
 and then manually add them to a `sitemapindex`_ file.
