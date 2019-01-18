@@ -75,9 +75,17 @@ These are the steps for making a new Python package release.
        git tag -a vX.Y.Z -m "Release vX.Y.Z"
        git push --tags origin master
 
-#. Upload the latest distribution::
+#. Create latest distribution locally::
 
-       python setup.py sdist upload -r pypi
+       python setup.py sdist
+       
+#. Upload to the test pypi.org repository::
+
+       twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+       
+#. Upload to the production pypi.org repository::
+
+       twine upload dist/*
 
 License
 -------
