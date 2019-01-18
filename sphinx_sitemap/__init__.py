@@ -45,7 +45,7 @@ def add_html_link(app, pagename, templatename, context, doctree):
 
 def create_sitemap(app, exception):
     """Generates the sitemap.xml from the collected HTML page links"""
-    site_url = app.builder.config.html_baseurl or app.builder.config.site_url
+    site_url = app.builder.config.site_url or app.builder.config.html_baseurl
     if not site_url:
         print("sphinx-sitemap error: neither html_baseurl nor site_url "
               "are set in conf.py. Sitemap not built.")
