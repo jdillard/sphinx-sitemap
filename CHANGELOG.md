@@ -4,6 +4,8 @@ Changelog
 1.0.1
 -----
 
+*Release date: 2019-01-17*
+
 * Fix for `AttributeError: No such config value: html_baseurl` on versions of
   sphinx older than 1.8.0.
 
