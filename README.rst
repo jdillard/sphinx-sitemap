@@ -66,6 +66,7 @@ Maintaining PyPI Version
 These are the steps for making a new Python package release.
 
 #. Rev versions in **sphinx_sitemap/version.py** and **setup.py**.
+#. Update **CHANGELOG.md**
 #. Create a tag and push to GitHub::
 
        git tag -a vX.Y.Z -m "Release vX.Y.Z"
