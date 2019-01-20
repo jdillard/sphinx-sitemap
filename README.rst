@@ -13,12 +13,12 @@ Directly install via pip by using::
 
     pip install sphinx-sitemap
 
-Add ``sphinx_sitemap`` to the **extensions** array in your Sphinx **conf.py**.
+Add ``sphinx_sitemap`` to the `extensions`_ array in your Sphinx **conf.py**.
 For example::
 
     extensions = ['sphinx_sitemap']
 
-Set the value of **html_baseurl** in your Sphinx **conf.py** to the current
+Set the value of `html_baseurl`_ in your Sphinx **conf.py** to the current
 base URL of your documentation. For example::
 
     html_baseurl = 'https://my-site.com/docs/'
@@ -30,13 +30,15 @@ Multilingual Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For multilingual sitemaps, you have to generate a sitemap per language/locale
-and then manually add them to a `sitemapindex`_ file.
+and then manually add their locations to a `sitemapindex`_ file.
 
-The extension will look at the `language` config value for the current language
-being built, and `locale_dirs` for the directory of alternate languages.
+The extension will look at the `language`_ config value for the current language
+being built, and the `locale_dirs`_ value for the directory for alternate languages,
+so make sure those are set.
 
-**Note:** It is currently opinionated, in that it will also use the `version`
-config value in the generated URL.
+**Note:** The extension is currently opinionated, in that it will also use the
+`version`_ config value in the generated URL. Setting it to ``latest`` is appropriate
+for most use cases.
 
 The end result is something like the following for each language/version build::
 
@@ -69,7 +71,7 @@ Pull Requests welcome! See `CONTRIBUTING`_ for instructions on how best to contr
 Maintaining PyPI Version
 ------------------------
 
-These are the steps for making a new Python package release.
+These are the steps, to be run by the maintainer, for making a new Python package release.
 
 #. Rev versions in **sphinx_sitemap/version.py** and **setup.py**.
 #. Update **CHANGELOG.md**
@@ -100,13 +102,18 @@ Originally based on the sitemap generator in the `guzzle_sphinx_theme`_ project,
 also licensed under the MIT license.
 
 .. _CONTRIBUTING: CONTRIBUTING.md
+.. _extensions: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-extensions
 .. _GitHub search: https://github.com/search?utf8=%E2%9C%93&q=sphinx-sitemap+extension%3Atxt&type=
 .. _guzzle_sphinx_theme: https://github.com/guzzle/guzzle_sphinx_theme
+.. _html_baseurl: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_baseurl
+.. _language: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-language
 .. _libraries.io: https://libraries.io/pypi/sphinx-sitemap
 .. _LICENSE: LICENSE
+.. _locale_dirs: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-locale_dirs
 .. _sitemapindex: https://support.google.com/webmasters/answer/75712?hl=en
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
 .. _Sphinx: http://sphinx-doc.org/
+.. _version: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-version
 
 .. |Build Status| image:: https://travis-ci.org/jdillard/sphinx-sitemap.svg?branch=master
    :target: https://travis-ci.org/jdillard/sphinx-sitemap
