@@ -26,6 +26,9 @@ base URL of your documentation. For example::
 **Note:** ``html_baseurl`` was introduced in Sphinx 1.8.0. If you are using a
 version prior to that you must set your base URL to ``site_url`` instead.
 
+Multilingual Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 For multilingual sitemaps, you have to generate a sitemap per language/locale
 and then manually add them to a `sitemapindex`_ file.
 
@@ -56,7 +59,7 @@ The end result is something like the following for each language/version build::
 See Who Is Using It
 -------------------
 
-You can use `GitHub search`_ to see who is using **sphinx-sitemap**.
+You can use `GitHub search`_ or `libraries.io`_ to see who is using **sphinx-sitemap**.
 
 Contributing
 ------------
@@ -99,6 +102,7 @@ also licensed under the MIT license.
 .. _CONTRIBUTING: CONTRIBUTING.md
 .. _GitHub search: https://github.com/search?utf8=%E2%9C%93&q=sphinx-sitemap+extension%3Atxt&type=
 .. _guzzle_sphinx_theme: https://github.com/guzzle/guzzle_sphinx_theme
+.. _libraries.io: https://libraries.io/pypi/sphinx-sitemap
 .. _LICENSE: LICENSE
 .. _sitemapindex: https://support.google.com/webmasters/answer/75712?hl=en
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
