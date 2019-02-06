@@ -19,7 +19,7 @@ For example::
     extensions = ['sphinx_sitemap']
 
 Set the value of `html_baseurl`_ in your Sphinx **conf.py** to the current
-base URL of your documentation. For example::
+base URL of your documentation with a trailing slash. For example::
 
     html_baseurl = 'https://my-site.com/docs/'
 
