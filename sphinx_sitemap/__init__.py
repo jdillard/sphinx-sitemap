@@ -23,6 +23,15 @@ def setup(app):
         default=None,
         rebuild=False
     )
+    try:
+        app.add_config_value(
+            'html_baseurl',
+            default=None,
+            rebuild=False
+        )
+    except:
+        pass
+
     app.connect('html-page-context', add_html_link)
     app.connect('build-finished', create_sitemap)
     app.sitemap_links = []
