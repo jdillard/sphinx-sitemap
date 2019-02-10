@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.0.2
+-----
+
+Add `html_baseurl` config value if it doesn't exist for sphinx versions prior to
+1.8.0.
+
 1.0.1
 -----
 
