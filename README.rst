@@ -1,8 +1,9 @@
 Sphinx Sitemap Generator Extension
 ==================================
 
-A `Sphinx`_ extension to silently generate a `sitemaps.org`_ compliant sitemap for
-the HTML version of your Sphinx Documentation.
+A `Sphinx`_ extension to silently generate multiversion and multilanguage
+`sitemaps.org`_ compliant sitemaps for the HTML version of your Sphinx
+documentation.
 
 |Build Status| |PyPI version| |License: MIT|
 
@@ -23,6 +24,15 @@ base URL of your documentation with a trailing slash. For example::
 
     html_baseurl = 'https://my-site.com/docs/'
 
+Versioning Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+For multiversion sitemaps, you have to generate a sitemap per version and then
+manually add their locations to a `sitemapindex`_ file.
+
+The extension will look at the `version`_ config value for the current version
+being built, so make sure that is set.
+
 Multilingual Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -30,12 +40,13 @@ For multilingual sitemaps, you have to generate a sitemap per language/locale
 and then manually add their locations to a `sitemapindex`_ file.
 
 The extension will look at the `language`_ config value for the current language
-being built, and the `locale_dirs`_ value for the directory for alternate languages,
-so make sure those are set.
+being built, and the `locale_dirs`_ value for the directory for alternate
+languages, so make sure those are set.
 
 **Note:** The extension is currently opinionated, in that it will also use the
-`version`_ config value in the generated URL. Setting it to ``latest`` is appropriate
-for most use cases.
+`version`_ config value, if set, after the ``language`` value in the generated
+URL. Setting it to ``latest`` is appropriate for most use cases, but it can also
+be left blank.
 
 The end result is something like the following for each language/version build::
 
@@ -54,7 +65,7 @@ The end result is something like the following for each language/version build::
       <xhtml:link href="https://my-site.com/docs/en/latest/index.html" hreflang="en" rel="alternate"/>
     </url>
   </urlset>
-  
+
 Getting the Most out of the Sitemap
 -----------------------------------
 
@@ -64,28 +75,30 @@ Getting the Most out of the Sitemap
      User-agent: *
 
      Sitemap: https://my-site.com/docs/sitemap.xml
-   
-  
+
    Then, add **robots.txt** to the `html_extra_path`_ config value::
 
      html_extra_path = ['robots.txt']
-     
+
 #. Submit the sitemap or sitemapindex to the appropriate search engine tools.
 
 See Who Is Using It
 -------------------
 
-You can use `GitHub search`_ or `libraries.io`_ to see who is using **sphinx-sitemap**.
+You can use `GitHub search`_ or `libraries.io`_ to see who is using
+**sphinx-sitemap**.
 
 Contributing
 ------------
 
-Pull Requests welcome! See `CONTRIBUTING`_ for instructions on how best to contribute.
+Pull Requests welcome! See `CONTRIBUTING`_ for instructions on how best to
+contribute.
 
 Maintaining PyPI Version
 ------------------------
 
-These are the steps, to be run by the maintainer, for making a new Python package release.
+These are the steps, to be run by the maintainer, for making a new Python
+package release.
 
 #. Rev versions in **sphinx_sitemap/version.py** and **setup.py**.
 #. Update **CHANGELOG.md**
@@ -97,11 +110,11 @@ These are the steps, to be run by the maintainer, for making a new Python packag
 #. Create latest distribution locally::
 
        python setup.py sdist
-       
+
 #. Upload to the test pypi.org repository::
 
        twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-       
+
 #. Upload to the production pypi.org repository::
 
        twine upload dist/*

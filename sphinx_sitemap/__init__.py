@@ -70,12 +70,16 @@ def create_sitemap(app, exception):
 
     get_locales(app, exception)
 
+    if app.builder.config.version:
+        version = app.builder.config.version + '/'
+    else:
+        version = app.builder.config.version
+
     for link in app.sitemap_links:
         url = ET.SubElement(root, "url")
         if app.builder.config.language is not None:
             ET.SubElement(url, "loc").text = site_url + \
-                  app.builder.config.language + '/' + \
-                  app.builder.config.version + '/' + link
+                  app.builder.config.language + '/' + version + link
             if len(app.locales) > 0:
                 for lang in app.locales:
                     linktag = ET.SubElement(
@@ -84,9 +88,9 @@ def create_sitemap(app, exception):
                     )
                     linktag.set("rel", "alternate")
                     linktag.set("hreflang", lang)
-                    linktag.set("href", site_url +
-                                lang + '/' + app.builder.config.version +
-                                '/' + link)
+                    linktag.set("href", site_url + lang + '/' + version + link)
+        elif app.builder.config.version:
+            ET.SubElement(url, "loc").text = site_url + version + link
         else:
             ET.SubElement(url, "loc").text = site_url + link
 

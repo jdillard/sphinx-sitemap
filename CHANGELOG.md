@@ -1,11 +1,20 @@
 Changelog
 =========
 
+latest
+------
+
+*Release date: TBD*
+
+* Make `version` and `language` config values each optional.
+
 1.0.2
 -----
 
-Add `html_baseurl` config value if it doesn't exist for sphinx versions prior to
-1.8.0.
+*Release date: 2019-02-09*
+
+* Add `html_baseurl` config value if it doesn't exist for sphinx versions prior
+  to 1.8.0.
 
 1.0.1
 -----
