@@ -7,6 +7,7 @@ latest
 *Release date: TBD*
 
 * Make `version` and `language` config values each optional.
+* Add license to **setup.py**.
 
 1.0.2
 -----
