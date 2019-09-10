@@ -8,6 +8,7 @@ latest
 
 * Make `version` and `language` config values each optional.
 * Add license to **setup.py**.
+* Mark unsafe for parallel reading.
 
 1.0.2
 -----
