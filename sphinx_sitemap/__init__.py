@@ -37,6 +37,10 @@ def setup(app):
     app.sitemap_links = []
     app.locales = []
 
+    return {
+        'parallel_read_safe': False
+    }
+
 
 def get_locales(app, exception):
     for locale_dir in app.builder.config.locale_dirs:
