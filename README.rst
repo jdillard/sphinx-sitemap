@@ -33,6 +33,11 @@ manually add their locations to a `sitemapindex`_ file.
 The extension will look at the `version`_ config value for the current version
 being built, so make sure that is set.
 
+**Note:** When using multiple versions, it is best practice to set the canonical
+URL in the theme layout of all versions to the latest version of that page::
+
+    <link rel="canonical" href="https://my-site.com/docs/en/latest/index.html"/>
+
 Multilingual Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
