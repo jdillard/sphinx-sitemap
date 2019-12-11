@@ -60,7 +60,18 @@ def record_builder_type(app):
 
 def add_html_link(app, pagename, templatename, context, doctree):
     """As each page is built, collect page names for the sitemap"""
-    app.sitemap_links.append(pagename + ".html")
+    if app.is_dictionary_builder:
+        if pagename == "index":
+            # root of the entire website, a special case
+            directory_pagename = ""
+        elif pagename.endswith("/index"):
+            # checking until / to avoid false positives like /funds-index
+            directory_pagename = pagename[:-6] + "/"
+        else:
+            directory_pagename = pagename + "/"
+        app.sitemap_links.append(directory_pagename)
+    else:
+        app.sitemap_links.append(pagename + ".html")
 
 
 def create_sitemap(app, exception):
