@@ -13,7 +13,6 @@
 
 import os
 import xml.etree.ElementTree as ET
-from sphinx.writers.html import HTMLTranslator
 
 
 def setup(app):
