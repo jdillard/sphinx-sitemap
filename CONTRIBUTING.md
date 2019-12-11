@@ -30,6 +30,6 @@ You can now make changes to `sphinx_sitemap_dev`.
 
 ### Testing your changes
 
-1. Run `pep8` on `sphinx_sitemap_dev`:
+1. Run `pycodestyle` on `sphinx_sitemap_dev`:
 
-   ```pep8 sphinx_sitemap_dev```
+   ```pycodestyle sphinx_sitemap_dev```
