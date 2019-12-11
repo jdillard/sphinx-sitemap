@@ -29,7 +29,7 @@ def setup(app):
             default=None,
             rebuild=False
         )
-    except:
+    except BaseException:
         pass
 
     app.connect('html-page-context', add_html_link)
