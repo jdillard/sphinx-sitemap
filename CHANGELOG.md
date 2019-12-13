@@ -6,6 +6,13 @@ latest
 
 *Release date: TBD*
 
+1.1.0
+-----
+
+*Release date: 2019-12-12*
+
+* Add support for `DirectoryHTMLBuilder`.
+* Remove unused `HTMLTranslator` import.
 * Make `version` and `language` config values each optional.
 * Add license to **setup.py**.
 * Mark unsafe for parallel reading.
