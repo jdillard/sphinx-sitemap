@@ -13,7 +13,6 @@
 
 import os
 import xml.etree.ElementTree as ET
-from sphinx.writers.html import HTMLTranslator
 
 
 def setup(app):
@@ -29,9 +28,10 @@ def setup(app):
             default=None,
             rebuild=False
         )
-    except:
+    except BaseException:
         pass
 
+    app.connect('builder-inited', record_builder_type)
     app.connect('html-page-context', add_html_link)
     app.connect('build-finished', create_sitemap)
     app.sitemap_links = []
@@ -51,9 +51,27 @@ def get_locales(app, exception):
                     app.locales.append(locale)
 
 
+def record_builder_type(app):
+    # builder isn't initialized in the setup so we do it here
+    # we rely on the class name, not the actual class, as it was moved 2.0.0
+    builder_class_name = getattr(app, "builder", None).__class__.__name__
+    app.is_dictionary_builder = (builder_class_name == 'DirectoryHTMLBuilder')
+
+
 def add_html_link(app, pagename, templatename, context, doctree):
     """As each page is built, collect page names for the sitemap"""
-    app.sitemap_links.append(pagename + ".html")
+    if app.is_dictionary_builder:
+        if pagename == "index":
+            # root of the entire website, a special case
+            directory_pagename = ""
+        elif pagename.endswith("/index"):
+            # checking until / to avoid false positives like /funds-index
+            directory_pagename = pagename[:-6] + "/"
+        else:
+            directory_pagename = pagename + "/"
+        app.sitemap_links.append(directory_pagename)
+    else:
+        app.sitemap_links.append(pagename + ".html")
 
 
 def create_sitemap(app, exception):
