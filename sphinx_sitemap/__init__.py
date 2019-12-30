@@ -24,7 +24,7 @@ def setup(app):
     )
     app.add_config_value(
         'i18n_url_scheme',
-        default="/{lang}/{version}{link}",
+        default="{lang}/{version}{link}",
         rebuild=False
     )
 
@@ -83,6 +83,7 @@ def add_html_link(app, pagename, templatename, context, doctree):
 def create_sitemap(app, exception):
     """Generates the sitemap.xml from the collected HTML page links"""
     site_url = app.builder.config.site_url or app.builder.config.html_baseurl
+    site_url = site_url.rstrip('/') + '/'
     if not site_url:
         print("sphinx-sitemap error: neither html_baseurl nor site_url "
               "are set in conf.py. Sitemap not built.")
@@ -99,14 +100,15 @@ def create_sitemap(app, exception):
     get_locales(app, exception)
 
     if app.builder.config.version:
-        version = app.builder.config.version + '/'
+        version = app.builder.config.version.rstrip('/') + '/'
     else:
         version = app.builder.config.version
 
     for link in app.sitemap_links:
         url = ET.SubElement(root, "url")
         if app.builder.config.language is not None:
-            scheme = app.config.i18n_url_scheme or "/{lang}/{version}{link}"
+            scheme = app.config.i18n_url_scheme.lstrip('/') \
+                or "{lang}/{version}{link}"
             ET.SubElement(url, "loc").text = site_url + scheme.format(
                 lang=app.builder.config.language, version=version, link=link
             )
