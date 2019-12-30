@@ -22,6 +22,12 @@ def setup(app):
         default=None,
         rebuild=False
     )
+    app.add_config_value(
+        'i18n_url_scheme',
+        default="/{lang}/{version}{link}",
+        rebuild=False
+    )
+
     try:
         app.add_config_value(
             'html_baseurl',
@@ -100,8 +106,10 @@ def create_sitemap(app, exception):
     for link in app.sitemap_links:
         url = ET.SubElement(root, "url")
         if app.builder.config.language is not None:
-            ET.SubElement(url, "loc").text = site_url + \
-                  app.builder.config.language + '/' + version + link
+            scheme = app.config.i18n_url_scheme or "/{lang}/{version}{link}"
+            ET.SubElement(url, "loc").text = site_url + scheme.format(
+                lang=app.builder.config.language, version=version, link=link
+            )
             if len(app.locales) > 0:
                 for lang in app.locales:
                     linktag = ET.SubElement(
@@ -110,7 +118,9 @@ def create_sitemap(app, exception):
                     )
                     linktag.set("rel", "alternate")
                     linktag.set("hreflang", lang)
-                    linktag.set("href", site_url + lang + '/' + version + link)
+                    linktag.set("href", site_url + scheme.format(
+                        lang=lang, version=version, link=link
+                    ))
         elif app.builder.config.version:
             ET.SubElement(url, "loc").text = site_url + version + link
         else:
