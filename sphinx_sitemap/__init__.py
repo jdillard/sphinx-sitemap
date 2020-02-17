@@ -24,7 +24,7 @@ def setup(app):
     )
     app.add_config_value(
         'i18n_url_scheme',
-        default="{lang}/{version}{link}",
+        default="{lang}/{version}/{link}",
         rebuild=False
     )
 
@@ -100,33 +100,29 @@ def create_sitemap(app, exception):
     get_locales(app, exception)
 
     if app.builder.config.version:
-        version = app.builder.config.version.rstrip('/') + '/'
-    else:
         version = app.builder.config.version
+    else:
+        version = "latest"
 
     for link in app.sitemap_links:
         url = ET.SubElement(root, "url")
-        if app.builder.config.language is not None:
-            scheme = app.config.i18n_url_scheme.lstrip('/') \
-                or "{lang}/{version}{link}"
-            ET.SubElement(url, "loc").text = site_url + scheme.format(
-                lang=app.builder.config.language, version=version, link=link
-            )
-            if len(app.locales) > 0:
-                for lang in app.locales:
-                    linktag = ET.SubElement(
-                        url,
-                        "{http://www.w3.org/1999/xhtml}link"
-                    )
-                    linktag.set("rel", "alternate")
-                    linktag.set("hreflang", lang)
-                    linktag.set("href", site_url + scheme.format(
-                        lang=lang, version=version, link=link
-                    ))
-        elif app.builder.config.version:
-            ET.SubElement(url, "loc").text = site_url + version + link
-        else:
-            ET.SubElement(url, "loc").text = site_url + link
+        scheme = app.config.i18n_url_scheme
+        lang = app.builder.config.language \
+            or "en"
+        ET.SubElement(url, "loc").text = site_url + scheme.format(
+            lang=lang, version=version, link=link
+        )
+        if len(app.locales) > 0:
+            for lang in app.locales:
+                linktag = ET.SubElement(
+                    url,
+                    "{http://www.w3.org/1999/xhtml}link"
+                )
+                linktag.set("rel", "alternate")
+                linktag.set("hreflang", lang)
+                linktag.set("href", site_url + scheme.format(
+                    lang=lang, version=version, link=link
+                ))
 
     filename = app.outdir + "/sitemap.xml"
     ET.ElementTree(root).write(filename,
