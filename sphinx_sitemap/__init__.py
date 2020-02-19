@@ -23,7 +23,7 @@ def setup(app):
         rebuild=False
     )
     app.add_config_value(
-        'i18n_url_scheme',
+        'sitemap_url_scheme',
         default="{lang}{version}{link}",
         rebuild=False
     )
@@ -106,7 +106,7 @@ def create_sitemap(app, exception):
 
     for link in app.sitemap_links:
         url = ET.SubElement(root, "url")
-        scheme = app.config.i18n_url_scheme
+        scheme = app.config.sitemap_url_scheme
         if app.builder.config.language:
             lang = app.builder.config.language + '/'
         else:
