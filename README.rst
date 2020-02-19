@@ -108,31 +108,6 @@ Contributing
 Pull Requests welcome! See `CONTRIBUTING`_ for instructions on how best to
 contribute.
 
-Maintaining PyPI Version
-------------------------
-
-These are the steps, to be run by the maintainer, for making a new Python
-package release.
-
-#. Rev versions in **sphinx_sitemap/version.py** and **setup.py**.
-#. Update **CHANGELOG.md**
-#. Create a tag and push to GitHub::
-
-       git tag -a vX.Y.Z -m "Release vX.Y.Z"
-       git push --tags origin master
-
-#. Create latest distribution locally::
-
-       python setup.py sdist
-
-#. Upload to the test pypi.org repository::
-
-       twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-
-#. Upload to the production pypi.org repository::
-
-       twine upload dist/*
-
 License
 -------
 
