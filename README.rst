@@ -20,7 +20,7 @@ For example::
     extensions = ['sphinx_sitemap']
 
 Set the value of `html_baseurl`_ in your Sphinx **conf.py** to the current
-base URL of your documentation with a trailing slash. For example::
+base URL of your documentation. For example::
 
     html_baseurl = 'https://my-site.com/docs/'
 
@@ -36,7 +36,7 @@ being built, so make sure that is set.
 **Note:** When using multiple versions, it is best practice to set the canonical
 URL in the theme layout of all versions to the latest version of that page::
 
-    <link rel="canonical" href="https://my-site.com/docs/en/latest/index.html"/>
+    <link rel="canonical" href="https://my-site.com/docs/latest/index.html"/>
 
 Multilingual Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -48,28 +48,37 @@ The extension will look at the `language`_ config value for the current language
 being built, and the `locale_dirs`_ value for the directory for alternate
 languages, so make sure those are set.
 
-**Note:** The extension is currently opinionated, in that it will also use the
-`version`_ config value, if set, after the ``language`` value in the generated
-URL. Setting it to ``latest`` is appropriate for most use cases, but it can also
-be left blank.
-
 The end result is something like the following for each language/version build::
 
   <?xml version="1.0" encoding="utf-8"?>
   <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-      <loc>https://my-site.com/docs/en/latest/index.html</loc>
-      <xhtml:link href="https://my-site.com/docs/es/latest/index.html" hreflang="es" rel="alternate"/>
-      <xhtml:link href="https://my-site.com/docs/fr/latest/index.html" hreflang="fr" rel="alternate"/>
-      <xhtml:link href="https://my-site.com/docs/en/latest/index.html" hreflang="en" rel="alternate"/>
+      <loc>https://my-site.com/docs/en/index.html</loc>
+      <xhtml:link href="https://my-site.com/docs/es/index.html" hreflang="es" rel="alternate"/>
+      <xhtml:link href="https://my-site.com/docs/fr/index.html" hreflang="fr" rel="alternate"/>
+      <xhtml:link href="https://my-site.com/docs/en/index.html" hreflang="en" rel="alternate"/>
     </url>
     <url>
-      <loc>https://my-site.com/docs/en/latest/about.html</loc>
-      <xhtml:link href="https://my-site.com/docs/es/latest/about.html" hreflang="es" rel="alternate"/>
-      <xhtml:link href="https://my-site.com/docs/fr/latest/about.html" hreflang="fr" rel="alternate"/>
-      <xhtml:link href="https://my-site.com/docs/en/latest/index.html" hreflang="en" rel="alternate"/>
+      <loc>https://my-site.com/docs/en/about.html</loc>
+      <xhtml:link href="https://my-site.com/docs/es/about.html" hreflang="es" rel="alternate"/>
+      <xhtml:link href="https://my-site.com/docs/fr/about.html" hreflang="fr" rel="alternate"/>
+      <xhtml:link href="https://my-site.com/docs/en/test/index.html" hreflang="en" rel="alternate"/>
     </url>
   </urlset>
+
+Customizing the URL scheme
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you have both ``language`` and ``version`` set, the default URL format is
+``{version}{lang}{link}``. To change the default behavior, set the value of
+``sitemap_url_scheme`` in your Sphinx **conf.py** to the desired format. For
+example::
+
+    sitemap_url_scheme = "{lang}{version}{link}"
+
+**Note:** The extension is currently opinionated, in that it automatically
+appends trailing slashes to both the ``language`` and ``version`` values. You
+can also omit values from the scheme for desired behavior.
 
 Getting the Most out of the Sitemap
 -----------------------------------
