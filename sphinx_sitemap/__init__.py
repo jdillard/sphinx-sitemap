@@ -64,6 +64,18 @@ def record_builder_type(app):
     app.is_dictionary_builder = (builder_class_name == 'DirectoryHTMLBuilder')
 
 
+def hreflang_formatter(lang):
+    """
+    sitemap hreflang should follow correct format.
+        Use hyphen instead of underscore in language and country value.
+    ref: https://en.wikipedia.org/wiki/Hreflang#Common_Mistakes
+    source: https://github.com/readthedocs/readthedocs.org/pull/5638
+    """
+    if '_' in lang:
+        return lang.replace("_", "-")
+    return lang
+
+
 def add_html_link(app, pagename, templatename, context, doctree):
     """As each page is built, collect page names for the sitemap"""
     if app.is_dictionary_builder:
@@ -115,6 +127,7 @@ def create_sitemap(app, exception):
         ET.SubElement(url, "loc").text = site_url + scheme.format(
             lang=lang, version=version, link=link
         )
+
         if len(app.locales) > 0:
             for lang in app.locales:
                 lang = lang + '/'
@@ -123,7 +136,7 @@ def create_sitemap(app, exception):
                     "{http://www.w3.org/1999/xhtml}link"
                 )
                 linktag.set("rel", "alternate")
-                linktag.set("hreflang", lang)
+                linktag.set("hreflang",  hreflang_formatter(lang.rstrip('/')))
                 linktag.set("href", site_url + scheme.format(
                     lang=lang, version=version, link=link
                 ))

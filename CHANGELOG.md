@@ -6,13 +6,17 @@ latest
 
 *Release date: TBD*
 
+* Make sure the regional variants for the `hreflang` attribute are valid
+  [#19](https://github.com/jdillard/sphinx-sitemap/issues/19).
+
 2.0.0
 -----
 
 *Release date: 2020-02-19*
 
 * Add `sitemap_url_scheme` config value that allows the url scheme to be
-  customized with a default of `{version}{lang}{link}` [#22](https://github.com/jdillard/sphinx-sitemap/issues/22).
+  customized with a default of `{version}{lang}{link}`
+  [#22](https://github.com/jdillard/sphinx-sitemap/issues/22).
   
     * **Note:** This has the potential to be a breaking change depending on
       how the `version` and `language` values are set. **Confirm the accuracy
