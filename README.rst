@@ -82,7 +82,7 @@ If you have both ``language`` and ``version`` set, the default URL format is
 ``sitemap_url_scheme`` in your Sphinx **conf.py** to the desired format. For
 example::
 
-    sitemap_url_scheme = "{lang}{version}{link}"
+    sitemap_url_scheme = "{lang}{version}subdir/{link}"
 
 **Note:** The extension is currently opinionated, in that it automatically
 appends trailing slashes to both the ``language`` and ``version`` values. You
