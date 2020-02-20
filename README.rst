@@ -24,6 +24,14 @@ base URL of your documentation. For example::
 
     html_baseurl = 'https://my-site.com/docs/'
 
+After the HTML build is done, **sphinx-sitemap** will output the location of the
+sitemap::
+
+    sitemap.xml was generated for URL https://my-site.com/docs/ in /path/to/_build/sitemap.xml
+
+**Note:** Make sure to confirm the accuracy of the sitemap after installs and
+upgrades.
+
 Versioning Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
