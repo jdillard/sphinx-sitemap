@@ -6,6 +6,11 @@ latest
 
 *Release date: TBD*
 
+2.0.0
+-----
+
+*Release date: 2020-02-19*
+
 * Add `sitemap_url_scheme` config value that allows the url scheme to be
   customized with a default of `{version}{lang}{link}` [#22](https://github.com/jdillard/sphinx-sitemap/issues/22).
   

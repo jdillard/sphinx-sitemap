@@ -21,6 +21,6 @@ setup(
     install_requires=['six', 'sphinx >= 1.2'],
     url="https://github.com/jdillard/sphinx-sitemap",
     license='MIT',
-    download_url="https://github.com/jdillard/sphinx-sitemap/archive/v1.1.0.tar.gz",
+    download_url="https://github.com/jdillard/sphinx-sitemap/archive/v2.0.0.tar.gz",
     packages=['sphinx_sitemap'],
  )
