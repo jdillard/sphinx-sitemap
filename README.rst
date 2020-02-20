@@ -62,7 +62,7 @@ The end result is something like the following for each language/version build::
       <loc>https://my-site.com/docs/en/about.html</loc>
       <xhtml:link href="https://my-site.com/docs/es/about.html" hreflang="es" rel="alternate"/>
       <xhtml:link href="https://my-site.com/docs/fr/about.html" hreflang="fr" rel="alternate"/>
-      <xhtml:link href="https://my-site.com/docs/en/test/index.html" hreflang="en" rel="alternate"/>
+      <xhtml:link href="https://my-site.com/docs/en/about.html" hreflang="en" rel="alternate"/>
     </url>
   </urlset>
 
