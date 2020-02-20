@@ -8,6 +8,10 @@ latest
 
 * Add `sitemap_url_scheme` config value that allows the url scheme to be
   customized with a default of `{version}{lang}{link}` [#22](https://github.com/jdillard/sphinx-sitemap/issues/22).
+  
+    * **Note:** This has the potential to be a breaking change depending on
+      how the `version` and `language` values are set. **Confirm the accuracy
+      of the sitemap after upgrading**.
 
 1.1.0
 -----
