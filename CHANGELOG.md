@@ -6,6 +6,9 @@ latest
 
 *Release date: TBD*
 
+* Add `parallel_write_safe` flag and set to `False` 
+  [#20](https://github.com/jdillard/sphinx-sitemap/issues/20).
+
 2.1.0
 -----
 

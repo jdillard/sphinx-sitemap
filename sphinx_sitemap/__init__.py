@@ -44,7 +44,8 @@ def setup(app):
     app.locales = []
 
     return {
-        'parallel_read_safe': False
+        'parallel_read_safe': False,
+        'parallel_write_safe': False
     }
 
 
