@@ -6,6 +6,11 @@ latest
 
 *Release date: TBD*
 
+2.1.0
+-----
+
+*Release date: 2020-02-22*
+
 * Make sure the regional variants for the `hreflang` attribute are valid
   [#19](https://github.com/jdillard/sphinx-sitemap/issues/19).
 
