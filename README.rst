@@ -1,7 +1,7 @@
 Sphinx Sitemap Generator Extension
 ==================================
 
-A `Sphinx`_ extension to silently generate multiversion and multilanguage
+A `Sphinx`_ extension to generate multiversion and multilanguage
 `sitemaps.org`_ compliant sitemaps for the HTML version of your Sphinx
 documentation.
 
