@@ -27,6 +27,11 @@ def setup(app):
         default="{lang}{version}{link}",
         rebuild=False
     )
+    app.add_config_value(
+        'sitemap_locales',
+        default=None,
+        rebuild=False
+    )
 
     try:
         app.add_config_value(
@@ -50,6 +55,21 @@ def setup(app):
 
 
 def get_locales(app, exception):
+    # Manually configured list of locales
+    sitemap_locales = app.builder.config.sitemap_locales
+    if sitemap_locales:
+        # special value to add nothing -> use primary language only
+        if sitemap_locales == [None]:
+            return
+
+        # otherwise, add each locale
+        for locale in sitemap_locales:
+            # skip primary language
+            if locale != app.builder.config.language:
+                app.locales.append(locale)
+        return
+
+    # Or autodetect
     for locale_dir in app.builder.config.locale_dirs:
         locale_dir = os.path.join(app.confdir, locale_dir)
         if os.path.isdir(locale_dir):
