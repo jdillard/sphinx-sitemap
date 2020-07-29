@@ -148,7 +148,7 @@ def create_sitemap(app, exception):
                     lang=lang, version=version, link=link
                 ))
 
-    filename = app.outdir + "/" + app.config.sitemap_name
+    filename = app.outdir + "/" + app.config.sitemap_filename
     ET.ElementTree(root).write(filename,
                                xml_declaration=True,
                                encoding='utf-8',
