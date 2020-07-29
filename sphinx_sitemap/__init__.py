@@ -29,7 +29,7 @@ def setup(app):
     )
 
     app.add_config_value(
-        'sitemap_name',
+        'sitemap_filename',
         default="sitemap.xml",
         rebuild=False
     )
