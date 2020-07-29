@@ -28,6 +28,12 @@ def setup(app):
         rebuild=False
     )
 
+    app.add_config_value(
+        'sitemap_filename',
+        default="sitemap.xml",
+        rebuild=False
+    )
+
     try:
         app.add_config_value(
             'html_baseurl',
@@ -142,7 +148,7 @@ def create_sitemap(app, exception):
                     lang=lang, version=version, link=link
                 ))
 
-    filename = app.outdir + "/sitemap.xml"
+    filename = app.outdir + "/" + app.config.sitemap_filename
     ET.ElementTree(root).write(filename,
                                xml_declaration=True,
                                encoding='utf-8',
