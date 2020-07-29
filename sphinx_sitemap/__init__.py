@@ -108,7 +108,8 @@ def create_sitemap(app, exception):
               "are set in conf.py. Sitemap not built.")
         return
     if (not app.sitemap_links):
-        print("sphinx-sitemap warning: No pages generated for sitemap.xml")
+        print("sphinx-sitemap warning: No pages generated for %s" %
+              app.config.sitemap_filename)
         return
 
     ET.register_namespace('xhtml', "http://www.w3.org/1999/xhtml")
@@ -153,4 +154,5 @@ def create_sitemap(app, exception):
                                xml_declaration=True,
                                encoding='utf-8',
                                method="xml")
-    print("sitemap.xml was generated for URL %s in %s" % (site_url, filename))
+    print("%s was generated for URL %s in %s" % (app.config.sitemap_filename,
+          site_url, filename))
