@@ -19,6 +19,9 @@ For example::
 
     extensions = ['sphinx_sitemap']
 
+Base Configuration
+^^^^^^^^^^^^^^^^^^
+
 Set the value of `html_baseurl`_ in your Sphinx **conf.py** to the current
 base URL of your documentation. For example::
 
@@ -29,8 +32,15 @@ sitemap::
 
     sitemap.xml was generated for URL https://my-site.com/docs/ in /path/to/_build/sitemap.xml
 
-**Note:** Make sure to confirm the accuracy of the sitemap after installs and
+**Tip:** Make sure to confirm the accuracy of the sitemap after installs and
 upgrades.
+
+Changing the Filename
+^^^^^^^^^^^^^^^^^^^^^
+
+Set `sitemap_filename` in **conf.py** to the desired filename, for example::
+
+    sitemap_filename = "sitemap.xml"
 
 Versioning Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -74,13 +84,12 @@ The end result is something like the following for each language/version build::
     </url>
   </urlset>
 
-Customizing the URL scheme
+Customizing the URL Scheme
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you have both ``language`` and ``version`` set, the default URL format is
 ``{version}{lang}{link}``. To change the default behavior, set the value of
-``sitemap_url_scheme`` in your Sphinx **conf.py** to the desired format. For
-example::
+``sitemap_url_scheme`` in **conf.py** to the desired format. For example::
 
     sitemap_url_scheme = "{lang}{version}subdir/{link}"
 
