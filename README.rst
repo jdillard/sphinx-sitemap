@@ -62,9 +62,34 @@ Multilingual Configuration
 For multilingual sitemaps, you have to generate a sitemap per language/locale
 and then manually add their locations to a `sitemapindex`_ file.
 
-The extension will look at the `language`_ config value for the current language
-being built, and the `locale_dirs`_ value for the directory for alternate
-languages, so make sure those are set.
+Primary language is `language`_ config value. Alternative languages are either
+manually set by ``sitemap_locales`` option or auto-detected by the extension from
+the `locale_dirs`_ config value, so make sure one of those is set.
+
+``sitemap_locales`` configuration is handy you want to list in the sitemap only some
+of existing locales, if third-party extension adds locale_dirs to Sphinx for the
+languages which you don't support in your docs, or to "exclude" primary language
+(`language`_). For example, if primary language is en, sitemap will contain it twice::
+
+    <?xml version="1.0" encoding="utf-8"?>
+      <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        <url>
+          <loc>https://my-site.com/docs/en/index.html</loc>
+          <xhtml:link href="https://my-site.com/docs/es/index.html" hreflang="es" rel="alternate"/>
+          <xhtml:link href="https://my-site.com/docs/fr/index.html" hreflang="fr" rel="alternate"/>
+          <xhtml:link href="https://my-site.com/docs/en/index.html" hreflang="en" rel="alternate"/>
+        </url>
+        <url>
+            <loc>https://my-site.com/docs/en/about.html</loc>
+            <xhtml:link href="https://my-site.com/docs/es/about.html" hreflang="es" rel="alternate"/>
+            <xhtml:link href="https://my-site.com/docs/fr/about.html" hreflang="fr" rel="alternate"/>
+            <xhtml:link href="https://my-site.com/docs/en/about.html" hreflang="en" rel="alternate"/>
+        </url>
+      </urlset>
+
+If you limit sitemap::
+
+    sitemap_locales = ['es', 'fr']
 
 The end result is something like the following for each language/version build::
 
@@ -74,13 +99,27 @@ The end result is something like the following for each language/version build::
       <loc>https://my-site.com/docs/en/index.html</loc>
       <xhtml:link href="https://my-site.com/docs/es/index.html" hreflang="es" rel="alternate"/>
       <xhtml:link href="https://my-site.com/docs/fr/index.html" hreflang="fr" rel="alternate"/>
-      <xhtml:link href="https://my-site.com/docs/en/index.html" hreflang="en" rel="alternate"/>
     </url>
     <url>
       <loc>https://my-site.com/docs/en/about.html</loc>
       <xhtml:link href="https://my-site.com/docs/es/about.html" hreflang="es" rel="alternate"/>
       <xhtml:link href="https://my-site.com/docs/fr/about.html" hreflang="fr" rel="alternate"/>
-      <xhtml:link href="https://my-site.com/docs/en/about.html" hreflang="en" rel="alternate"/>
+    </url>
+  </urlset>
+
+If you set special value ``[None]``::
+
+    sitemap_locales = [None]
+
+only primary language is generated::
+
+  <?xml version="1.0" encoding="utf-8"?>
+  <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+      <loc>https://my-site.com/docs/en/index.html</loc>
+    </url>
+    <url>
+      <loc>https://my-site.com/docs/en/about.html</loc>
     </url>
   </urlset>
 
