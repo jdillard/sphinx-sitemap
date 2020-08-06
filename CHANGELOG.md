@@ -1,12 +1,12 @@
 Changelog
 =========
 
-latest
+2.2.0
 ------
 
-*Release date: TBD*
+*Release date: 2020-08-05*
 
-* Add `parallel_write_safe` flag and set to `False` 
+* Add `parallel_write_safe` flag and set to `False`
   [#20](https://github.com/jdillard/sphinx-sitemap/issues/20).
 * Add `sitemap_locales` config value that creates an allow list of locales
   [#25](https://github.com/jdillard/sphinx-sitemap/pull/25).
