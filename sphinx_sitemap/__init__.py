@@ -20,30 +20,30 @@ def setup(app):
     app.add_config_value(
         'site_url',
         default=None,
-        rebuild=False
+        rebuild=''
     )
     app.add_config_value(
         'sitemap_url_scheme',
         default="{lang}{version}{link}",
-        rebuild=False
+        rebuild=''
     )
     app.add_config_value(
         'sitemap_locales',
         default=None,
-        rebuild=False
+        rebuild=''
     )
 
     app.add_config_value(
         'sitemap_filename',
         default="sitemap.xml",
-        rebuild=False
+        rebuild=''
     )
 
     try:
         app.add_config_value(
             'html_baseurl',
             default=None,
-            rebuild=False
+            rebuild=''
         )
     except BaseException:
         pass
