@@ -67,9 +67,11 @@ manually set by ``sitemap_locales`` option or auto-detected by the extension fro
 the `locale_dirs`_ config value, so make sure one of those is set.
 
 ``sitemap_locales`` configuration is handy you want to list in the sitemap only some
-of existing locales, if third-party extension adds locale_dirs to Sphinx for the
-languages which you don't support in your docs, or to "exclude" primary language
-(`language`_). For example, if primary language is en, sitemap will contain it twice::
+locales. For instance, if a third-party extension adds locale_dirs to Sphinx for the
+languages which you don't support in your docs, or if you want to wait for locales
+to reach a certain translated percentage before making them public. For example, if
+primary language is `en`, and you have `es` and `fr` translations, the sitemap
+look like this::
 
     <?xml version="1.0" encoding="utf-8"?>
       <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -87,9 +89,9 @@ languages which you don't support in your docs, or to "exclude" primary language
         </url>
       </urlset>
 
-If you limit sitemap::
+If you limit the sitemap locales::
 
-    sitemap_locales = ['es', 'fr']
+    sitemap_locales = ['en', 'es']
 
 The end result is something like the following for each language/version build::
 
@@ -98,16 +100,14 @@ The end result is something like the following for each language/version build::
     <url>
       <loc>https://my-site.com/docs/en/index.html</loc>
       <xhtml:link href="https://my-site.com/docs/es/index.html" hreflang="es" rel="alternate"/>
-      <xhtml:link href="https://my-site.com/docs/fr/index.html" hreflang="fr" rel="alternate"/>
     </url>
     <url>
       <loc>https://my-site.com/docs/en/about.html</loc>
       <xhtml:link href="https://my-site.com/docs/es/about.html" hreflang="es" rel="alternate"/>
-      <xhtml:link href="https://my-site.com/docs/fr/about.html" hreflang="fr" rel="alternate"/>
     </url>
   </urlset>
 
-If you set special value ``[None]``::
+If you set the special value of ``[None]``::
 
     sitemap_locales = [None]
 
