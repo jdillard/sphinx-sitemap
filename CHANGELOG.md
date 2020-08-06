@@ -8,6 +8,10 @@ latest
 
 * Add `parallel_write_safe` flag and set to `False` 
   [#20](https://github.com/jdillard/sphinx-sitemap/issues/20).
+* Add `sitemap_locales` config value that creates an allow list of locales
+  [#25](https://github.com/jdillard/sphinx-sitemap/pull/25).
+* Add `sitemap_filename` config value that allows for custom sitemap name
+  [#26](https://github.com/jdillard/sphinx-sitemap/pull/26).
 
 2.1.0
 -----
