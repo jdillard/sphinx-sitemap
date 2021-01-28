@@ -45,8 +45,8 @@ Set `sitemap_filename` in **conf.py** to the desired filename, for example::
 Versioning Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-For multiversion sitemaps, you have to generate a sitemap per version and then
-manually add their locations to a `sitemapindex`_ file.
+For multiversion sitemaps, it is required to generate a sitemap per version and
+then manually add their locations to a `sitemapindex`_ file.
 
 The extension will look at the `version`_ config value for the current version
 being built, so make sure that is set.
@@ -59,19 +59,18 @@ URL in the theme layout of all versions to the latest version of that page::
 Multilingual Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For multilingual sitemaps, you have to generate a sitemap per language/locale
-and then manually add their locations to a `sitemapindex`_ file.
+For multilingual sitemaps, generate a sitemap per language/locale and then manually
+add their locations to a `sitemapindex`_ file.
 
-Primary language is `language`_ config value. Alternative languages are either
-manually set by ``sitemap_locales`` option or auto-detected by the extension from
-the `locale_dirs`_ config value, so make sure one of those is set.
+The primary language is set by the `language`_ config value. Alternative languages
+are either manually set by ``sitemap_locales`` option or auto-detected by the
+extension from the `locale_dirs`_ config value, so make sure one of those is set.
 
-``sitemap_locales`` configuration is handy you want to list in the sitemap only some
-locales. For instance, if a third-party extension adds locale_dirs to Sphinx for the
-languages which you don't support in your docs, or if you want to wait for locales
-to reach a certain translated percentage before making them public. For example, if
-primary language is `en`, and you have `es` and `fr` translations, the sitemap
-look like this::
+``sitemap_locales`` configuration is to specify a list of locales to include in
+the sitemap. For instance, if a third-party extension adds unsupported langauges to
+**locale_dirs**, or to allow locales to reach a certain translated percentage before
+making them public. For example, if the primary language is `en`, and a list with
+`es` and `fr` translations specified, the sitemap look like this::
 
     <?xml version="1.0" encoding="utf-8"?>
       <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -89,7 +88,7 @@ look like this::
         </url>
       </urlset>
 
-If you limit the sitemap locales::
+When the sitemap locales are limited::
 
     sitemap_locales = ['en', 'es']
 
@@ -107,11 +106,11 @@ The end result is something like the following for each language/version build::
     </url>
   </urlset>
 
-If you set the special value of ``[None]``::
+When the special value of ``[None]`` is set::
 
     sitemap_locales = [None]
 
-only primary language is generated::
+only the primary language is generated::
 
   <?xml version="1.0" encoding="utf-8"?>
   <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -126,7 +125,7 @@ only primary language is generated::
 Customizing the URL Scheme
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you have both ``language`` and ``version`` set, the default URL format is
+If both ``language`` and ``version`` are set, the default URL format is
 ``{version}{lang}{link}``. To change the default behavior, set the value of
 ``sitemap_url_scheme`` in **conf.py** to the desired format. For example::
 
@@ -155,8 +154,7 @@ Getting the Most out of the Sitemap
 See Who Is Using It
 -------------------
 
-You can use `GitHub search`_ or `libraries.io`_ to see who is using
-**sphinx-sitemap**.
+Use `GitHub search`_ or `libraries.io`_ to see who is using **sphinx-sitemap**.
 
 Contributing
 ------------
