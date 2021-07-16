@@ -15,6 +15,29 @@ import os
 import xml.etree.ElementTree as ET
 
 
+try:
+    from sphinx.util.logging import getLogger
+    logger = getLogger(__name__)
+
+    def error(_, message):
+        logger.error(message)
+
+    def warn(_, message):
+        logger.warning(message)
+
+    def info(_, message):
+        logger.info(message)
+except ImportError:
+    def error(app, message):
+        app.warn(message, prefix='ERROR: ')
+
+    def warn(app, message):
+        app.warn(message)
+
+    def info(app, message):
+        app.info(message)
+
+
 def setup(app):
     """Setup connects events to the sitemap builder"""
     app.add_config_value(
@@ -122,14 +145,14 @@ def add_html_link(app, pagename, templatename, context, doctree):
 def create_sitemap(app, exception):
     """Generates the sitemap.xml from the collected HTML page links"""
     site_url = app.builder.config.site_url or app.builder.config.html_baseurl
-    site_url = site_url.rstrip('/') + '/'
     if not site_url:
-        print("sphinx-sitemap error: neither html_baseurl nor site_url "
+        error(app, "sphinx-sitemap: Neither html_baseurl nor site_url "
               "are set in conf.py. Sitemap not built.")
         return
-    if (not app.sitemap_links):
-        print("sphinx-sitemap warning: No pages generated for %s" %
-              app.config.sitemap_filename)
+    site_url = site_url.rstrip('/') + '/'
+    if not app.sitemap_links:
+        warn(app, "sphinx-sitemap: No pages generated for %s" %
+             app.config.sitemap_filename)
         return
 
     ET.register_namespace('xhtml', "http://www.w3.org/1999/xhtml")
@@ -174,5 +197,5 @@ def create_sitemap(app, exception):
                                xml_declaration=True,
                                encoding='utf-8',
                                method="xml")
-    print("%s was generated for URL %s in %s" % (app.config.sitemap_filename,
-          site_url, filename))
+    info(app, "sphinx-sitemap: %s was generated for URL %s in %s" % (
+        app.config.sitemap_filename, site_url, filename))
