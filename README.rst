@@ -126,10 +126,10 @@ Customizing the URL Scheme
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If both ``language`` and ``version`` are set, the default URL format is
-``{version}{lang}{link}``. To change the default behavior, set the value of
+``{lang}{version}{link}``. To change the default behavior, set the value of
 ``sitemap_url_scheme`` in **conf.py** to the desired format. For example::
 
-    sitemap_url_scheme = "{lang}{version}subdir/{link}"
+    sitemap_url_scheme = "{version}{lang}subdir/{link}"
 
 **Note:** The extension is currently opinionated, in that it automatically
 appends trailing slashes to both the ``language`` and ``version`` values. You
