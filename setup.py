@@ -11,7 +11,7 @@ setup(
     long_description=long_description,
     classifiers=[
         'License :: OSI Approved :: MIT License',
-        'Topic :: Documentation',
+        'Topic :: Documentation :: Sphinx',
         'Programming Language :: Python :: 3',
         'Framework :: Sphinx :: Extension',
       ],
