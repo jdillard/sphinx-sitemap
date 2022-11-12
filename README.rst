@@ -5,7 +5,7 @@ A `Sphinx`_ extension to generate multiversion and multilanguage
 `sitemaps.org`_ compliant sitemaps for the HTML version of your Sphinx
 documentation.
 
-|Build Status| |PyPI version| |Downloads| |License: MIT|
+|Build Status| |PyPI version| |Downloads| |License: MIT| |Conda Forge|
 
 Installing
 ----------
@@ -194,3 +194,5 @@ also licensed under the MIT license.
     :target: https://pepy.tech/project/sphinx-sitemap
 .. |License: MIT| image:: https://img.shields.io/badge/License-MIT-blue.svg
    :target: https://github.com/jdillard/sphinx-sitemap/blob/master/LICENSE
+.. |Conda Forge| image:: https://img.shields.io/conda/vn/conda-forge/sphinx-sitemap.svg
+   :target: https://anaconda.org/conda-forge/sphinx-sitemap
