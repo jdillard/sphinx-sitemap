@@ -6,10 +6,12 @@ Changelog
 
 *Release date: TBD*
 
-* Fix sitemap_url_scheme default value in README file 
+* Fix `sitemap_url_scheme` default value in **README** file 
   [#32](https://github.com/jdillard/sphinx-sitemap/pull/32)
 * Clean up package classifiers
-* Add Conda Forge badge to README
+* Add **LICENSE** to source distributions
+  [#27](https://github.com/jdillard/sphinx-sitemap/pull/27)
+* Add Conda Forge badge to **README** file
 
 2.2.0
 ------
