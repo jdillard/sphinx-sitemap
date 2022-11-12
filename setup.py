@@ -12,8 +12,8 @@ setup(
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Topic :: Documentation',
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 3",
+        'Programming Language :: Python :: 3',
+        'Framework :: Sphinx :: Extension',
       ],
     version=__version__,
     author='Jared Dillard',
