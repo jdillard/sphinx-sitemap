@@ -4,7 +4,7 @@ Changelog
 2.2.1
 -----
 
-*Release date: 2022-11-11**
+*Release date: 2022-11-11*
 
 * Fix `sitemap_url_scheme` default value in **README** file 
   [#32](https://github.com/jdillard/sphinx-sitemap/pull/32)
