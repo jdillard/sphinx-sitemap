@@ -151,11 +151,6 @@ Getting the Most out of the Sitemap
 
 #. Submit the sitemap or sitemapindex to the appropriate search engine tools.
 
-See Who Is Using It
--------------------
-
-Use `GitHub search`_ or `libraries.io`_ to see who is using **sphinx-sitemap**.
-
 Contributing
 ------------
 
@@ -173,12 +168,10 @@ also licensed under the MIT license.
 
 .. _CONTRIBUTING: CONTRIBUTING.md
 .. _extensions: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-extensions
-.. _GitHub search: https://github.com/search?utf8=%E2%9C%93&q=sphinx-sitemap+extension%3Atxt&type=
 .. _guzzle_sphinx_theme: https://github.com/guzzle/guzzle_sphinx_theme
 .. _html_baseurl: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_baseurl
 .. _html_extra_path: http://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_extra_path
 .. _language: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-language
-.. _libraries.io: https://libraries.io/pypi/sphinx-sitemap
 .. _LICENSE: LICENSE
 .. _locale_dirs: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-locale_dirs
 .. _sitemapindex: https://support.google.com/webmasters/answer/75712?hl=en
