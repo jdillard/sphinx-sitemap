@@ -14,6 +14,7 @@
 import os
 import xml.etree.ElementTree as ET
 
+__version__ = '2.3.0'
 
 def setup(app):
     """Setup connects events to the sitemap builder"""
@@ -56,7 +57,8 @@ def setup(app):
 
     return {
         'parallel_read_safe': False,
-        'parallel_write_safe': False
+        'parallel_write_safe': False,
+        'version': __version__,
     }
 
 

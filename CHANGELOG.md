@@ -1,6 +1,13 @@
 Changelog
 =========
 
+2.3.0
+-----
+
+*Release date: TBD*
+
+* Clean up how package versions are handled
+
 2.2.1
 -----
 
