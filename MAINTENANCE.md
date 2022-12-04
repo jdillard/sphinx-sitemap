@@ -3,7 +3,7 @@
 These are the steps, to be run by the maintainer, for making a new Python
 package release.
 
-1. Rev versions in **sphinx_sitemap/version.py** and **setup.py**.
+1. Rev `__version__` in **sphinx_sitemap/__init__.py**.
 2. Update **CHANGELOG.md**
 3. Create a tag and push to GitHub:
 
