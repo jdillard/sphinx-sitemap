@@ -14,51 +14,34 @@
 import os
 import xml.etree.ElementTree as ET
 
-__version__ = '2.3.0'
+__version__ = "2.3.0"
+
 
 def setup(app):
     """Setup connects events to the sitemap builder"""
+    app.add_config_value("site_url", default=None, rebuild="")
     app.add_config_value(
-        'site_url',
-        default=None,
-        rebuild=''
+        "sitemap_url_scheme", default="{lang}{version}{link}", rebuild=""
     )
-    app.add_config_value(
-        'sitemap_url_scheme',
-        default="{lang}{version}{link}",
-        rebuild=''
-    )
-    app.add_config_value(
-        'sitemap_locales',
-        default=None,
-        rebuild=''
-    )
+    app.add_config_value("sitemap_locales", default=None, rebuild="")
 
-    app.add_config_value(
-        'sitemap_filename',
-        default="sitemap.xml",
-        rebuild=''
-    )
+    app.add_config_value("sitemap_filename", default="sitemap.xml", rebuild="")
 
     try:
-        app.add_config_value(
-            'html_baseurl',
-            default=None,
-            rebuild=''
-        )
+        app.add_config_value("html_baseurl", default=None, rebuild="")
     except BaseException:
         pass
 
-    app.connect('builder-inited', record_builder_type)
-    app.connect('html-page-context', add_html_link)
-    app.connect('build-finished', create_sitemap)
+    app.connect("builder-inited", record_builder_type)
+    app.connect("html-page-context", add_html_link)
+    app.connect("build-finished", create_sitemap)
     app.sitemap_links = []
     app.locales = []
 
     return {
-        'parallel_read_safe': False,
-        'parallel_write_safe': False,
-        'version': __version__,
+        "parallel_read_safe": False,
+        "parallel_write_safe": False,
+        "version": __version__,
     }
 
 
@@ -90,7 +73,7 @@ def record_builder_type(app):
     # builder isn't initialized in the setup so we do it here
     # we rely on the class name, not the actual class, as it was moved 2.0.0
     builder_class_name = getattr(app, "builder", None).__class__.__name__
-    app.is_dictionary_builder = (builder_class_name == 'DirectoryHTMLBuilder')
+    app.is_dictionary_builder = builder_class_name == "DirectoryHTMLBuilder"
 
 
 def hreflang_formatter(lang):
@@ -100,7 +83,7 @@ def hreflang_formatter(lang):
     ref: https://en.wikipedia.org/wiki/Hreflang#Common_Mistakes
     source: https://github.com/readthedocs/readthedocs.org/pull/5638
     """
-    if '_' in lang:
+    if "_" in lang:
         return lang.replace("_", "-")
     return lang
 
@@ -124,17 +107,21 @@ def add_html_link(app, pagename, templatename, context, doctree):
 def create_sitemap(app, exception):
     """Generates the sitemap.xml from the collected HTML page links"""
     site_url = app.builder.config.site_url or app.builder.config.html_baseurl
-    site_url = site_url.rstrip('/') + '/'
+    site_url = site_url.rstrip("/") + "/"
     if not site_url:
-        print("sphinx-sitemap error: neither html_baseurl nor site_url "
-              "are set in conf.py. Sitemap not built.")
+        print(
+            "sphinx-sitemap error: neither html_baseurl nor site_url "
+            "are set in conf.py. Sitemap not built."
+        )
         return
-    if (not app.sitemap_links):
-        print("sphinx-sitemap warning: No pages generated for %s" %
-              app.config.sitemap_filename)
+    if not app.sitemap_links:
+        print(
+            "sphinx-sitemap warning: No pages generated for %s"
+            % app.config.sitemap_filename
+        )
         return
 
-    ET.register_namespace('xhtml', "http://www.w3.org/1999/xhtml")
+    ET.register_namespace("xhtml", "http://www.w3.org/1999/xhtml")
 
     root = ET.Element("urlset")
     root.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
@@ -142,7 +129,7 @@ def create_sitemap(app, exception):
     get_locales(app, exception)
 
     if app.builder.config.version:
-        version = app.builder.config.version + '/'
+        version = app.builder.config.version + "/"
     else:
         version = ""
 
@@ -150,7 +137,7 @@ def create_sitemap(app, exception):
         url = ET.SubElement(root, "url")
         scheme = app.config.sitemap_url_scheme
         if app.builder.config.language:
-            lang = app.builder.config.language + '/'
+            lang = app.builder.config.language + "/"
         else:
             lang = ""
 
@@ -160,21 +147,20 @@ def create_sitemap(app, exception):
 
         if len(app.locales) > 0:
             for lang in app.locales:
-                lang = lang + '/'
-                linktag = ET.SubElement(
-                    url,
-                    "{http://www.w3.org/1999/xhtml}link"
-                )
+                lang = lang + "/"
+                linktag = ET.SubElement(url, "{http://www.w3.org/1999/xhtml}link")
                 linktag.set("rel", "alternate")
-                linktag.set("hreflang",  hreflang_formatter(lang.rstrip('/')))
-                linktag.set("href", site_url + scheme.format(
-                    lang=lang, version=version, link=link
-                ))
+                linktag.set("hreflang", hreflang_formatter(lang.rstrip("/")))
+                linktag.set(
+                    "href",
+                    site_url + scheme.format(lang=lang, version=version, link=link),
+                )
 
     filename = app.outdir + "/" + app.config.sitemap_filename
-    ET.ElementTree(root).write(filename,
-                               xml_declaration=True,
-                               encoding='utf-8',
-                               method="xml")
-    print("%s was generated for URL %s in %s" % (app.config.sitemap_filename,
-          site_url, filename))
+    ET.ElementTree(root).write(
+        filename, xml_declaration=True, encoding="utf-8", method="xml"
+    )
+    print(
+        "%s was generated for URL %s in %s"
+        % (app.config.sitemap_filename, site_url, filename)
+    )
