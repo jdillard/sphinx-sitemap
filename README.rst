@@ -181,7 +181,7 @@ also licensed under the MIT license.
 
 .. |PyPI version| image:: https://img.shields.io/pypi/v/sphinx-sitemap.svg
    :target: https://pypi.python.org/pypi/sphinx-sitemap
-.. |Downloads| image:: https://pepy.tech/badge/sphinx-sitemap/week
+.. |Downloads| image:: https://pepy.tech/badge/sphinx-sitemap/month
     :target: https://pepy.tech/project/sphinx-sitemap
 .. |License: MIT| image:: https://img.shields.io/badge/License-MIT-blue.svg
    :target: https://github.com/jdillard/sphinx-sitemap/blob/master/LICENSE
