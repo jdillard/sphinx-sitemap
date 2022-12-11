@@ -7,6 +7,7 @@ Changelog
 *Release date: TBD*
 
 * Clean up how package versions are handled
+* Install pre-commit with isort, black, and flake8 (#35)
 
 2.2.1
 -----
