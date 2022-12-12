@@ -42,9 +42,20 @@ upgrades.
 Customizing the URL Scheme
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If both ``language`` and ``version`` are set, the default URL format is
-``{lang}{version}{link}``. To change the default behavior, set the value of
-``sitemap_url_scheme`` in **conf.py** to the desired format. For example:
+The default URL format is ``{lang}{version}{link}``. ``{lang}`` and ``{version}`` are controlled
+by the `language`_ and `version`_ config variables.
+
+**Note:** As of Sphinx version 5, the ``language`` config value defaults to ``"en"``, if that
+makes the default scheme produce the incorrect url, then change the default behavior.
+
+To change the default behavior, set the value of ``sitemap_url_scheme`` in **conf.py** to the
+desired format. For example:
+
+.. code-block:: python
+
+   sitemap_url_scheme = "{link}"
+
+Or for nested deployments, something like:
 
 .. code-block:: python
 
@@ -158,7 +169,7 @@ Getting the Most out of the Sitemap
      Sitemap: https://my-site.com/docs/sitemap.xml
 
    Then, add **robots.txt** to the `html_extra_path`_ config value:
-   
+
    .. code-block:: python
 
      html_extra_path = ['robots.txt']
