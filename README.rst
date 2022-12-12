@@ -157,7 +157,9 @@ Getting the Most out of the Sitemap
 
      Sitemap: https://my-site.com/docs/sitemap.xml
 
-   Then, add **robots.txt** to the `html_extra_path`_ config value::
+   Then, add **robots.txt** to the `html_extra_path`_ config value:
+   
+   .. code-block:: python
 
      html_extra_path = ['robots.txt']
 
