@@ -57,7 +57,7 @@ can also omit values from the scheme for desired behavior.
 Changing the Filename
 ^^^^^^^^^^^^^^^^^^^^^
 
-Set `sitemap_filename` in **conf.py** to the desired filename, for example:
+Set ``sitemap_filename`` in **conf.py** to the desired filename, for example:
 
 .. code-block:: python
 
