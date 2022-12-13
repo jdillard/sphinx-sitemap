@@ -13,7 +13,6 @@
 
 import os
 import xml.etree.ElementTree as ET
-import sphinx
 from sphinx.util.logging import getLogger
 
 __version__ = "2.3.0"
