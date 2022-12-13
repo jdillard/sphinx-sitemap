@@ -13,6 +13,7 @@
 
 import os
 import xml.etree.ElementTree as ET
+
 from sphinx.util.logging import getLogger
 
 __version__ = "2.3.0"
@@ -164,16 +165,20 @@ def create_sitemap(app, exception):
         filename, xml_declaration=True, encoding="utf-8", method="xml"
     )
 
-    key = "{}{}".format(app.config.language or '', app.config.version or '')
+    key = "{}{}".format(app.config.language or "", app.config.version or "")
     if app.config.sitemap_validator and key in app.config.sitemap_validator:
         with open(filename, "r") as myfile:
-            sitemap =  myfile.read()
+            sitemap = myfile.read()
             # if any of the urls don't match, throw a warning
             for url in app.config.sitemap_validator[key]:
                 if url not in sitemap:
                     logger.warning(
-                        'Sitemap failed validation. {} not found in {}'.format(url, filename),
-                        type='sitemap', subtype='validation')
+                        "Sitemap failed validation. {} not found in {}".format(
+                            url, filename
+                        ),
+                        type="sitemap",
+                        subtype="validation",
+                    )
 
     print(
         "%s was generated for URL %s in %s"
