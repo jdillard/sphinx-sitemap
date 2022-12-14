@@ -65,6 +65,21 @@ Or for nested deployments, something like:
 appends trailing slashes to both the ``language`` and ``version`` values. You
 can also omit values from the scheme for desired behavior.
 
+Setting up URL Validation
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use `sitemap_validator` to setup URL validation, where a dictionary of lists is used to validate
+one or more URLS for a given build based on the ``language`` and ``version``.
+
+For example:
+
+.. code-block:: python
+
+   sitemap_validator = {
+       'enlatest': ['https://example.com/en/latest/index.html', 'https://example.com/en/latest/test.html'],
+       'delatest': ['https://example.com/de/latest/index.html', 'https://example.com/de/latest/test.html']
+   }
+
 Changing the Filename
 ^^^^^^^^^^^^^^^^^^^^^
 
