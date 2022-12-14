@@ -15,17 +15,21 @@ Directly install via pip by using::
     pip install sphinx-sitemap
 
 Add ``sphinx_sitemap`` to the `extensions`_ array in your Sphinx **conf.py**.
-For example::
+For example:
 
-    extensions = ['sphinx_sitemap']
+.. code-block:: python
 
-Base Configuration
-^^^^^^^^^^^^^^^^^^
+   extensions = ['sphinx_sitemap']
+
+Configuring
+-----------
 
 Set the value of `html_baseurl`_ in your Sphinx **conf.py** to the current
-base URL of your documentation. For example::
+base URL of your documentation. For example:
 
-    html_baseurl = 'https://my-site.com/docs/'
+.. code-block:: python
+
+   html_baseurl = 'https://my-site.com/docs/'
 
 After the HTML build is done, **sphinx-sitemap** will output the location of the
 sitemap::
@@ -35,12 +39,40 @@ sitemap::
 **Tip:** Make sure to confirm the accuracy of the sitemap after installs and
 upgrades.
 
+Customizing the URL Scheme
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The default URL format is ``{lang}{version}{link}``. ``{lang}`` and ``{version}`` are controlled
+by the `language`_ and `version`_ config variables.
+
+**Note:** As of Sphinx version 5, the ``language`` config value defaults to ``"en"``, if that
+makes the default scheme produce the incorrect url, then change the default behavior.
+
+To change the default behavior, set the value of ``sitemap_url_scheme`` in **conf.py** to the
+desired format. For example:
+
+.. code-block:: python
+
+   sitemap_url_scheme = "{link}"
+
+Or for nested deployments, something like:
+
+.. code-block:: python
+
+   sitemap_url_scheme = "{version}{lang}subdir/{link}"
+
+**Note:** The extension is currently opinionated, in that it automatically
+appends trailing slashes to both the ``language`` and ``version`` values. You
+can also omit values from the scheme for desired behavior.
+
 Changing the Filename
 ^^^^^^^^^^^^^^^^^^^^^
 
-Set `sitemap_filename` in **conf.py** to the desired filename, for example::
+Set ``sitemap_filename`` in **conf.py** to the desired filename, for example:
 
-    sitemap_filename = "sitemap.xml"
+.. code-block:: python
+
+   sitemap_filename = "sitemap.xml"
 
 Versioning Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -88,9 +120,11 @@ making them public. For example, if the primary language is `en`, and a list wit
         </url>
       </urlset>
 
-When the sitemap locales are limited::
+When the sitemap locales are limited:
 
-    sitemap_locales = ['en', 'es']
+.. code-block:: python
+
+   sitemap_locales = ['en', 'es']
 
 The end result is something like the following for each language/version build::
 
@@ -106,9 +140,11 @@ The end result is something like the following for each language/version build::
     </url>
   </urlset>
 
-When the special value of ``[None]`` is set::
+When the special value of ``[None]`` is set:
 
-    sitemap_locales = [None]
+.. code-block:: python
+
+   sitemap_locales = [None]
 
 only the primary language is generated::
 
@@ -122,19 +158,6 @@ only the primary language is generated::
     </url>
   </urlset>
 
-Customizing the URL Scheme
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If both ``language`` and ``version`` are set, the default URL format is
-``{lang}{version}{link}``. To change the default behavior, set the value of
-``sitemap_url_scheme`` in **conf.py** to the desired format. For example::
-
-    sitemap_url_scheme = "{version}{lang}subdir/{link}"
-
-**Note:** The extension is currently opinionated, in that it automatically
-appends trailing slashes to both the ``language`` and ``version`` values. You
-can also omit values from the scheme for desired behavior.
-
 Getting the Most out of the Sitemap
 -----------------------------------
 
@@ -145,7 +168,9 @@ Getting the Most out of the Sitemap
 
      Sitemap: https://my-site.com/docs/sitemap.xml
 
-   Then, add **robots.txt** to the `html_extra_path`_ config value::
+   Then, add **robots.txt** to the `html_extra_path`_ config value:
+
+   .. code-block:: python
 
      html_extra_path = ['robots.txt']
 
