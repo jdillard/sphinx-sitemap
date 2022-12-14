@@ -7,7 +7,12 @@ Changelog
 *Release date: TBD*
 
 * Clean up how package versions are handled
-* Install pre-commit with isort, black, and flake8 (#35)
+* Install pre-commit with isort, black, and flake8
+  [#35](https://github.com/jdillard/sphinx-sitemap/pull/35)
+* Improve the wording of the README to help with issues upgrading to Sphinx 5
+  [#36](https://github.com/jdillard/sphinx-sitemap/pull/36)
+* Follow correct format for multilingual sitemaps
+  [#38](https://github.com/jdillard/sphinx-sitemap/pull/38)
 
 2.2.1
 -----
