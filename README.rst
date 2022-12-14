@@ -68,10 +68,11 @@ can also omit values from the scheme for desired behavior.
 Setting up URL Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use `sitemap_validator` to setup URL validation, where a dictionary of lists is used to validate
-one or more URLS for a given build based on the ``language`` and ``version``.
+Use ``sitemap_validator`` to setup URL validation, where a dictionary of lists is used to
+validate one or more URLS for a given build.
 
-For example:
+The keys for the dictionary are a concatenation of the `language`_ and `version`_ config
+values for that build. For example:
 
 .. code-block:: python
 
