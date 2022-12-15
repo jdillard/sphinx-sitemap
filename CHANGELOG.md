@@ -13,6 +13,8 @@ Changelog
   [#36](https://github.com/jdillard/sphinx-sitemap/pull/36)
 * Follow correct format for multilingual sitemaps
   [#38](https://github.com/jdillard/sphinx-sitemap/pull/38)
+* Update the build process
+  [#39](https://github.com/jdillard/sphinx-sitemap/pull/39)
 
 2.2.1
 -----
