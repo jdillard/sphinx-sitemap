@@ -10,9 +10,9 @@ package release.
        git tag -a vX.Y.Z -m "Release vX.Y.Z"
        git push --tags origin master
 
-4. Create latest distribution locally:
+4. Build the latest distribution locally:
 
-       python setup.py sdist
+       python -m build
 
 5. Upload to the test pypi.org repository:
 
