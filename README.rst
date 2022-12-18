@@ -78,8 +78,8 @@ version are not set. For example, to setup validation for multiple builds:
 .. code-block:: python
 
    sitemap_validator_urls = {
-       'enlatest': ['https://my-site..com/en/latest/index.html', 'https://my-site..com/en/latest/test.html'],
-       'delatest': ['https://my-site..com/de/latest/index.html', 'https://my-site..com/de/latest/test.html'],
+       'enlatest': ['https://my-site.com/en/latest/index.html', 'https://my-site..com/en/latest/test.html'],
+       'delatest': ['https://my-site.com/de/latest/index.html', 'https://my-site..com/de/latest/test.html'],
    }
 
 or an example for a single build:
@@ -87,7 +87,7 @@ or an example for a single build:
 .. code-block:: python
 
    sitemap_validator_urls = {
-       'nil': ['https://my-site..com/en/latest/index.html', 'https://my-site..com/en/latest/test.html'],
+       'nil': ['https://my-site.com/en/latest/index.html', 'https://my-site..com/en/latest/test.html'],
    }
    
 For single builds, you can choose to set ``sitemap_validator_required`` to validate that the
