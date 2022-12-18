@@ -45,8 +45,10 @@ Customizing the URL Scheme
 The default URL format is ``{lang}{version}{link}``. ``{lang}`` and ``{version}`` are controlled
 by the `language`_ and `version`_ config variables.
 
-**Note:** As of Sphinx version 5, the ``language`` config value defaults to ``"en"``, if that
-makes the default scheme produce the incorrect url, then change the default behavior.
+    **Note:** As of Sphinx version 5, the ``language`` config value defaults to ``"en"``, as
+    opposed to the previous behavior of being blank, if that makes the default scheme produce
+    the incorrect url, then change the default scheme. You may also want to look at **Setting
+    up URL Validation** section below to help ensure the sitemap stays accurate.
 
 To change the default behavior, set the value of ``sitemap_url_scheme`` in **conf.py** to the
 desired format. For example:
@@ -72,7 +74,7 @@ Use ``sitemap_validator_urls`` to setup URL validation, where a dictionary of li
 validate one or more URLS for a given build.
 
 The keys for the dictionary are a concatenation of the `language`_ and `version`_ config
-values for that build, where the string ``nil`` is set for the key if both the language and
+values for that build, where the string ``"nil"`` is set for the key if both the language and
 version are not set. For example, to setup validation for multiple builds:
 
 .. code-block:: python
@@ -93,7 +95,7 @@ or an example for a single build:
 For single builds, you can choose to set ``sitemap_validator_required`` to validate that the
 `language`_ and `version`_ config values are concatenated as expected, where the string
 ``nil`` is used if both the language and version are not set. For example, if `language`_ is
-set to ``en`` and `version`_ is set to ``latest``:
+set to ``"en"`` and `version`_ is set to ``"latest"``:
 
 .. code-block:: python
 
