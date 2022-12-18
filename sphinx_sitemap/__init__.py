@@ -108,6 +108,29 @@ def add_html_link(app, pagename, templatename, context, doctree):
         app.sitemap_links.append(pagename + ".html")
 
 
+def validate_sitemap(app, filename):
+    """ if sitemap_validator is set, then use to check that all of the given URLs
+    for the current language and version are included in the sitemap. """
+    key = "{}{}".format(app.config.language or "", app.config.version or "")
+    key = key or "nil"
+    passed = True
+    if app.config.sitemap_validator and key in app.config.sitemap_validator:
+        with open(filename, "r") as myfile:
+            sitemap = myfile.read()
+            # if any of the urls don't match, throw a warning
+            for url in app.config.sitemap_validator[key]:
+                if url not in sitemap:
+                    passed = False
+                    logger.warning(
+                        "Sitemap failed validation. {} not found in {}".format(
+                            url, filename
+                        ),
+                        type="sitemap",
+                        subtype="validation",
+                    )
+    return passed
+
+
 def create_sitemap(app, exception):
     """Generates the sitemap.xml from the collected HTML page links"""
     site_url = app.builder.config.site_url or app.builder.config.html_baseurl
@@ -165,20 +188,7 @@ def create_sitemap(app, exception):
         filename, xml_declaration=True, encoding="utf-8", method="xml"
     )
 
-    key = "{}{}".format(app.config.language or "", app.config.version or "")
-    if app.config.sitemap_validator and key in app.config.sitemap_validator:
-        with open(filename, "r") as myfile:
-            sitemap = myfile.read()
-            # if any of the urls don't match, throw a warning
-            for url in app.config.sitemap_validator[key]:
-                if url not in sitemap:
-                    logger.warning(
-                        "Sitemap failed validation. {} not found in {}".format(
-                            url, filename
-                        ),
-                        type="sitemap",
-                        subtype="validation",
-                    )
+    validate_sitemap(app, filename)
 
     print(
         "%s was generated for URL %s in %s"
