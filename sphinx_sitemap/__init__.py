@@ -28,7 +28,8 @@ def setup(app):
         "sitemap_url_scheme", default="{lang}{version}{link}", rebuild=""
     )
     app.add_config_value("sitemap_locales", default=None, rebuild="")
-    app.add_config_value("sitemap_validator", default={}, rebuild="")
+    app.add_config_value("sitemap_validator_urls", default={}, rebuild="")
+    app.add_config_value("sitemap_validator_required", default=None, rebuild="")
     app.add_config_value("sitemap_filename", default="sitemap.xml", rebuild="")
 
     try:
@@ -109,16 +110,31 @@ def add_html_link(app, pagename, templatename, context, doctree):
 
 
 def validate_sitemap(app, filename):
-    """ if sitemap_validator is set, then use to check that all of the given URLs
-    for the current language and version are included in the sitemap. """
+    """
+    If sitemap_validator_required is set, then make sure the concatenated language and
+    version match the given string.
+
+    If sitemap_validator_urls is set, then use to check that all of the given URLs
+    for the current language and version are included in the sitemap.
+    """
     key = "{}{}".format(app.config.language or "", app.config.version or "")
     key = key or "nil"
+
+    if app.config.sitemap_validator_required and key != app.config.sitemap_validator_required:
+        logger.warning(
+                        "Sitemap failed validation. {} does not match the required {}".format(
+                            key, app.config.sitemap_validator_required
+                        ),
+                        type="sitemap",
+                        subtype="validation",
+                    )
+
     passed = True
-    if app.config.sitemap_validator and key in app.config.sitemap_validator:
+    if app.config.sitemap_validator_urls and key in app.config.sitemap_validator_urls:
         with open(filename, "r") as myfile:
             sitemap = myfile.read()
             # if any of the urls don't match, throw a warning
-            for url in app.config.sitemap_validator[key]:
+            for url in app.config.sitemap_validator_urls[key]:
                 if url not in sitemap:
                     passed = False
                     logger.warning(
