@@ -68,18 +68,36 @@ can also omit values from the scheme for desired behavior.
 Setting up URL Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use ``sitemap_validator`` to setup URL validation, where a dictionary of lists is used to
+Use ``sitemap_validator_urls`` to setup URL validation, where a dictionary of lists is used to
 validate one or more URLS for a given build.
 
 The keys for the dictionary are a concatenation of the `language`_ and `version`_ config
-values for that build. For example:
+values for that build, where the string ``nil`` is set for the key if both the language and
+version are not set. For example, to setup validation for multiple builds:
 
 .. code-block:: python
 
-   sitemap_validator = {
-       'enlatest': ['https://example.com/en/latest/index.html', 'https://example.com/en/latest/test.html'],
-       'delatest': ['https://example.com/de/latest/index.html', 'https://example.com/de/latest/test.html']
+   sitemap_validator_urls = {
+       'enlatest': ['https://my-site..com/en/latest/index.html', 'https://my-site..com/en/latest/test.html'],
+       'delatest': ['https://my-site..com/de/latest/index.html', 'https://my-site..com/de/latest/test.html'],
    }
+
+or an example for a single build:
+
+.. code-block:: python
+
+   sitemap_validator_urls = {
+       'nil': ['https://my-site..com/en/latest/index.html', 'https://my-site..com/en/latest/test.html'],
+   }
+   
+For single builds, you can choose to set ``sitemap_validator_required`` to validate that the
+`language`_ and `version`_ config values are concatenated as expected, where the string
+``nil`` is used if both the language and version are not set. For example, if `language`_ is
+set to ``en`` and `version`_ is set to ``latest``:
+
+.. code-block:: python
+
+   sitemap_validator_required = 'enlatest'
 
 Changing the Filename
 ^^^^^^^^^^^^^^^^^^^^^
