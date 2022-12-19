@@ -4,7 +4,9 @@ import pytest
 
 
 @pytest.mark.sphinx(
-    "html", freshenv=True, confoverrides={"html_baseurl": "https://example.org/docs/"}
+    "html",
+    freshenv=True,
+    confoverrides={"html_baseurl": "https://example.org/docs/", "language": "en"},
 )
 def test_simple(app, status, warning):
     app.build()
@@ -16,6 +18,6 @@ def test_simple(app, status, warning):
     }
 
     assert urls == {
-        f"https://example.org/docs/{d}.html"
+        f"https://example.org/docs/en/{d}.html"
         for d in ["index", "foo", "bar", "genindex", "search"]
     }
