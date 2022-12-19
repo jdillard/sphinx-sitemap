@@ -1,0 +1,5 @@
+tox
+flake8
+sphinx
+pytest
+jinja2<3.1
