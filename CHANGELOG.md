@@ -15,6 +15,8 @@ Changelog
   [#38](https://github.com/jdillard/sphinx-sitemap/pull/38)
 * Update the build process
   [#39](https://github.com/jdillard/sphinx-sitemap/pull/39)
+* Add testing infrastructure
+  [#41](https://github.com/jdillard/sphinx-sitemap/pull/41)
 
 2.2.1
 -----
