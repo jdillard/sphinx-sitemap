@@ -18,6 +18,8 @@ Changelog
 * Add testing infrastructure
   [#41](https://github.com/jdillard/sphinx-sitemap/pull/41)
   [#42](https://github.com/jdillard/sphinx-sitemap/pull/42)
+* Use logging for all logging messages
+  [#40](https://github.com/jdillard/sphinx-sitemap/pull/40)
 
 2.2.1
 -----
