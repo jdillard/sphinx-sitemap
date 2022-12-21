@@ -5,7 +5,7 @@ A `Sphinx`_ extension to generate multiversion and multilanguage
 `sitemaps.org`_ compliant sitemaps for the HTML version of your Sphinx
 documentation.
 
-|PyPI version| |Conda Forge| |Downloads| |Code style: Black|
+|PyPI version| |Conda Forge| |Downloads| |Code style: Black| |Parallel Safe|
 
 Installing
 ----------
@@ -169,10 +169,12 @@ The end result is something like the following for each language/version build::
     <url>
       <loc>https://my-site.com/docs/en/index.html</loc>
       <xhtml:link href="https://my-site.com/docs/es/index.html" hreflang="es" rel="alternate"/>
+      <xhtml:link href="https://my-site.com/docs/en/index.html" hreflang="en" rel="alternate"/>
     </url>
     <url>
       <loc>https://my-site.com/docs/en/about.html</loc>
       <xhtml:link href="https://my-site.com/docs/es/about.html" hreflang="es" rel="alternate"/>
+      <xhtml:link href="https://my-site.com/docs/en/about.html" hreflang="en" rel="alternate"/>
     </url>
   </urlset>
 
@@ -248,3 +250,4 @@ also licensed under the MIT license.
     :target: https://pepy.tech/project/sphinx-sitemap
 .. |Code style: Black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/psf/black
+.. |Parallel Safe| image:: https://img.shields.io/badge/parallel%20safe-False-red

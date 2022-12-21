@@ -4,10 +4,22 @@ Changelog
 2.3.0
 -----
 
-*Release date: TBD*
+*Release date: 2022-12-21*
 
 * Clean up how package versions are handled
-* Install pre-commit with isort, black, and flake8 (#35)
+* Install pre-commit with isort, black, and flake8
+  [#35](https://github.com/jdillard/sphinx-sitemap/pull/35)
+* Improve the wording of the README to help with issues upgrading to Sphinx 5
+  [#36](https://github.com/jdillard/sphinx-sitemap/pull/36)
+* Follow correct format for multilingual sitemaps
+  [#38](https://github.com/jdillard/sphinx-sitemap/pull/38)
+* Update the build process
+  [#39](https://github.com/jdillard/sphinx-sitemap/pull/39)
+* Add testing infrastructure
+  [#41](https://github.com/jdillard/sphinx-sitemap/pull/41)
+  [#42](https://github.com/jdillard/sphinx-sitemap/pull/42)
+* Use logging for all logging messages
+  [#40](https://github.com/jdillard/sphinx-sitemap/pull/40)
 
 2.2.1
 -----

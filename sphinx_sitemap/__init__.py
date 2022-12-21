@@ -60,9 +60,7 @@ def get_locales(app, exception):
 
         # otherwise, add each locale
         for locale in sitemap_locales:
-            # skip primary language
-            if locale != app.builder.config.language:
-                app.locales.append(locale)
+            app.locales.append(locale)
         return
 
     # Or autodetect
@@ -120,14 +118,17 @@ def validate_sitemap(app, filename):
     key = "{}{}".format(app.config.language or "", app.config.version or "")
     key = key or "nil"
 
-    if app.config.sitemap_validator_required and key != app.config.sitemap_validator_required:
+    if (
+        app.config.sitemap_validator_required
+        and key != app.config.sitemap_validator_required
+    ):
         logger.warning(
-                        "Sitemap failed validation. {} does not match the required {}".format(
-                            key, app.config.sitemap_validator_required
-                        ),
-                        type="sitemap",
-                        subtype="validation",
-                    )
+            "Sitemap failed validation. {} does not match the required {}".format(
+                key, app.config.sitemap_validator_required
+            ),
+            type="sitemap",
+            subtype="validation",
+        )
 
     passed = True
     if app.config.sitemap_validator_urls and key in app.config.sitemap_validator_urls:
@@ -150,17 +151,22 @@ def validate_sitemap(app, filename):
 def create_sitemap(app, exception):
     """Generates the sitemap.xml from the collected HTML page links"""
     site_url = app.builder.config.site_url or app.builder.config.html_baseurl
-    site_url = site_url.rstrip("/") + "/"
-    if not site_url:
-        print(
-            "sphinx-sitemap error: neither html_baseurl nor site_url "
-            "are set in conf.py. Sitemap not built."
+    if site_url:
+        site_url.rstrip("/") + "/"
+    else:
+        logger.warning(
+            "sphinx-sitemap: neither html_baseurl nor site_url are set in conf.py."
+            "Sitemap not built.",
+            type="sitemap",
+            subtype="configuration",
         )
         return
+
     if not app.sitemap_links:
-        print(
-            "sphinx-sitemap warning: No pages generated for %s"
-            % app.config.sitemap_filename
+        logger.info(
+            "sphinx-sitemap: No pages generated for %s" % app.config.sitemap_filename,
+            type="sitemap",
+            subtype="information",
         )
         return
 
@@ -206,7 +212,9 @@ def create_sitemap(app, exception):
 
     validate_sitemap(app, filename)
 
-    print(
-        "%s was generated for URL %s in %s"
-        % (app.config.sitemap_filename, site_url, filename)
+    logger.info(
+        "sphinx-sitemap: %s was generated for URL %s in %s"
+        % (app.config.sitemap_filename, site_url, filename),
+        type="sitemap",
+        subtype="information",
     )

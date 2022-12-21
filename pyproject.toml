@@ -1,2 +1,34 @@
+
+[build-system]
+requires = [
+    "setuptools",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sphinx-sitemap"
+description = "Sitemap generator for Sphinx"
+authors = [
+    {name = "Jared Dillard", email = "jared.dillard@gmail.com"},
+]
+maintainers = [
+    {name = "Jared Dillard", email = "jared.dillard@gmail.com"},
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Documentation :: Sphinx",
+    "Programming Language :: Python :: 3",
+    "Framework :: Sphinx :: Extension",
+]
+license = {text = "MIT"}
+readme = "README.rst"
+dynamic = [
+    "version",
+]
+
+[project.urls]
+download = "https://pypi.org/project/sphinx-sitemap/"
+source = "https://github.com/jdillard/sphinx-sitemap"
+
 [tool.isort]
 profile = "black"
