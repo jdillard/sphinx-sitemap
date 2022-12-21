@@ -4,7 +4,7 @@ Changelog
 2.3.0
 -----
 
-*Release date: TBD*
+*Release date: 2022-12-21*
 
 * Clean up how package versions are handled
 * Install pre-commit with isort, black, and flake8
