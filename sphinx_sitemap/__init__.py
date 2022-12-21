@@ -14,7 +14,11 @@
 import os
 import xml.etree.ElementTree as ET
 
+from sphinx.util.logging import getLogger
+
 __version__ = "2.3.0"
+
+logger = getLogger(__name__)
 
 
 def setup(app):
@@ -108,8 +112,9 @@ def create_sitemap(app, exception):
     if site_url:
         site_url.rstrip("/") + "/"
     else:
-        logger.error(
-            "sphinx-sitemap: neither html_baseurl nor site_url are set in conf.py. Sitemap not built.",
+        logger.warning(
+            "sphinx-sitemap: neither html_baseurl nor site_url are set in conf.py."
+            "Sitemap not built.",
             type="sitemap",
             subtype="configuration",
         )
@@ -117,7 +122,7 @@ def create_sitemap(app, exception):
 
     if not app.sitemap_links:
         logger.info(
-            "sphinx-sitemap:  No pages generated for %s" % app.config.sitemap_filename,
+            "sphinx-sitemap: No pages generated for %s" % app.config.sitemap_filename,
             type="sitemap",
             subtype="information",
         )
@@ -163,7 +168,9 @@ def create_sitemap(app, exception):
         filename, xml_declaration=True, encoding="utf-8", method="xml"
     )
 
-    logger.info("sphinx-sitemap: %s was generated for URL %s in %s" % (
-        app.config.sitemap_filename, site_url, filename),
+    logger.info(
+        "sphinx-sitemap: %s was generated for URL %s in %s"
+        % (app.config.sitemap_filename, site_url, filename),
         type="sitemap",
-        subtype="info",)
+        subtype="information",
+    )
