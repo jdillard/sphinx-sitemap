@@ -1,4 +1,4 @@
-Sphinx-Sitemap
+Sphinx-sitemap
 ==============
 
 Hello!
