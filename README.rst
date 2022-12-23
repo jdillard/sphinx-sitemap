@@ -15,8 +15,7 @@ See `sphinx-sitemap documentation`_ for installation and configuration instructi
 Contributing
 ------------
 
-Pull Requests welcome! See `CONTRIBUTING`_ for instructions on how best to
-contribute.
+Pull Requests welcome! See `Contributing`_ for instructions on how best to contribute.
 
 License
 -------
@@ -27,7 +26,7 @@ details.
 Originally based on the sitemap generator in the `guzzle_sphinx_theme`_ project,
 also licensed under the MIT license.
 
-.. _CONTRIBUTING: CONTRIBUTING.md
+.. _Contributing: https://sphinx-sitemap.readthedocs.io/en/latest/contributing.html
 .. _guzzle_sphinx_theme: https://github.com/guzzle/guzzle_sphinx_theme
 .. _LICENSE: LICENSE
 .. _Sphinx: http://sphinx-doc.org/
