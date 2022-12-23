@@ -27,6 +27,7 @@ dynamic = [
 ]
 
 [project.urls]
+documentation = "https://sphinx-sitemap.readthedocs.io/en/latest/index.html"
 download = "https://pypi.org/project/sphinx-sitemap/"
 source = "https://github.com/jdillard/sphinx-sitemap"
 
