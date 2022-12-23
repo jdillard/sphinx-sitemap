@@ -1,19 +1,5 @@
-Configuration
-=============
-
-Set the value of `html_baseurl`_ in your Sphinx **conf.py** to the current
-base URL of your documentation. For example:
-
-.. code-block:: python
-
-   html_baseurl = 'https://my-site.com/docs/'
-
-After the HTML build is done, **sphinx-sitemap** will output the location of the
-sitemap::
-
-    sitemap.xml was generated for URL https://my-site.com/docs/ in /path/to/_build/sitemap.xml
-
-.. tip:: Make sure to confirm the accuracy of the sitemap after installs and upgrades.
+Advanced Configuration
+======================
 
 Customizing the URL Scheme
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -136,26 +122,7 @@ only the primary language is generated::
     </url>
   </urlset>
 
-Getting the Most out of the Sitemap
------------------------------------
 
-#. Add a **robots.txt** file in the **source** directory which contains a link to
-   the sitemap or sitemapindex. For example::
-
-     User-agent: *
-
-     Sitemap: https://my-site.com/docs/sitemap.xml
-
-   Then, add **robots.txt** to the `html_extra_path`_ config value:
-
-   .. code-block:: python
-
-     html_extra_path = ['robots.txt']
-
-#. Submit the sitemap or sitemapindex to the appropriate search engine tools.
-
-.. _html_baseurl: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_baseurl
-.. _html_extra_path: http://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_extra_path
 .. _language: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-language
 .. _locale_dirs: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-locale_dirs
 .. _sitemapindex: https://support.google.com/webmasters/answer/75712?hl=en

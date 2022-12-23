@@ -28,17 +28,34 @@ For example:
 
    extensions = ['sphinx_sitemap']
 
+Set the value of `html_baseurl`_ in your Sphinx **conf.py** to the current
+base URL of your documentation. For example:
+
+.. code-block:: python
+
+   html_baseurl = 'https://my-site.com/docs/'
+
+After the HTML build is done, **sphinx-sitemap** will output the location of the
+sitemap::
+
+    sitemap.xml was generated for URL https://my-site.com/docs/ in /path/to/_build/sitemap.xml
+
+.. tip:: Make sure to confirm the accuracy of the sitemap after installs and upgrades.
+
+
+See :doc:`configuration` for more information about how to use **sphinx-sitemap**.
+
 .. toctree::
    :maxdepth: 1
 
    configuration
+   seo
    contributing
    changelog
 
 
 .. _extensions: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-extensions
-.. _guzzle_sphinx_theme: https://github.com/guzzle/guzzle_sphinx_theme
-.. _LICENSE: LICENSE
+.. _html_baseurl: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_baseurl
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
 .. _Sphinx: http://sphinx-doc.org/
 
