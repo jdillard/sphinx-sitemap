@@ -7,19 +7,10 @@ documentation.
 
 |PyPI version| |Conda Forge| |Downloads| |Code style: Black| |Parallel Safe|
 
-Installing
-----------
+Documentation
+-------------
 
-Directly install via pip by using::
-
-    pip install sphinx-sitemap
-
-Add ``sphinx_sitemap`` to the `extensions`_ array in your Sphinx **conf.py**.
-For example:
-
-.. code-block:: python
-
-   extensions = ['sphinx_sitemap']
+See `sphinx-sitemap documentation`_ for installation and configuration instructions.
 
 Contributing
 ------------
@@ -37,10 +28,11 @@ Originally based on the sitemap generator in the `guzzle_sphinx_theme`_ project,
 also licensed under the MIT license.
 
 .. _CONTRIBUTING: CONTRIBUTING.md
-.. _extensions: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-extensions
 .. _guzzle_sphinx_theme: https://github.com/guzzle/guzzle_sphinx_theme
 .. _LICENSE: LICENSE
 .. _Sphinx: http://sphinx-doc.org/
+.. _sitemaps.org: https://www.sitemaps.org/protocol.html
+.. _sphinx-sitemap documentation: https://sphinx-sitemap.readthedocs.io/en/latest/
 
 .. |PyPI version| image:: https://img.shields.io/pypi/v/sphinx-sitemap.svg
    :target: https://pypi.python.org/pypi/sphinx-sitemap
