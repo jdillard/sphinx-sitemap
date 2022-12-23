@@ -118,7 +118,7 @@ Changelog
 * Improve documentation
 
 0.2
---
+---
 
 *Release date: 2017-11-28*
 
