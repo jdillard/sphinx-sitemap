@@ -19,7 +19,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "Sphinx Sitemap"
-copyright = "2018, Jared Dillard"
+copyright = "Jared Dillard"
 author = "Jared Dillard"
 
 # The short X.Y version
@@ -39,6 +39,7 @@ release = ""
 # ones.
 extensions = [
     "sphinx_sitemap",
+    "sphinx.ext.intersphinx",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -67,6 +68,10 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = "sphinx"
+
+intersphinx_mapping = {
+    "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+}
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -161,3 +166,12 @@ texinfo_documents = [
         "Miscellaneous",
     )
 ]
+
+
+def setup(app):
+    app.add_object_type(
+        "confval",
+        "confval",
+        objname="configuration value",
+        indextemplate="pair: %s; configuration value",
+    )

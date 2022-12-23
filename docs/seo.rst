@@ -8,13 +8,10 @@ Getting the Most out of the Sitemap
 
      Sitemap: https://my-site.com/docs/sitemap.xml
 
-   Then, add **robots.txt** to the `html_extra_path`_ config value:
+   Then, add **robots.txt** to the :confval:`html_extra_path` config value:
 
    .. code-block:: python
 
      html_extra_path = ['robots.txt']
 
 #. Submit the sitemap or sitemapindex to the appropriate search engine tools.
-
-
-.. _html_extra_path: http://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_extra_path

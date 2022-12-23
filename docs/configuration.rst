@@ -5,7 +5,7 @@ Customizing the URL Scheme
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The default URL format is ``{lang}{version}{link}``. ``{lang}`` and ``{version}`` are controlled
-by the `language`_ and `version`_ config variables.
+by the :confval:`language` and :confval:`version` config variables.
 
 .. important:: As of Sphinx version 5, the ``language`` config value defaults to ``"en"``, if that
    makes the default scheme produce the incorrect url, then change the default behavior.
@@ -42,7 +42,7 @@ Supporting Multiple Versions
 For multiversion sitemaps, it is required to generate a sitemap per version and
 then manually add their locations to a `sitemapindex`_ file.
 
-The extension will look at the `version`_ config value for the current version
+The extension will look at the :confval:`version` config value for the current version
 being built, so make sure that is set.
 
 .. note:: When using multiple versions, it is best practice to set the canonical
@@ -56,9 +56,9 @@ Supporting Multiple Languages
 For multilingual sitemaps, generate a sitemap per language/locale and then manually
 add their locations to a `sitemapindex`_ file.
 
-The primary language is set by the `language`_ config value. Alternative languages
+The primary language is set by the :confval:`language` config value. Alternative languages
 are either manually set by ``sitemap_locales`` option or auto-detected by the
-extension from the `locale_dirs`_ config value, so make sure one of those is set.
+extension from the :confval:`locale_dirs` config value, so make sure one of those is set.
 
 ``sitemap_locales`` configuration is to specify a list of locales to include in
 the sitemap. For instance, if a third-party extension adds unsupported langauges to
@@ -123,9 +123,5 @@ only the primary language is generated::
   </urlset>
 
 
-.. _language: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-language
-.. _locale_dirs: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-locale_dirs
 .. _sitemapindex: https://support.google.com/webmasters/answer/75712?hl=en
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
-.. _version: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-version
-
