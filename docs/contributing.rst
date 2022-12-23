@@ -21,7 +21,7 @@ You need to add **sphinx-sitemap** as a `third party extension`_.
 #. Copy ``sphinx_sitemap`` as a directory in your project's extensions
    directory, and rename it to ``sphinx_sitemap_dev``.
 
-#. Add ``sphinx_sitemap_dev`` to **extensions**, or change ``sphinx_sitemap`` to
+#. Add ``sphinx_sitemap_dev`` to :confval:`extensions`, or change ``sphinx_sitemap`` to
    ``sphinx_sitemap_dev`` if you already have the extension installed via ``pip``,
    in **conf.py**:
 
