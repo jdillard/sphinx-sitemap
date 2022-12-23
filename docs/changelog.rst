@@ -26,7 +26,7 @@ Changelog
 
 *Release date: 2022-11-11*
 
-* Fix ``sitemap_url_scheme`` default value in **README** file
+* Fix :confval:`sitemap_url_scheme` default value in **README** file
   `#32 <https://github.com/jdillard/sphinx-sitemap/pull/32>`_
 * Clean up package classifiers
 * Add **LICENSE** to source distributions
@@ -40,9 +40,9 @@ Changelog
 
 * Add ``parallel_write_safe`` flag and set to `False`
   `#20 <https://github.com/jdillard/sphinx-sitemap/issues/20>`_.
-* Add ``sitemap_locales`` config value that creates an allow list of locales
+* Add :confval:`sitemap_locales` config value that creates an allow list of locales
   `#25 <https://github.com/jdillard/sphinx-sitemap/pull/25>`_.
-* Add ``sitemap_filename`` config value that allows for custom sitemap name
+* Add :confval:`sitemap_filename` config value that allows for custom sitemap name
   `#26 <https://github.com/jdillard/sphinx-sitemap/pull/26>`_.
 
 2.1.0
@@ -58,7 +58,7 @@ Changelog
 
 *Release date: 2020-02-19*
 
-* Add ``sitemap_url_scheme`` config value that allows the url scheme to be
+* Add :confval:`sitemap_url_scheme` config value that allows the url scheme to be
   customized with a default of ``{version}{lang}{link}``
   `#22 <https://github.com/jdillard/sphinx-sitemap/issues/22>`_.
 
