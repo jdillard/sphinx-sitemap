@@ -36,8 +36,8 @@ Set ``sitemap_filename`` in **conf.py** to the desired filename, for example:
 
    sitemap_filename = "sitemap.xml"
 
-Versioning Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^
+Supporting Multiple Versions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For multiversion sitemaps, it is required to generate a sitemap per version and
 then manually add their locations to a `sitemapindex`_ file.
@@ -50,8 +50,8 @@ being built, so make sure that is set.
 
      <link rel="canonical" href="https://my-site.com/docs/latest/index.html"/>
 
-Multilingual Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Supporting Multiple Languages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For multilingual sitemaps, generate a sitemap per language/locale and then manually
 add their locations to a `sitemapindex`_ file.
