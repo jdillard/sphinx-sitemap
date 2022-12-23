@@ -7,7 +7,7 @@ Customizing the URL Scheme
 The default URL format is ``{lang}{version}{link}``. ``{lang}`` and ``{version}`` are controlled
 by the `language`_ and `version`_ config variables.
 
-.. note:: As of Sphinx version 5, the ``language`` config value defaults to ``"en"``, if that
+.. important:: As of Sphinx version 5, the ``language`` config value defaults to ``"en"``, if that
    makes the default scheme produce the incorrect url, then change the default behavior.
 
 To change the default behavior, set the value of ``sitemap_url_scheme`` in **conf.py** to the
