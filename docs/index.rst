@@ -21,14 +21,14 @@ Or with ``conda`` via ``conda-forge``::
 Use
 ---
 
-Add ``sphinx_sitemap`` to the `extensions`_ array in your Sphinx **conf.py**.
+Add ``sphinx_sitemap`` to the :confval:`extensions` array in your Sphinx **conf.py**.
 For example:
 
 .. code-block:: python
 
    extensions = ['sphinx_sitemap']
 
-Set the value of `html_baseurl`_ in your Sphinx **conf.py** to the current
+Set the value of :confval:`html_baseurl` in your Sphinx **conf.py** to the current
 base URL of your documentation. For example:
 
 .. code-block:: python
@@ -54,8 +54,6 @@ See :doc:`configuration` for more information about how to use **sphinx-sitemap*
    changelog
 
 
-.. _extensions: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-extensions
-.. _html_baseurl: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_baseurl
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
 .. _Sphinx: http://sphinx-doc.org/
 
