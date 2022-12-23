@@ -46,7 +46,7 @@ sitemap::
 See :doc:`configuration` for more information about how to use **sphinx-sitemap**.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    configuration
    seo
