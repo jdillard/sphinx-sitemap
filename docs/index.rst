@@ -7,12 +7,19 @@ documentation.
 
 |PyPI version| |Conda Forge| |Downloads| |Code style: Black| |Parallel Safe|
 
-Installing
-----------
+Install
+-------
 
-Directly install via pip by using::
+Directly install via ``pip`` by using::
 
     pip install sphinx-sitemap
+
+Or with ``conda`` via ``conda-forge``::
+
+    conda install -c conda-forge sphinx-sitemap
+
+Use
+---
 
 Add ``sphinx_sitemap`` to the `extensions`_ array in your Sphinx **conf.py**.
 For example:
@@ -44,3 +51,4 @@ For example:
 .. |Code style: Black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/psf/black
 .. |Parallel Safe| image:: https://img.shields.io/badge/parallel%20safe-False-red
+   :target: #
