@@ -50,6 +50,7 @@ See :doc:`configuration` for more information about how to use **sphinx-sitemap*
 
    configuration
    seo
+   config-values
    contributing
    changelog
 

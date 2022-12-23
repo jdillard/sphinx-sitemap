@@ -1,6 +1,8 @@
 Advanced Configuration
 ======================
 
+.. _config_customizing_url_scheme:
+
 Customizing the URL Scheme
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -10,7 +12,7 @@ by the :confval:`language` and :confval:`version` config variables.
 .. important:: As of Sphinx version 5, the ``language`` config value defaults to ``"en"``, if that
    makes the default scheme produce the incorrect url, then change the default behavior.
 
-To change the default behavior, set the value of ``sitemap_url_scheme`` in **conf.py** to the
+To change the default behavior, set the value of :confval:`sitemap_url_scheme` in **conf.py** to the
 desired format. For example:
 
 .. code-block:: python
@@ -27,10 +29,13 @@ Or for nested deployments, something like:
    appends trailing slashes to both the ``language`` and ``version`` values. You
    can also omit values from the scheme for desired behavior.
 
+
+.. _config_changing_filename:
+
 Changing the Filename
 ^^^^^^^^^^^^^^^^^^^^^
 
-Set ``sitemap_filename`` in **conf.py** to the desired filename, for example:
+Set :confval:`sitemap_filename` in **conf.py** to the desired filename, for example:
 
 .. code-block:: python
 
@@ -50,6 +55,8 @@ being built, so make sure that is set.
 
      <link rel="canonical" href="https://my-site.com/docs/latest/index.html"/>
 
+.. _config_supporting_multiple_languages:
+
 Supporting Multiple Languages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -57,7 +64,7 @@ For multilingual sitemaps, generate a sitemap per language/locale and then manua
 add their locations to a `sitemapindex`_ file.
 
 The primary language is set by the :confval:`language` config value. Alternative languages
-are either manually set by ``sitemap_locales`` option or auto-detected by the
+are either manually set by :confval:`sitemap_locales` option or auto-detected by the
 extension from the :confval:`locale_dirs` config value, so make sure one of those is set.
 
 ``sitemap_locales`` configuration is to specify a list of locales to include in
