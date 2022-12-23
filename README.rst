@@ -31,7 +31,7 @@ also licensed under the MIT license.
 .. _LICENSE: LICENSE
 .. _Sphinx: http://sphinx-doc.org/
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
-.. _sphinx-sitemap documentation: https://sphinx-sitemap.readthedocs.io/en/latest/
+.. _sphinx-sitemap documentation: https://sphinx-sitemap.readthedocs.io/en/latest/index.html
 
 .. |PyPI version| image:: https://img.shields.io/pypi/v/sphinx-sitemap.svg
    :target: https://pypi.python.org/pypi/sphinx-sitemap
