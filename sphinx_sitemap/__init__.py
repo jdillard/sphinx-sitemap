@@ -42,7 +42,7 @@ def setup(app):
     app.sitemap_links = []
 
     return {
-        "parallel_read_safe": False,
+        "parallel_read_safe": True,
         "parallel_write_safe": False,
         "version": __version__,
     }
