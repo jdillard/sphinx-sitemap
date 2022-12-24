@@ -39,7 +39,6 @@ def setup(app):
     app.connect("builder-inited", record_builder_type)
     app.connect("html-page-context", add_html_link)
     app.connect("build-finished", create_sitemap)
-    app.sitemap_links = []
 
     return {
         "parallel_read_safe": True,
@@ -81,6 +80,7 @@ def record_builder_type(app):
     if builder is None:
         return
     builder.env.is_dictionary_builder = type(builder).__name__ == "DirectoryHTMLBuilder"
+    builder.env.sitemap_links = []
 
 
 def hreflang_formatter(lang):
@@ -107,9 +107,9 @@ def add_html_link(app, pagename, templatename, context, doctree):
             directory_pagename = pagename[:-6] + "/"
         else:
             directory_pagename = pagename + "/"
-        app.sitemap_links.append(directory_pagename)
+        env.sitemap_links.append(directory_pagename)
     else:
-        app.sitemap_links.append(pagename + ".html")
+        env.sitemap_links.append(pagename + ".html")
 
 
 def create_sitemap(app, exception):
@@ -119,14 +119,14 @@ def create_sitemap(app, exception):
         site_url.rstrip("/") + "/"
     else:
         logger.warning(
-            "sphinx-sitemap: neither html_baseurl nor site_url are set in conf.py."
-            "Sitemap not built.",
+            "sphinx-sitemap: html_baseurl is required in conf.py." "Sitemap not built.",
             type="sitemap",
             subtype="configuration",
         )
         return
 
-    if not app.sitemap_links:
+    env = app.builder.env
+    if not env.sitemap_links:
         logger.info(
             "sphinx-sitemap: No pages generated for %s" % app.config.sitemap_filename,
             type="sitemap",
@@ -146,7 +146,7 @@ def create_sitemap(app, exception):
     else:
         version = ""
 
-    for link in app.sitemap_links:
+    for link in env.sitemap_links:
         url = ET.SubElement(root, "url")
         scheme = app.config.sitemap_url_scheme
         if app.builder.config.language:
