@@ -74,7 +74,7 @@ def record_builder_type(app):
     builder = getattr(app, "builder", None)
     if builder is None:
         return
-    builder.env.is_dictionary_builder = type(builder).__name__ == "DirectoryHTMLBuilder"
+    builder.env.is_directory_builder = type(builder).__name__ == "DirectoryHTMLBuilder"
     builder.env.sitemap_links = []
 
 
@@ -93,7 +93,9 @@ def hreflang_formatter(lang):
 def add_html_link(app, pagename, templatename, context, doctree):
     """As each page is built, collect page names for the sitemap"""
     env = app.builder.env
-    if env.is_dictionary_builder:
+
+    # Support DirectoryHTMLBuilder path structure
+    if env.is_directory_builder:
         if pagename == "index":
             # root of the entire website, a special case
             directory_pagename = ""
