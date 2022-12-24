@@ -136,8 +136,7 @@ def create_sitemap(app, exception):
 
     ET.register_namespace("xhtml", "http://www.w3.org/1999/xhtml")
 
-    root = ET.Element("urlset")
-    root.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
+    root = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
 
     locales = get_locales(app, exception)
 
@@ -160,12 +159,12 @@ def create_sitemap(app, exception):
 
         for lang in locales:
             lang = lang + "/"
-            linktag = ET.SubElement(url, "{http://www.w3.org/1999/xhtml}link")
-            linktag.set("rel", "alternate")
-            linktag.set("hreflang", hreflang_formatter(lang.rstrip("/")))
-            linktag.set(
-                "href",
-                site_url + scheme.format(lang=lang, version=version, link=link),
+            ET.SubElement(
+                url,
+                "{http://www.w3.org/1999/xhtml}link",
+                rel="alternate",
+                hreflang=hreflang_formatter(lang.rstrip("/")),
+                href=site_url + scheme.format(lang=lang, version=version, link=link),
             )
 
     filename = app.outdir + "/" + app.config.sitemap_filename
