@@ -40,7 +40,6 @@ def setup(app):
     app.connect("html-page-context", add_html_link)
     app.connect("build-finished", create_sitemap)
     app.sitemap_links = []
-    app.locales = []
 
     return {
         "parallel_read_safe": False,
@@ -55,20 +54,25 @@ def get_locales(app, exception):
     if sitemap_locales:
         # special value to add nothing -> use primary language only
         if sitemap_locales == [None]:
-            return
+            return []
 
         # otherwise, add each locale
-        for locale in sitemap_locales:
-            app.locales.append(locale)
-        return
+        return [
+            locale
+            for locale in sitemap_locales
+            # skip primary language
+            if locale != app.builder.config.language
+        ]
 
-    # Or autodetect
+    # Or autodetect locales
+    locales = []
     for locale_dir in app.builder.config.locale_dirs:
         locale_dir = os.path.join(app.confdir, locale_dir)
         if os.path.isdir(locale_dir):
             for locale in os.listdir(locale_dir):
                 if os.path.isdir(os.path.join(locale_dir, locale)):
-                    app.locales.append(locale)
+                    locales.append(locale)
+    return locales
 
 
 def record_builder_type(app):
@@ -133,7 +137,7 @@ def create_sitemap(app, exception):
     root = ET.Element("urlset")
     root.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
 
-    get_locales(app, exception)
+    locales = get_locales(app, exception)
 
     if app.builder.config.version:
         version = app.builder.config.version + "/"
@@ -152,16 +156,15 @@ def create_sitemap(app, exception):
             lang=lang, version=version, link=link
         )
 
-        if len(app.locales) > 0:
-            for lang in app.locales:
-                lang = lang + "/"
-                linktag = ET.SubElement(url, "{http://www.w3.org/1999/xhtml}link")
-                linktag.set("rel", "alternate")
-                linktag.set("hreflang", hreflang_formatter(lang.rstrip("/")))
-                linktag.set(
-                    "href",
-                    site_url + scheme.format(lang=lang, version=version, link=link),
-                )
+        for lang in locales:
+            lang = lang + "/"
+            linktag = ET.SubElement(url, "{http://www.w3.org/1999/xhtml}link")
+            linktag.set("rel", "alternate")
+            linktag.set("hreflang", hreflang_formatter(lang.rstrip("/")))
+            linktag.set(
+                "href",
+                site_url + scheme.format(lang=lang, version=version, link=link),
+            )
 
     filename = app.outdir + "/" + app.config.sitemap_filename
     ET.ElementTree(root).write(
