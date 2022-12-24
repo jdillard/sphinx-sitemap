@@ -77,9 +77,10 @@ def get_locales(app, exception):
 
 def record_builder_type(app):
     # builder isn't initialized in the setup so we do it here
-    # we rely on the class name, not the actual class, as it was moved 2.0.0
-    builder_class_name = getattr(app, "builder", None).__class__.__name__
-    app.is_dictionary_builder = builder_class_name == "DirectoryHTMLBuilder"
+    builder = getattr(app, "builder", None)
+    if builder is None:
+        return
+    builder.env.is_dictionary_builder = type(builder).__name__ == "DirectoryHTMLBuilder"
 
 
 def hreflang_formatter(lang):
@@ -96,7 +97,8 @@ def hreflang_formatter(lang):
 
 def add_html_link(app, pagename, templatename, context, doctree):
     """As each page is built, collect page names for the sitemap"""
-    if app.is_dictionary_builder:
+    env = app.builder.env
+    if env.is_dictionary_builder:
         if pagename == "index":
             # root of the entire website, a special case
             directory_pagename = ""
