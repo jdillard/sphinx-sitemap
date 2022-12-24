@@ -1,6 +1,16 @@
 Changelog
 =========
 
+2.3.1
+-----
+
+*Release date: TBD*
+
+* Add ReadTheDocs docs
+  `#45 <https://github.com/jdillard/sphinx-sitemap/pull/45>`_
+* General code clean up
+  `#46 <https://github.com/jdillard/sphinx-sitemap/pull/46>`_
+
 2.3.0
 -----
 
