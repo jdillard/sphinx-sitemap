@@ -56,12 +56,7 @@ def get_locales(app, exception):
             return []
 
         # otherwise, add each locale
-        return [
-            locale
-            for locale in sitemap_locales
-            # skip primary language
-            if locale != app.builder.config.language
-        ]
+        return [locale for locale in sitemap_locales]
 
     # Or autodetect locales
     locales = []
