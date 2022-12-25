@@ -14,6 +14,8 @@ Changelog
   `#47 <https://github.com/jdillard/sphinx-sitemap/pull/47>`_
 * Add tests for ``dirhtml`` builder
   `#48 <https://github.com/jdillard/sphinx-sitemap/pull/48>`_
+* Add vale support for docs
+  `#49 <https://github.com/jdillard/sphinx-sitemap/pull/49>`_
 
 2.3.0
 -----
