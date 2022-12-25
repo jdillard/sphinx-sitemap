@@ -6,8 +6,8 @@ Thank you for your interest in contributing to **sphinx-sitemap**!
 You will need to set up a development environment to make and test your changes
 before submitting them.
 
-Setting up a dev environment
-----------------------------
+Setting up an environment
+-------------------------
 
 You need to add **sphinx-sitemap** as a `third party extension`_.
 

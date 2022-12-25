@@ -1,16 +1,16 @@
 Advanced Configuration
 ======================
 
-.. _config_customizing_url_scheme:
+.. _configuration_customizing_url_scheme:
 
 Customizing the URL Scheme
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The default URL format is ``{lang}{version}{link}``. ``{lang}`` and ``{version}`` are controlled
-by the :confval:`language` and :confval:`version` config variables.
+by :confval:`language` and :confval:`version` in **conf.py**.
 
-.. important:: As of Sphinx version 5, the ``language`` config value defaults to ``"en"``, if that
-   makes the default scheme produce the incorrect url, then change the default behavior.
+.. important:: As of Sphinx version 5, ``language`` defaults to ``"en"``, if that
+   makes the default scheme produce the incorrect URL, then change the default behavior.
 
 To change the default behavior, set the value of :confval:`sitemap_url_scheme` in **conf.py** to the
 desired format. For example:
@@ -30,7 +30,7 @@ Or for nested deployments, something like:
    can also omit values from the scheme for desired behavior.
 
 
-.. _config_changing_filename:
+.. _configuration_changing_filename:
 
 Changing the Filename
 ^^^^^^^^^^^^^^^^^^^^^
@@ -44,32 +44,32 @@ Set :confval:`sitemap_filename` in **conf.py** to the desired filename, for exam
 Supporting Multiple Versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For multiversion sitemaps, it is required to generate a sitemap per version and
-then manually add their locations to a `sitemapindex`_ file.
+For multi-version sitemaps, it is required to generate a sitemap per version and
+then manually add their locations to a `sitemapindex.xml`_ file.
 
-The extension will look at the :confval:`version` config value for the current version
-being built, so make sure that is set.
+The extension will look at :confval:`version` for the current version being built,
+so make sure that is set.
 
 .. note:: When using multiple versions, it is best practice to set the canonical
    URL in the theme layout of all versions to the latest version of that page::
 
      <link rel="canonical" href="https://my-site.com/docs/latest/index.html"/>
 
-.. _config_supporting_multiple_languages:
+.. _configuration_supporting_multiple_languages:
 
 Supporting Multiple Languages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For multilingual sitemaps, generate a sitemap per language/locale and then manually
-add their locations to a `sitemapindex`_ file.
+add their locations to a `sitemapindex.xml`_ file.
 
-The primary language is set by the :confval:`language` config value. Alternative languages
-are either manually set by :confval:`sitemap_locales` option or auto-detected by the
-extension from the :confval:`locale_dirs` config value, so make sure one of those is set.
+The primary language is set by :confval:`language`. Alternative languages
+are either manually set by :confval:`sitemap_locales` or auto-detected by the
+extension from :confval:`locale_dirs`, so make sure one of those is set.
 
 ``sitemap_locales`` configuration is to specify a list of locales to include in
-the sitemap. For instance, if a third-party extension adds unsupported langauges to
-**locale_dirs**, or to allow locales to reach a certain translated percentage before
+the sitemap. For instance, if a third-party extension adds unsupported languages to
+:confval:`locale_dirs`, or to allow locales to reach a certain translated percentage before
 making them public. For example, if the primary language is `en`, and a list with
 `es` and `fr` translations specified, the sitemap look like this::
 
@@ -130,5 +130,5 @@ only the primary language is generated::
   </urlset>
 
 
-.. _sitemapindex: https://support.google.com/webmasters/answer/75712?hl=en
+.. _sitemapindex.xml: https://support.google.com/webmasters/answer/75712?hl=en
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
