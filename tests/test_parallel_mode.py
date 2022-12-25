@@ -10,6 +10,7 @@ import pytest
 )
 def test_parallel(app, status, warning):
     app.parallel = 2
+    app.warningiserror = True
     app.build()
     assert "sitemap.xml" in app.outdir.listdir()
     doc = etree.parse(app.outdir / "sitemap.xml")

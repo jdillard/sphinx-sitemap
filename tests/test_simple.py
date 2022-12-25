@@ -9,6 +9,7 @@ import pytest
     confoverrides={"html_baseurl": "https://example.org/docs/", "language": "en"},
 )
 def test_simple(app, status, warning):
+    app.warningiserror = True
     app.build()
     assert "sitemap.xml" in app.outdir.listdir()
     doc = etree.parse(app.outdir / "sitemap.xml")
