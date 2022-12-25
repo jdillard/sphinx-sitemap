@@ -66,7 +66,7 @@ See :doc:`configuration` for more information about how to use **sphinx-sitemap*
     :target: https://pepy.tech/project/sphinx-sitemap
 .. |Code style: Black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/psf/black
-.. |Parallel Safe| image:: https://img.shields.io/badge/parallel%20safe-true-red
+.. |Parallel Safe| image:: https://img.shields.io/badge/parallel%20safe-true-brightgreen
    :target: #
 .. |Docs Build| image:: https://readthedocs.org/projects/sphinx-sitemap/badge/?version=latest
    :target: https://sphinx-sitemap.readthedocs.io/en/latest/?badge=latest
