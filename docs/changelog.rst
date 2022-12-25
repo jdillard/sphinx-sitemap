@@ -12,6 +12,8 @@ Changelog
   `#46 <https://github.com/jdillard/sphinx-sitemap/pull/46>`_
 * Add support for parallel mode
   `#47 <https://github.com/jdillard/sphinx-sitemap/pull/47>`_
+* Add tests for dirhtml builder
+  `#48 <https://github.com/jdillard/sphinx-sitemap/pull/48>`_
 
 2.3.0
 -----
