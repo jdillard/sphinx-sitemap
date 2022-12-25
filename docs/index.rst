@@ -10,7 +10,7 @@ documentation.
 Install
 -------
 
-Directly testypo install via ``pip`` by using::
+Directly install via ``pip`` by using::
 
     pip install sphinx-sitemap
 
