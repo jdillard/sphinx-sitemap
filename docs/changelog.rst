@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.3.1
+2.4.0
 -----
 
 *Release date: TBD*
@@ -10,6 +10,8 @@ Changelog
   `#45 <https://github.com/jdillard/sphinx-sitemap/pull/45>`_
 * General code clean up
   `#46 <https://github.com/jdillard/sphinx-sitemap/pull/46>`_
+* Add support for parallel mode
+  `#47 <https://github.com/jdillard/sphinx-sitemap/pull/47>`_
 
 2.3.0
 -----

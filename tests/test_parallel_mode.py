@@ -8,7 +8,8 @@ import pytest
     freshenv=True,
     confoverrides={"html_baseurl": "https://example.org/docs/", "language": "en"},
 )
-def test_simple(app, status, warning):
+def test_parallel(app, status, warning):
+    app.parallel = 2
     app.warningiserror = True
     app.build()
     assert "sitemap.xml" in app.outdir.listdir()
@@ -32,3 +33,4 @@ def test_simple(app, status, warning):
             "search",
         ]
     }
+    assert not warning.getvalue()
