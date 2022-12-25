@@ -50,16 +50,16 @@ def test_simple_dirhtml(app, status, warning):
     }
 
     assert urls == {
-        f"https://example.org/docs/en/{d}.html"
+        f"https://example.org/docs/en/{d}"
         for d in [
-            "index",
-            "foo/index",
-            "bar/index",
-            "lorem/index",
-            "ipsum/index",
-            "dolor/index",
-            "elitr/index",
-            "genindex/index",
-            "search/index",
+            "",
+            "foo/",
+            "bar/",
+            "lorem/",
+            "ipsum/",
+            "dolor/",
+            "elitr/",
+            "genindex/",
+            "search/",
         ]
     }

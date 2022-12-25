@@ -97,15 +97,18 @@ def add_html_link(app, pagename, templatename, context, doctree):
     env = app.builder.env
 
     # Support DirectoryHTMLBuilder path structure
-    # checking until / to avoid false positives like /funds-index
-    if (
-        env.is_directory_builder
-        and pagename != "index"
-        and not pagename.endswith("/index")
-    ):
-        env.sitemap_links.put(pagename + "/index.html")
+    # where generated links between pages omit the index.html
+    if env.is_directory_builder:
+        if pagename == "index":
+            sitemap_link = ""
+        elif pagename.endswith("/index"):
+            sitemap_link = pagename[:-6] + "/"
+        else:
+            sitemap_link = pagename + "/"
     else:
-        env.sitemap_links.put(pagename + ".html")
+        sitemap_link = pagename + ".html"
+
+    env.sitemap_links.put(sitemap_link)
 
 
 def create_sitemap(app, exception):
