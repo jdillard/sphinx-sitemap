@@ -12,7 +12,9 @@
 # all copies or substantial portions of the Software.
 
 import os
+import queue
 import xml.etree.ElementTree as ET
+from multiprocessing import Manager
 
 from sphinx.util.logging import getLogger
 
@@ -42,7 +44,7 @@ def setup(app):
 
     return {
         "parallel_read_safe": True,
-        "parallel_write_safe": False,
+        "parallel_write_safe": True,
         "version": __version__,
     }
 
@@ -75,7 +77,7 @@ def record_builder_type(app):
     if builder is None:
         return
     builder.env.is_directory_builder = type(builder).__name__ == "DirectoryHTMLBuilder"
-    builder.env.sitemap_links = []
+    builder.env.sitemap_links = Manager().Queue()
 
 
 def hreflang_formatter(lang):
@@ -104,9 +106,9 @@ def add_html_link(app, pagename, templatename, context, doctree):
             directory_pagename = pagename[:-6] + "/"
         else:
             directory_pagename = pagename + "/"
-        env.sitemap_links.append(directory_pagename)
+        env.sitemap_links.put(directory_pagename)
     else:
-        env.sitemap_links.append(pagename + ".html")
+        env.sitemap_links.put(pagename + ".html")
 
 
 def create_sitemap(app, exception):
@@ -123,7 +125,7 @@ def create_sitemap(app, exception):
         return
 
     env = app.builder.env
-    if not env.sitemap_links:
+    if env.sitemap_links.empty():
         logger.info(
             "sphinx-sitemap: No pages generated for %s" % app.config.sitemap_filename,
             type="sitemap",
@@ -142,7 +144,12 @@ def create_sitemap(app, exception):
     else:
         version = ""
 
-    for link in env.sitemap_links:
+    while True:
+        try:
+            link = env.sitemap_links.get_nowait()
+        except queue.Empty:
+            break
+
         url = ET.SubElement(root, "url")
         scheme = app.config.sitemap_url_scheme
         if app.builder.config.language:
