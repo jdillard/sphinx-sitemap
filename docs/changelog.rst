@@ -12,8 +12,10 @@ Changelog
   `#46 <https://github.com/jdillard/sphinx-sitemap/pull/46>`_
 * Add support for parallel mode
   `#47 <https://github.com/jdillard/sphinx-sitemap/pull/47>`_
-* Add tests for dirhtml builder
+* Add tests for ``dirhtml`` builder
   `#48 <https://github.com/jdillard/sphinx-sitemap/pull/48>`_
+* Add vale support for docs
+  `#49 <https://github.com/jdillard/sphinx-sitemap/pull/49>`_
 
 2.3.0
 -----
@@ -21,7 +23,7 @@ Changelog
 *Release date: 2022-12-21*
 
 * Clean up how package versions are handled
-* Install pre-commit with isort, black, and flake8
+* Install pre-commit with ``isort``, ``black``, and ``flake8``
   `#35 <https://github.com/jdillard/sphinx-sitemap/pull/35>`_
 * Improve the wording of the README to help with issues upgrading to Sphinx 5
   `#36 <https://github.com/jdillard/sphinx-sitemap/pull/36>`_
@@ -54,9 +56,9 @@ Changelog
 
 * Add ``parallel_write_safe`` flag and set to `False`
   `#20 <https://github.com/jdillard/sphinx-sitemap/issues/20>`_.
-* Add :confval:`sitemap_locales` config value that creates an allow list of locales
+* Add :confval:`sitemap_locales` that creates an allow list of locales
   `#25 <https://github.com/jdillard/sphinx-sitemap/pull/25>`_.
-* Add :confval:`sitemap_filename` config value that allows for custom sitemap name
+* Add :confval:`sitemap_filename` that allows for custom sitemap name
   `#26 <https://github.com/jdillard/sphinx-sitemap/pull/26>`_.
 
 2.1.0
@@ -72,7 +74,7 @@ Changelog
 
 *Release date: 2020-02-19*
 
-* Add :confval:`sitemap_url_scheme` config value that allows the url scheme to be
+* Add :confval:`sitemap_url_scheme` that allows the URL scheme to be
   customized with a default of ``{version}{lang}{link}``
   `#22 <https://github.com/jdillard/sphinx-sitemap/issues/22>`_.
 
@@ -87,7 +89,7 @@ Changelog
 
 * Add support for ``DirectoryHTMLBuilder``.
 * Remove unused ``HTMLTranslator`` import.
-* Make ``version`` and ``language`` config values each optional.
+* Make ``version`` and ``language`` each optional.
 * Add license to **setup.py**.
 * Mark unsafe for parallel reading.
 
@@ -96,7 +98,7 @@ Changelog
 
 *Release date: 2019-02-09*
 
-* Add ``html_baseurl`` config value if it doesn't exist for sphinx versions prior
+* Add ``html_baseurl`` if it doesn't exist for sphinx versions prior
   to 1.8.0.
 
 1.0.1
@@ -112,7 +114,7 @@ Changelog
 
 *Release date: 2019-01-17*
 
-* Use native ``html_baseurl`` config value, instead of the custom ``site_url``. It
+* Use native ``html_baseurl``, instead of the custom ``site_url``. It
   checks for both for backwards compatibility.
 * Add support for multiple languages.
 

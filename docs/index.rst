@@ -1,7 +1,7 @@
 Sphinx-sitemap
 ==============
 
-A `Sphinx`_ extension to generate multiversion and multilanguage
+A `Sphinx`_ extension to generate multi-version and multi-language
 `sitemaps.org`_ compliant sitemaps for the HTML version of your Sphinx
 documentation.
 
@@ -50,7 +50,7 @@ See :doc:`configuration` for more information about how to use **sphinx-sitemap*
 
    configuration
    seo
-   config-values
+   configuration-values
    contributing
    changelog
 
