@@ -16,6 +16,8 @@ Changelog
   `#48 <https://github.com/jdillard/sphinx-sitemap/pull/48>`_
 * Add vale support for docs
   `#49 <https://github.com/jdillard/sphinx-sitemap/pull/49>`_
+* Fix wheel includes
+  `#51 <https://github.com/jdillard/sphinx-sitemap/pull/51>`_
 
 2.3.0
 -----
