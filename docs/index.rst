@@ -21,7 +21,7 @@ Or with ``conda`` via ``conda-forge``::
 Use
 ---
 
-Add ``sphinx_sitemap`` to the :confval:`extensions` array in your Sphinx **conf.py**.
+Add ``sphinx_sitemap`` to :confval:`extensions` in your Sphinx **conf.py**.
 For example:
 
 .. code-block:: python
@@ -35,8 +35,7 @@ base URL of your documentation. For example:
 
    html_baseurl = 'https://my-site.com/docs/'
 
-After the HTML build is done, **sphinx-sitemap** will output the location of the
-sitemap::
+After the HTML finishes building, **sphinx-sitemap** will output the location of the sitemap::
 
     sitemap.xml was generated for URL https://my-site.com/docs/ in /path/to/_build/sitemap.xml
 

@@ -6,8 +6,7 @@ Advanced Configuration
 Customizing the URL Scheme
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The default URL format is ``{lang}{version}{link}``. ``{lang}`` and ``{version}`` are controlled
-by :confval:`language` and :confval:`version` in **conf.py**.
+:confval:`sitemap_url_scheme` defaults to ``{lang}{version}{link}``, where ``{lang}`` and ``{version}`` get set by :confval:`language` and :confval:`version` in **conf.py**.
 
 .. important:: As of Sphinx version 5, ``language`` defaults to ``"en"``, if that
    makes the default scheme produce the incorrect URL, then change the default behavior.
@@ -25,9 +24,8 @@ Or for nested deployments, something like:
 
    sitemap_url_scheme = "{version}{lang}subdir/{link}"
 
-.. note:: The extension is currently opinionated, in that it automatically
-   appends trailing slashes to both the ``language`` and ``version`` values. You
-   can also omit values from the scheme for desired behavior.
+.. note:: The extension automatically appends trailing slashes to both the ``language`` and ``version`` values.
+   You can also omit values from the scheme for desired behavior.
 
 
 .. _configuration_changing_filename:
@@ -41,94 +39,76 @@ Set :confval:`sitemap_filename` in **conf.py** to the desired filename, for exam
 
    sitemap_filename = "sitemap.xml"
 
-Supporting Multiple Versions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Version Support
+^^^^^^^^^^^^^^^
 
-For multi-version sitemaps, it is required to generate a sitemap per version and
-then manually add their locations to a `sitemapindex.xml`_ file.
+:confval:`version` specifies the version of the sitemap.
+For multi-version sitemaps, generate a sitemap per version and then manually add each to a `sitemapindex.xml`_ file.
 
-The extension will look at :confval:`version` for the current version being built,
-so make sure that is set.
+.. tip:: Set the canonical URL in the theme layout of all versions to the latest version of that page, for example:
 
-.. note:: When using multiple versions, it is best practice to set the canonical
-   URL in the theme layout of all versions to the latest version of that page::
+   .. code-block:: html
 
-     <link rel="canonical" href="https://my-site.com/docs/latest/index.html"/>
+      <link rel="canonical" href="https://my-site.com/docs/latest/index.html"/>
 
 .. _configuration_supporting_multiple_languages:
 
-Supporting Multiple Languages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Language Support
+^^^^^^^^^^^^^^^^
 
-For multilingual sitemaps, generate a sitemap per language/locale and then manually
-add their locations to a `sitemapindex.xml`_ file.
+:confval:`language` specifies the primary language. Any alternative languages get detected using the contents of :confval:`locale_dirs`.
 
-The primary language is set by :confval:`language`. Alternative languages
-are either manually set by :confval:`sitemap_locales` or auto-detected by the
-extension from :confval:`locale_dirs`, so make sure one of those is set.
+For example, with a primary language of **en**, and **es** and **fr** as detected translations, the sitemap look like this:
 
-``sitemap_locales`` configuration is to specify a list of locales to include in
-the sitemap. For instance, if a third-party extension adds unsupported languages to
-:confval:`locale_dirs`, or to allow locales to reach a certain translated percentage before
-making them public. For example, if the primary language is `en`, and a list with
-`es` and `fr` translations specified, the sitemap look like this::
+.. code-block:: xml
 
-    <?xml version="1.0" encoding="utf-8"?>
-      <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        <url>
-          <loc>https://my-site.com/docs/en/index.html</loc>
-          <xhtml:link href="https://my-site.com/docs/es/index.html" hreflang="es" rel="alternate"/>
-          <xhtml:link href="https://my-site.com/docs/fr/index.html" hreflang="fr" rel="alternate"/>
-          <xhtml:link href="https://my-site.com/docs/en/index.html" hreflang="en" rel="alternate"/>
-        </url>
-        <url>
-            <loc>https://my-site.com/docs/en/about.html</loc>
-            <xhtml:link href="https://my-site.com/docs/es/about.html" hreflang="es" rel="alternate"/>
-            <xhtml:link href="https://my-site.com/docs/fr/about.html" hreflang="fr" rel="alternate"/>
-            <xhtml:link href="https://my-site.com/docs/en/about.html" hreflang="en" rel="alternate"/>
-        </url>
-      </urlset>
+   <?xml version="1.0" encoding="utf-8"?>
+   <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+     <url>
+       <loc>https://my-site.com/docs/en/index.html</loc>
+       <xhtml:link href="https://my-site.com/docs/es/index.html" hreflang="es" rel="alternate"/>
+       <xhtml:link href="https://my-site.com/docs/fr/index.html" hreflang="fr" rel="alternate"/>
+       <xhtml:link href="https://my-site.com/docs/en/index.html" hreflang="en" rel="alternate"/>
+     </url>
+     <url>
+       <loc>https://my-site.com/docs/en/about.html</loc>
+       <xhtml:link href="https://my-site.com/docs/es/about.html" hreflang="es" rel="alternate"/>
+       <xhtml:link href="https://my-site.com/docs/fr/about.html" hreflang="fr" rel="alternate"/>
+       <xhtml:link href="https://my-site.com/docs/en/about.html" hreflang="en" rel="alternate"/>
+     </url>
+   </urlset>
 
-When the sitemap locales are limited:
+Use :confval:`sitemap_locales` to manually specify a list of locales to include in the sitemap:
 
 .. code-block:: python
 
    sitemap_locales = ['en', 'es']
 
-The end result is something like the following for each language/version build::
+The end result looks something like the following for each language/version build:
 
-  <?xml version="1.0" encoding="utf-8"?>
-  <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-      <loc>https://my-site.com/docs/en/index.html</loc>
-      <xhtml:link href="https://my-site.com/docs/es/index.html" hreflang="es" rel="alternate"/>
-      <xhtml:link href="https://my-site.com/docs/en/index.html" hreflang="en" rel="alternate"/>
-    </url>
-    <url>
-      <loc>https://my-site.com/docs/en/about.html</loc>
-      <xhtml:link href="https://my-site.com/docs/es/about.html" hreflang="es" rel="alternate"/>
-      <xhtml:link href="https://my-site.com/docs/en/about.html" hreflang="en" rel="alternate"/>
-    </url>
-  </urlset>
+.. code-block:: xml
 
-When the special value of ``[None]`` is set:
+   <?xml version="1.0" encoding="utf-8"?>
+   <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+     <url>
+       <loc>https://my-site.com/docs/en/index.html</loc>
+       <xhtml:link href="https://my-site.com/docs/es/index.html" hreflang="es" rel="alternate"/>
+       <xhtml:link href="https://my-site.com/docs/en/index.html" hreflang="en" rel="alternate"/>
+     </url>
+     <url>
+       <loc>https://my-site.com/docs/en/about.html</loc>
+       <xhtml:link href="https://my-site.com/docs/es/about.html" hreflang="es" rel="alternate"/>
+       <xhtml:link href="https://my-site.com/docs/en/about.html" hreflang="en" rel="alternate"/>
+     </url>
+   </urlset>
+
+To generate the primary language with no alternatives, set :confval:`sitemap_locales` to ``[None]``:
 
 .. code-block:: python
 
    sitemap_locales = [None]
 
-only the primary language is generated::
-
-  <?xml version="1.0" encoding="utf-8"?>
-  <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-      <loc>https://my-site.com/docs/en/index.html</loc>
-    </url>
-    <url>
-      <loc>https://my-site.com/docs/en/about.html</loc>
-    </url>
-  </urlset>
-
+For multilingual sitemaps, generate a sitemap per language and then manually add each to a `sitemapindex.xml`_ file.
 
 .. _sitemapindex.xml: https://support.google.com/webmasters/answer/75712?hl=en
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
