@@ -112,7 +112,7 @@ Changelog
 *Release date: 2019-01-17*
 
 * |:wrench:| MAINT: Use native ``html_baseurl``, instead of the custom ``site_url``. It checks for both for backwards compatibility.
-* |:sparkles:| Add support for multiple languages.
+* |:sparkles:| NEW: Add support for multiple languages.
 
 0.3.1
 -----
