@@ -60,11 +60,16 @@ See :doc:`configuration` for more information about how to use **sphinx-sitemap*
 
 .. |PyPI version| image:: https://img.shields.io/pypi/v/sphinx-sitemap.svg
    :target: https://pypi.python.org/pypi/sphinx-sitemap
+   :alt: Latest PyPi Version
 .. |Conda Forge| image:: https://img.shields.io/conda/vn/conda-forge/sphinx-sitemap.svg
    :target: https://anaconda.org/conda-forge/sphinx-sitemap
+   :alt: Latest Conda Forge version
 .. |Downloads| image:: https://pepy.tech/badge/sphinx-sitemap/month
     :target: https://pepy.tech/project/sphinx-sitemap
+    :alt: PyPi Downloads per month
 .. |Parallel Safe| image:: https://img.shields.io/badge/parallel%20safe-true-brightgreen
    :target: #
+   :alt: Parallel read/write safe
 .. |GitHub Stars| image:: https://img.shields.io/github/stars/jdillard/sphinx-sitemap?style=social
+   :target: https://github.com/jdillard/sphinx-sitemap
    :alt: GitHub Repo stars
