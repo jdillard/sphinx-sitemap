@@ -18,7 +18,7 @@ from multiprocessing import Manager
 
 from sphinx.util.logging import getLogger
 
-__version__ = "2.3.0"
+__version__ = "2.4.0"
 
 logger = getLogger(__name__)
 
