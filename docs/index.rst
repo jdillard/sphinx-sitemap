@@ -5,7 +5,7 @@ A `Sphinx`_ extension to generate multi-version and multi-language
 `sitemaps.org`_ compliant sitemaps for the HTML version of your Sphinx
 documentation.
 
-|PyPI version| |Conda Forge| |Downloads| |Code style: Black| |Parallel Safe| |Docs Build|
+|PyPI version| |Conda Forge| |Downloads| |Parallel Safe| |GitHub Stars|
 
 Install
 -------
@@ -64,10 +64,7 @@ See :doc:`configuration` for more information about how to use **sphinx-sitemap*
    :target: https://anaconda.org/conda-forge/sphinx-sitemap
 .. |Downloads| image:: https://pepy.tech/badge/sphinx-sitemap/month
     :target: https://pepy.tech/project/sphinx-sitemap
-.. |Code style: Black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
-   :target: https://github.com/psf/black
 .. |Parallel Safe| image:: https://img.shields.io/badge/parallel%20safe-true-brightgreen
    :target: #
-.. |Docs Build| image:: https://readthedocs.org/projects/sphinx-sitemap/badge/?version=latest
-   :target: https://sphinx-sitemap.readthedocs.io/en/latest/?badge=latest
-   :alt: Documentation Status
+.. |GitHub Stars| image:: https://img.shields.io/github/stars/jdillard/sphinx-sitemap?style=social
+   :alt: GitHub Repo stars
