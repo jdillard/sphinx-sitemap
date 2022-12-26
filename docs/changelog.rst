@@ -6,7 +6,7 @@ Changelog
 2.4.0
 -----
 
-*Release date: TBD*
+*Release date: 2022-12-26*
 
 * |:books:| DOCS: Add ReadTheDocs docs
   `#45 <https://github.com/jdillard/sphinx-sitemap/pull/45>`_
