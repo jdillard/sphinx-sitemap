@@ -58,7 +58,7 @@ Language Support
 
 :confval:`language` specifies the primary language. Any alternative languages get detected using the contents of :confval:`locale_dirs`.
 
-For example, with a primary language of `en`, and `es` and `fr` as detected translations, the sitemap look like this:
+For example, with a primary language of **en**, and **es** and **fr** as detected translations, the sitemap look like this:
 
 .. code-block:: xml
 

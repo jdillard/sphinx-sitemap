@@ -21,7 +21,7 @@ Or with ``conda`` via ``conda-forge``::
 Use
 ---
 
-Add ``sphinx_sitemap`` to the :confval:`extensions` array in your Sphinx **conf.py**.
+Add ``sphinx_sitemap`` to :confval:`extensions` in your Sphinx **conf.py**.
 For example:
 
 .. code-block:: python
