@@ -39,6 +39,7 @@ release = ""
 # ones.
 extensions = [
     "sphinx_sitemap",
+    "sphinxemoji.sphinxemoji",
     "sphinx.ext.intersphinx",
 ]
 
