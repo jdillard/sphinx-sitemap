@@ -1,17 +1,22 @@
 Getting the Most out of the Sitemap
 ===================================
 
-#. Add a **robots.txt** file in the **source** directory which contains a link to
-   the **sitemap.xml** or **sitemapindex.xml** file. For example::
+Using robots.txt
+----------------
 
-     User-agent: *
+Add a **robots.txt** file in the **source** directory which contains a link to the **sitemap.xml** or **sitemapindex.xml** file. For example::
 
-     Sitemap: https://my-site.com/docs/sitemap.xml
+  User-agent: *
 
-   Then, add **robots.txt** to :confval:`html_extra_path` in **conf.py**:
+  Sitemap: https://my-site.com/docs/sitemap.xml
 
-   .. code-block:: python
+Then, add **robots.txt** to :confval:`html_extra_path` in **conf.py**:
 
-     html_extra_path = ['robots.txt']
+.. code-block:: python
 
-#. Submit the **sitemap.xml** or **sitemapindex.xml** to the appropriate search engine tools.
+  html_extra_path = ['robots.txt']
+
+Submit Sitemap to Search Engines
+--------------------------------
+
+Submit the **sitemap.xml** or **sitemapindex.xml** to the appropriate search engine tools.
