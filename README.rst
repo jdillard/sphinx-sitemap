@@ -5,7 +5,8 @@ A `Sphinx`_ extension to generate multiversion and multilanguage
 `sitemaps.org`_ compliant sitemaps for the HTML version of your Sphinx
 documentation.
 
-|PyPI version| |Conda Forge| |Downloads| |Code style: Black| |Parallel Safe| |Docs Build|
+| |PyPI version| |Conda Forge| |Downloads| |Parallel Safe|
+| |Code style: Black| |Docs Build| |CI Workflow|
 
 Documentation
 -------------
@@ -46,3 +47,5 @@ also licensed under the MIT license.
 .. |Docs Build| image:: https://readthedocs.org/projects/sphinx-sitemap/badge/?version=latest
    :target: https://sphinx-sitemap.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
+.. |CI Workflow| image:: https://github.com/jdillard/sphinx-sitemap/actions/workflows/continuous-integration.yml/badge.svg
+   :target: https://github.com/jdillard/sphinx-sitemap/actions/workflows/continuous-integration.yml
