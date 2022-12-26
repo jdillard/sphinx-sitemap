@@ -20,6 +20,8 @@ Changelog
   `#49 <https://github.com/jdillard/sphinx-sitemap/pull/49>`_
 * |:bug:| FIX: Fix wheel includes so they don't include docs and tests
   `#51 <https://github.com/jdillard/sphinx-sitemap/pull/51>`_
+* |:books:| DOCS: Add write-good and improve writing
+  `#52 <https://github.com/jdillard/sphinx-sitemap/pull/52>`_
 
 2.3.0
 -----
