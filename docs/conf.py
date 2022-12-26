@@ -40,6 +40,7 @@ release = ""
 extensions = [
     "sphinx_sitemap",
     "sphinxemoji.sphinxemoji",
+    "sphinx_contributors",
     "sphinx.ext.intersphinx",
 ]
 

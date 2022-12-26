@@ -40,3 +40,13 @@ Testing your changes
 
 
 .. _third party extension: http://www.sphinx-doc.org/en/master/ext/thirdparty.html
+
+Current Contributors
+--------------------
+
+Thanks to all who have contributed!
+The people that have improved the code:
+
+.. contributors:: jdillard/sphinx-sitemap
+    :avatars:
+    :order: ASC
