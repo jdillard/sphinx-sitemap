@@ -11,6 +11,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+import re
 import subprocess
 
 # -- Project information -----------------------------------------------------
@@ -21,7 +22,7 @@ author = "Jared Dillard"
 
 GIT_TAG_OUTPUT = subprocess.check_output(["git", "tag", "--points-at", "HEAD"])
 current_tag = GIT_TAG_OUTPUT.decode().strip()
-if current_tag:
+if re.match(r"^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$", current_tag):
     version = current_tag
 else:
     version = "latest"
