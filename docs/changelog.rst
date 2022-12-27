@@ -3,6 +3,14 @@
 Changelog
 =========
 
+2.4.1
+-----
+
+*Release date: TBD*
+
+* |:books:| DOCS: Calculate version for sitemap based on current tag
+  `#53 <https://github.com/jdillard/sphinx-sitemap/pull/53>`_
+
 2.4.0
 -----
 
