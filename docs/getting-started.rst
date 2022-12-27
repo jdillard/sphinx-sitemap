@@ -12,8 +12,8 @@ Or with ``conda`` via ``conda-forge``::
 
     conda install -c conda-forge sphinx-sitemap
 
-Useage
-------
+Usage
+-----
 
 Add ``sphinx_sitemap`` to :confval:`extensions` in your Sphinx **conf.py**.
 For example:
@@ -35,4 +35,4 @@ After the HTML finishes building, **sphinx-sitemap** will output the location of
 
 .. tip:: Make sure to confirm the accuracy of the sitemap after installs and upgrades.
 
-See :doc:`configuration` for more information about how to use **sphinx-sitemap**.
+See :doc:`advanced-configuration` for more information about how to use **sphinx-sitemap**.

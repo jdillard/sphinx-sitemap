@@ -11,8 +11,8 @@ documentation.
    :maxdepth: 2
 
    getting-started
-   configuration
-   seo
+   advanced-configuration
+   search-engine-optimization
    configuration-values
    contributing
    changelog

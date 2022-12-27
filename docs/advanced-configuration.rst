@@ -45,6 +45,21 @@ Version Support
 :confval:`version` specifies the version of the sitemap.
 For multi-version sitemaps, generate a sitemap per version and then manually add each to a `sitemapindex.xml`_ file.
 
+Tagged Releases
+~~~~~~~~~~~~~~~
+
+For a tagged release deploy strategy where the ``latest`` gets created from head of the branch and versions get created from tagged commits, check to see if the current commit matches the release tag regex and set :confval:`version` accordingly.
+
+.. code-block:: python
+
+   # check if the current commit is tagged as a release (vX.Y.Z) and set the version
+   GIT_TAG_OUTPUT = subprocess.check_output(["git", "tag", "--points-at", "HEAD"])
+   current_tag = GIT_TAG_OUTPUT.decode().strip()
+   if re.match(r"^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$", current_tag):
+       version = current_tag
+   else:
+       version = "latest"
+
 .. tip:: Set the canonical URL in the theme layout of all versions to the latest version of that page, for example:
 
    .. code-block:: html
