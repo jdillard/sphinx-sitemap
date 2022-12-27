@@ -71,4 +71,4 @@ See :doc:`configuration` for more information about how to use **sphinx-sitemap*
    :alt: Parallel read/write safe
 .. |GitHub Stars| image:: https://img.shields.io/github/stars/jdillard/sphinx-sitemap?style=social
    :target: https://github.com/jdillard/sphinx-sitemap
-   :alt: GitHub Repo stars
+   :alt: GitHub Repository stars
