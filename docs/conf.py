@@ -11,10 +11,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
-
+import re
+import subprocess
 
 # -- Project information -----------------------------------------------------
 
@@ -22,8 +20,13 @@ project = "Sphinx Sitemap"
 copyright = "Jared Dillard"
 author = "Jared Dillard"
 
-# The short X.Y version
-version = ""
+# check if the current commit is tagged as a release (vX.Y.Z)
+GIT_TAG_OUTPUT = subprocess.check_output(["git", "tag", "--points-at", "HEAD"])
+current_tag = GIT_TAG_OUTPUT.decode().strip()
+if re.match(r"^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$", current_tag):
+    version = current_tag
+else:
+    version = "latest"
 # The full version, including alpha/beta/rc tags
 release = ""
 
