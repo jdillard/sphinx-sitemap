@@ -1,0 +1,5 @@
+furo
+sphinx-contributors
+sphinx
+sphinx-sitemap
+sphinxemoji

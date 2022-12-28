@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.7', '3.8',  '3.9', '3.10']
+        python-version: ['3.7', '3.8',  '3.9', '3.10', '3.11']
     steps:
       - uses: actions/checkout@v2
       - name: Setup Python versions
@@ -40,3 +40,14 @@ jobs:
       - name: Run Tests for ${{ matrix.python-version }}
         run: |
           python -m tox
+  vale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: errata-ai/vale-action@reviewdog
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          files: docs
+          # github-pr-check, github-pr-review, github-check
+          reporter: github-pr-check

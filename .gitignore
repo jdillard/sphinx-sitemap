@@ -1,7 +1,16 @@
 *.pyc
+.idea/
+
+# Unit test / coverage reports
 .tox
+
+# Distribution / packaging
 *.egg-info/
 dist/
 build/
-.idea/
+
+# Environments
 .venv
+
+# Sphinx documentation
+docs/_build/
