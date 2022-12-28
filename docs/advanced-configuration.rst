@@ -8,9 +8,8 @@ Customizing the URL Scheme
 
 :confval:`sitemap_url_scheme` defaults to ``{lang}{version}{link}``, where ``{lang}`` and ``{version}`` get set by :confval:`language` and :confval:`version` in **conf.py**.
 
-.. important:: As of Sphinx version 5, the :confval:`language` config value defaults to ``"en"``, as
-   opposed to the previous behavior of being blank, if that makes the default scheme produce
-   the incorrect url, then change the default scheme. You may also want to look at :ref:`` section below to help ensure the sitemap stays accurate.
+.. important:: As of Sphinx version 5, :confval:`language` defaults to ``"en"``, if that makes the default scheme produce
+   the incorrect URL, then change the default scheme. You may also want to look at :ref:`` section below to help ensure the sitemap stays accurate.
 
 To change the default behavior, set the value of :confval:`sitemap_url_scheme` in **conf.py** to the
 desired format. For example:
@@ -37,9 +36,8 @@ Setting up URL Validation
 Use :confval:`sitemap_validator_urls` to setup URL validation, where a dictionary of lists is used to
 validate one or more URLS for a given build.
 
-The keys for the dictionary are a concatenation of the :confval:`language` and :confval:`version` config
-values for that build, where the string ``"nil"`` is set for the key if both the language and
-version are not set. For example, to setup validation for multiple builds:
+The keys for the dictionary are a concatenation of :confval:`language` and :confval:`version` for that build, where the string ``"nil"`` is set for the key if both the language and version are not set.
+For example, to setup validation for multiple builds:
 
 .. code-block:: python
 
@@ -56,10 +54,8 @@ or an example for a single build:
        'nil': ['https://my-site.com/en/latest/index.html', 'https://my-site..com/en/latest/test.html'],
    }
    
-For single builds, you can choose to set :confval:`sitemap_validator_required` to validate that the
-:confval:`language` and :confval:`version` config values are concatenated as expected, where the string
-``nil`` is used if both the language and version are not set. For example, if :confval:`language` is
-set to ``"en"`` and :confval:`version` is set to ``"latest"``:
+For single builds, set :confval:`sitemap_validator_required` to validate that :confval:`language` and :confval:`version` are concatenated as expected, with ``"nil"`` being used without :confval:`language` and :confval:`version` being set.
+For example, with :confval:`language` set to ``"en"`` and :confval:`version` set to ``"latest"``:
 
 .. code-block:: python
 
