@@ -106,7 +106,7 @@ def add_html_link(app, pagename, templatename, context, doctree):
         else:
             sitemap_link = pagename + "/"
     else:
-        sitemap_link = pagename + ".html"
+        sitemap_link = pagename + app.builder.config.html_file_suffix
 
     env.sitemap_links.put(sitemap_link)
 
