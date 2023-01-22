@@ -95,6 +95,10 @@ def hreflang_formatter(lang):
 def add_html_link(app, pagename, templatename, context, doctree):
     """As each page is built, collect page names for the sitemap"""
     env = app.builder.env
+    if app.builder.config.html_file_suffix is None:
+        file_suffix = ".html"
+    else:
+        file_suffix = app.builder.config.html_file_suffix
 
     # Support DirectoryHTMLBuilder path structure
     # where generated links between pages omit the index.html
@@ -106,7 +110,7 @@ def add_html_link(app, pagename, templatename, context, doctree):
         else:
             sitemap_link = pagename + "/"
     else:
-        sitemap_link = pagename + ".html"
+        sitemap_link = pagename + file_suffix
 
     env.sitemap_links.put(sitemap_link)
 
