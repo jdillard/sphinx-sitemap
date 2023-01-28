@@ -12,6 +12,8 @@ Changelog
   `#53 <https://github.com/jdillard/sphinx-sitemap/pull/53>`_
 * |:test_tube:| TESTS: Add Sphinx 6 env to tox 
   `#55 <https://github.com/jdillard/sphinx-sitemap/pull/55>`_
+* |:books:| DOCS: Add site search optimization
+  `#58 <https://github.com/jdillard/sphinx-sitemap/pull/58>`_
 
 2.4.0
 -----

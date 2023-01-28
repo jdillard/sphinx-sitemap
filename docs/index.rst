@@ -12,7 +12,7 @@ documentation.
 
    getting-started
    advanced-configuration
-   search-engine-optimization
+   search-optimization
    configuration-values
    contributing
    changelog
