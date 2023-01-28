@@ -3,15 +3,17 @@
 Changelog
 =========
 
-2.4.1
+2.5.0
 -----
 
-*Release date: TBD*
+*Release date: 2023-01-28*
 
 * |:books:| DOCS: Calculate version for sitemap based on current tag
   `#53 <https://github.com/jdillard/sphinx-sitemap/pull/53>`_
 * |:test_tube:| TESTS: Add Sphinx 6 env to tox 
   `#55 <https://github.com/jdillard/sphinx-sitemap/pull/55>`_
+* |:sparkles:| NEW: Add support for Sphinx config "html_file_suffix"
+  `#57 <https://github.com/jdillard/sphinx-sitemap/pull/57>`_
 * |:books:| DOCS: Add site search optimization
   `#58 <https://github.com/jdillard/sphinx-sitemap/pull/58>`_
 
