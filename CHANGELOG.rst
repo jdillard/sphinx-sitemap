@@ -14,6 +14,8 @@ Changelog
   `#55 <https://github.com/jdillard/sphinx-sitemap/pull/55>`_
 * |:sparkles:| NEW: Add support for Sphinx config "html_file_suffix"
   `#57 <https://github.com/jdillard/sphinx-sitemap/pull/57>`_
+* |:books:| DOCS: Add site search optimization
+  `#58 <https://github.com/jdillard/sphinx-sitemap/pull/58>`_
 
 2.4.0
 -----
