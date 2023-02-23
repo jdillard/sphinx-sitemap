@@ -30,7 +30,8 @@ def setup(app):
         "sitemap_url_scheme", default="{lang}{version}{link}", rebuild=""
     )
     app.add_config_value("sitemap_locales", default=None, rebuild="")
-
+    app.add_config_value("sitemap_validator_urls", default={}, rebuild="")
+    app.add_config_value("sitemap_validator_required", default=None, rebuild="")
     app.add_config_value("sitemap_filename", default="sitemap.xml", rebuild="")
 
     try:
@@ -115,6 +116,47 @@ def add_html_link(app, pagename, templatename, context, doctree):
     env.sitemap_links.put(sitemap_link)
 
 
+def validate_sitemap(app, filename):
+    """
+    If sitemap_validator_required is set, then make sure the concatenated language and
+    version match the given string.
+
+    If sitemap_validator_urls is set, then use to check that all of the given URLs
+    for the current language and version are included in the sitemap.
+    """
+    key = "{}{}".format(app.config.language or "", app.config.version or "")
+    key = key or "nil"
+
+    if (
+        app.config.sitemap_validator_required
+        and key != app.config.sitemap_validator_required
+    ):
+        logger.warning(
+            "Sitemap failed validation. {} does not match the required {}".format(
+                key, app.config.sitemap_validator_required
+            ),
+            type="sitemap",
+            subtype="validation",
+        )
+
+    passed = True
+    if app.config.sitemap_validator_urls and key in app.config.sitemap_validator_urls:
+        with open(filename, "r") as myfile:
+            sitemap = myfile.read()
+            # if any of the urls don't match, throw a warning
+            for url in app.config.sitemap_validator_urls[key]:
+                if url not in sitemap:
+                    passed = False
+                    logger.warning(
+                        "Sitemap failed validation. {} not found in {}".format(
+                            url, filename
+                        ),
+                        type="sitemap",
+                        subtype="validation",
+                    )
+    return passed
+
+
 def create_sitemap(app, exception):
     """Generates the sitemap.xml from the collected HTML page links"""
     site_url = app.builder.config.site_url or app.builder.config.html_baseurl
@@ -179,6 +221,8 @@ def create_sitemap(app, exception):
     ET.ElementTree(root).write(
         filename, xml_declaration=True, encoding="utf-8", method="xml"
     )
+
+    validate_sitemap(app, filename)
 
     logger.info(
         "sphinx-sitemap: %s was generated for URL %s in %s"

@@ -8,8 +8,8 @@ Customizing the URL Scheme
 
 :confval:`sitemap_url_scheme` defaults to ``{lang}{version}{link}``, where ``{lang}`` and ``{version}`` get set by :confval:`language` and :confval:`version` in **conf.py**.
 
-.. important:: As of Sphinx version 5, ``language`` defaults to ``"en"``, if that
-   makes the default scheme produce the incorrect URL, then change the default behavior.
+.. important:: As of Sphinx version 5, :confval:`language` defaults to ``"en"``, if that makes the default scheme produce
+   the incorrect URL, then change the default scheme. You may also want to look at :ref:`` section below to help ensure the sitemap stays accurate.
 
 To change the default behavior, set the value of :confval:`sitemap_url_scheme` in **conf.py** to the
 desired format. For example:
@@ -27,6 +27,39 @@ Or for nested deployments, something like:
 .. note:: The extension automatically appends trailing slashes to both the ``language`` and ``version`` values.
    You can also omit values from the scheme for desired behavior.
 
+
+.. _configuration_url_validation:
+
+Setting up URL Validation
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use :confval:`sitemap_validator_urls` to setup URL validation, where a dictionary of lists is used to
+validate one or more URLS for a given build.
+
+The keys for the dictionary are a concatenation of :confval:`language` and :confval:`version` for that build, where the string ``"nil"`` is set for the key if both the language and version are not set.
+For example, to setup validation for multiple builds:
+
+.. code-block:: python
+
+   sitemap_validator_urls = {
+       'enlatest': ['https://my-site.com/en/latest/index.html', 'https://my-site..com/en/latest/test.html'],
+       'delatest': ['https://my-site.com/de/latest/index.html', 'https://my-site..com/de/latest/test.html'],
+   }
+
+or an example for a single build:
+
+.. code-block:: python
+
+   sitemap_validator_urls = {
+       'nil': ['https://my-site.com/en/latest/index.html', 'https://my-site..com/en/latest/test.html'],
+   }
+   
+For single builds, set :confval:`sitemap_validator_required` to validate that :confval:`language` and :confval:`version` are concatenated as expected, with ``"nil"`` being used without :confval:`language` and :confval:`version` being set.
+For example, with :confval:`language` set to ``"en"`` and :confval:`version` set to ``"latest"``:
+
+.. code-block:: python
+
+   sitemap_validator_required = 'enlatest'
 
 .. _configuration_changing_filename:
 
