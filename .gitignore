@@ -1,5 +1,6 @@
 *.pyc
 .idea/
+*.code-workspace
 
 # Unit test / coverage reports
 .tox
@@ -14,3 +15,7 @@ build/
 
 # Sphinx documentation
 docs/_build/
+
+# vale packages
+docs/_vale/Microsoft/
+docs/_vale/write-good/
