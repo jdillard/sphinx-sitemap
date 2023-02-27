@@ -63,8 +63,8 @@ Thanks to all who have contributed!
 The people that have improved the code:
 
 .. contributors:: jdillard/sphinx-sitemap
-    :avatars:
-    :order: ASC
+   :avatars:
+   :order: ASC
 
 
 .. _sphinx-sitemap repository: https://github.com/jdillard/sphinx-sitemap

@@ -1,11 +1,11 @@
-Sphinx-sitemap
+sphinx-sitemap
 ==============
-
-|PyPI version| |Conda Forge| |Downloads| |Parallel Safe| |GitHub Stars|
 
 A `Sphinx`_ extension to generate multi-version and multi-language
 `sitemaps.org`_ compliant sitemaps for the HTML version of your Sphinx
 documentation.
+
+|PyPI version| |Conda Forge| |Downloads| |Parallel Safe| |GitHub Stars|
 
 .. toctree::
    :maxdepth: 2

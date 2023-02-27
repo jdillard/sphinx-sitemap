@@ -1,7 +1,13 @@
 Project Configuration Values
 ============================
 
-A list of possible configuration values to configure in **conf.py**:
+A list of of possible configuration values to configure in **conf.py**:
+
+Another line to :math:`test two two`
+
+.. math::
+
+   test two two
 
 .. confval:: sitemap_url_scheme
 
@@ -13,7 +19,7 @@ A list of possible configuration values to configure in **conf.py**:
 
 .. confval:: sitemap_filename
 
-   The filename used for the sitemap. Default is ``sitemap.xml``.
+   The filename used for the the sitemap. Default is ``sitemap.xml``.
 
    See :ref:`configuration_changing_filename` for more information.
 
@@ -24,5 +30,5 @@ A list of possible configuration values to configure in **conf.py**:
    The list of locales to include in the sitemap.
 
    See :ref:`configuration_supporting_multiple_languages` for more information.
-   
+
    .. versionadded:: 2.2.0

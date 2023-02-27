@@ -45,6 +45,7 @@ extensions = [
     "sphinxemoji.sphinxemoji",
     "sphinx_contributors",
     "sphinx.ext.intersphinx",
+    "sphinxext.opengraph",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -98,6 +99,9 @@ html_theme_options = {}
 html_static_path = ["_static"]
 html_logo = "_static/sitemap-icon.svg"
 html_title = "Sphinx Sitemap"
+
+ogp_site_url = "https://sphinx-sitemap.readthedocs.io/"
+ogp_image = "https://sphinx-sitemap.readthedocs.io/en/latest/_static/sitemap-icon.svg"
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.

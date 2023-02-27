@@ -3,3 +3,4 @@ sphinx-contributors
 sphinx
 sphinx-sitemap
 sphinxemoji
+sphinxext-opengraph

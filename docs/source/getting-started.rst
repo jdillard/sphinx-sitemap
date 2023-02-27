@@ -4,13 +4,17 @@ Getting Started
 Installation
 ------------
 
-Directly install via ``pip`` by using::
+Directly install via ``pip`` by using:
 
-    pip install sphinx-sitemap
+.. code::
 
-Or with ``conda`` via ``conda-forge``::
+   pip install sphinx-sitemap
 
-    conda install -c conda-forge sphinx-sitemap
+Or with ``conda`` via ``conda-forge``:
+
+.. code::
+
+   conda install -c conda-forge sphinx-sitemap
 
 Usage
 -----
@@ -18,14 +22,14 @@ Usage
 Add ``sphinx_sitemap`` to :confval:`extensions` in your Sphinx **conf.py**.
 For example:
 
-.. code-block:: python
+.. code:: python
 
    extensions = ['sphinx_sitemap']
 
 Set the value of :confval:`html_baseurl` in your Sphinx **conf.py** to the current
 base URL of your documentation. For example:
 
-.. code-block:: python
+.. code:: python
 
    html_baseurl = 'https://my-site.com/docs/'
 
