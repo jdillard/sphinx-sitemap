@@ -1,4 +1,5 @@
 furo
+esbonio
 sphinx-contributors
 sphinx
 sphinx-sitemap
