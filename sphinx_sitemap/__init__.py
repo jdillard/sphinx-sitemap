@@ -77,7 +77,7 @@ def record_builder_type(app):
     if builder is None:
         return
     builder.env.is_directory_builder = type(builder).__name__ == "DirectoryHTMLBuilder"
-    builder.env.sitemap_links = Manager().Queue()
+    builder.env.app.sitemap_links = Manager().Queue()
 
 
 def hreflang_formatter(lang):
@@ -112,7 +112,7 @@ def add_html_link(app, pagename, templatename, context, doctree):
     else:
         sitemap_link = pagename + file_suffix
 
-    env.sitemap_links.put(sitemap_link)
+    env.app.sitemap_links.put(sitemap_link)
 
 
 def create_sitemap(app, exception):
@@ -128,8 +128,7 @@ def create_sitemap(app, exception):
         )
         return
 
-    env = app.builder.env
-    if env.sitemap_links.empty():
+    if app.env.app.sitemap_links.empty():
         logger.info(
             "sphinx-sitemap: No pages generated for %s" % app.config.sitemap_filename,
             type="sitemap",
@@ -150,7 +149,7 @@ def create_sitemap(app, exception):
 
     while True:
         try:
-            link = env.sitemap_links.get_nowait()
+            link = app.env.app.sitemap_links.get_nowait()
         except queue.Empty:
             break
 
