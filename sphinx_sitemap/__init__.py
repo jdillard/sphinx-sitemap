@@ -117,7 +117,7 @@ def hreflang_formatter(lang: str) -> str:
     return lang
 
 
-def add_html_link(app: Sphinx, pagename: str):
+def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
     """
     As each page is built, collect page names for the sitemap
 
@@ -145,7 +145,7 @@ def add_html_link(app: Sphinx, pagename: str):
     env.sitemap_links.put(sitemap_link)
 
 
-def create_sitemap(app: Sphinx):
+def create_sitemap(app: Sphinx, exception):
     """
     Generates the sitemap.xml from the collected HTML page links.
 
