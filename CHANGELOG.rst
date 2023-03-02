@@ -3,6 +3,14 @@
 Changelog
 =========
 
+2.5.1
+-----
+
+*Release date: TBD*
+
+* |:bug:| FIX: Fix incremental building by preventing multiprocessing queue from being pickled with environment
+  `#62 <https://github.com/jdillard/sphinx-sitemap/pull/62>`_
+
 2.5.0
 -----
 
