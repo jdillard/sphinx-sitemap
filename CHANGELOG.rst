@@ -10,6 +10,8 @@ Changelog
 
 * |:bug:| FIX: Fix incremental building by preventing multiprocessing queue from being pickled with environment
   `#62 <https://github.com/jdillard/sphinx-sitemap/pull/62>`_
+* |:wrench:| MAINT: Add docstrings and type hints
+  `#61 <https://github.com/jdillard/sphinx-sitemap/pull/61>`_
 
 2.5.0
 -----
