@@ -132,7 +132,7 @@ def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
 
     # Support DirectoryHTMLBuilder path structure
     # where generated links between pages omit the index.html
-    if env.is_directory_builder:
+    if env.is_directory_builder:  # type: ignore
         if pagename == "index":
             sitemap_link = ""
         elif pagename.endswith("/index"):
@@ -142,7 +142,7 @@ def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
     else:
         sitemap_link = pagename + file_suffix
 
-    env.app.sitemap_links.put(sitemap_link)
+    env.app.sitemap_links.put(sitemap_link)  # type: ignore
 
 
 def create_sitemap(app: Sphinx, exception):
@@ -162,7 +162,7 @@ def create_sitemap(app: Sphinx, exception):
         )
         return
 
-    if app.env.app.sitemap_links.empty():
+    if app.env.app.sitemap_links.empty():  # type: ignore
         logger.info(
             "sphinx-sitemap: No pages generated for %s" % app.config.sitemap_filename,
             type="sitemap",
@@ -185,7 +185,7 @@ def create_sitemap(app: Sphinx, exception):
 
     while True:
         try:
-            link = app.env.app.sitemap_links.get_nowait()
+            link = app.env.app.sitemap_links.get_nowait()  # type: ignore
         except queue.Empty:
             break
 
