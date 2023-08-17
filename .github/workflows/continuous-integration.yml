@@ -21,6 +21,16 @@ jobs:
     strategy:
       matrix:
         python-version: ['3.7', '3.8',  '3.9', '3.10', '3.11']
+        sphinx-version: ['']
+      include:
+        - python-version: '3.11'
+          sphinx-version: 'dev'
+        - python-version: '3.10'
+          sphinx-version: '7'
+        - python-version: '3.10'
+          sphinx-version: '6'
+        - python-version: '3.9'
+          sphinx-version: '5'
     steps:
       - uses: actions/checkout@v2
       - name: Setup Python versions
@@ -29,11 +39,19 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Python dependencies
         run: |
-          set -xe
+          set -eo pipefail
+          if [[ ${{ matrix.sphinx-version }} != "" ]]; then
+            if [[ ${{ matrix.sphinx-version }} == "dev" ]]; then
+              SPHINX_INSTALL="git+https://github.com/sphinx-doc/sphinx.git"
+            else
+              SPHINX_INSTALL="sphinx==${{ matrix.sphinx-version }}.*"
+            fi
+          fi
+          set -x
           python -VV
           python -m site
           python -m pip install --upgrade pip setuptools wheel
-          pip install -r requirements_dev.txt
+          pip install -r requirements_dev.txt $SPHINX_INSTALL
       - name: Install Package
         run: |
           python -m pip install .
