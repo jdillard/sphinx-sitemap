@@ -1,3 +1,4 @@
+import os
 from xml.etree import ElementTree as etree
 
 import pytest
@@ -12,7 +13,7 @@ def test_parallel(app, status, warning):
     app.parallel = 2
     app.warningiserror = True
     app.build()
-    assert "sitemap.xml" in app.outdir.listdir()
+    assert "sitemap.xml" in os.listdir(app.outdir)
     doc = etree.parse(app.outdir / "sitemap.xml")
     urls = {
         e.text
