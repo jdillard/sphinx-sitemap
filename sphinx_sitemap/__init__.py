@@ -12,9 +12,9 @@
 # all copies or substantial portions of the Software.
 
 import os
-from pathlib import Path
 import queue
 from multiprocessing import Manager
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 from xml.etree import ElementTree
 
