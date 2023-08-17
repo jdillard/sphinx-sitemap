@@ -40,8 +40,8 @@ jobs:
       - name: Install Python dependencies
         run: |
           set -eo pipefail
-          if [[ ${{ matrix.sphinx-version }} != "" ]]; then
-            if [[ ${{ matrix.sphinx-version }} == "dev" ]]; then
+          if [[ "${{ matrix.sphinx-version }}" != "" ]]; then
+            if [[ "${{ matrix.sphinx-version }}" == "dev" ]]; then
               SPHINX_INSTALL="git+https://github.com/sphinx-doc/sphinx.git"
             else
               SPHINX_INSTALL="sphinx==${{ matrix.sphinx-version }}.*"
