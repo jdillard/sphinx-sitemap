@@ -14,6 +14,7 @@
 import os
 import queue
 from multiprocessing import Manager
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 from xml.etree import ElementTree
 
@@ -210,7 +211,7 @@ def create_sitemap(app: Sphinx, exception):
                 href=site_url + scheme.format(lang=lang, version=version, link=link),
             )
 
-    filename = app.outdir + "/" + app.config.sitemap_filename
+    filename = Path(app.outdir) / app.config.sitemap_filename
     ElementTree.ElementTree(root).write(
         filename, xml_declaration=True, encoding="utf-8", method="xml"
     )

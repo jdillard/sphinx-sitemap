@@ -1,3 +1,4 @@
+import os
 from xml.etree import ElementTree as etree
 
 import pytest
@@ -11,7 +12,7 @@ import pytest
 def test_simple_html(app, status, warning):
     app.warningiserror = True
     app.build()
-    assert "sitemap.xml" in app.outdir.listdir()
+    assert "sitemap.xml" in os.listdir(app.outdir)
     doc = etree.parse(app.outdir / "sitemap.xml")
     urls = {
         e.text
@@ -46,7 +47,7 @@ def test_simple_html(app, status, warning):
 def test_html_file_suffix(app, status, warning):
     app.warningiserror = True
     app.build()
-    assert "sitemap.xml" in app.outdir.listdir()
+    assert "sitemap.xml" in os.listdir(app.outdir)
     doc = etree.parse(app.outdir / "sitemap.xml")
     urls = {
         e.text
@@ -77,7 +78,7 @@ def test_html_file_suffix(app, status, warning):
 def test_simple_dirhtml(app, status, warning):
     app.warningiserror = True
     app.build()
-    assert "sitemap.xml" in app.outdir.listdir()
+    assert "sitemap.xml" in os.listdir(app.outdir)
     doc = etree.parse(app.outdir / "sitemap.xml")
     urls = {
         e.text
