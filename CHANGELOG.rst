@@ -6,8 +6,10 @@ Changelog
 2.5.1
 -----
 
-*Release date: TBD*
+*Release date: 2023-08-17*
 
+* |:bug:| FIX: Fix Path use for Sphinx 7.2
+  `#70 <https://github.com/jdillard/sphinx-sitemap/pull/70>`_
 * |:bug:| FIX: Fix incremental building by preventing multiprocessing queue from being pickled with environment
   `#62 <https://github.com/jdillard/sphinx-sitemap/pull/62>`_
 * |:wrench:| MAINT: Add docstrings and type hints
