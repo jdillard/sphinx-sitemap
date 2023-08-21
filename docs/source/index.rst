@@ -27,7 +27,7 @@ documentation.
 .. |Conda Forge| image:: https://img.shields.io/conda/vn/conda-forge/sphinx-sitemap.svg
    :target: https://anaconda.org/conda-forge/sphinx-sitemap
    :alt: Latest Conda Forge version
-.. |Downloads| image:: https://pepy.tech/badge/sphinx-sitemap/month
+.. |Downloads| image:: https://static.pepy.tech/badge/sphinx-sitemap/month
     :target: https://pepy.tech/project/sphinx-sitemap
     :alt: PyPi Downloads per month
 .. |Parallel Safe| image:: https://img.shields.io/badge/parallel%20safe-true-brightgreen
