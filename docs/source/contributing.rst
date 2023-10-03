@@ -64,6 +64,8 @@ The people that have improved the code:
 
 .. contributors:: jdillard/sphinx-sitemap
    :avatars:
+   :limit: 100
+   :exclude: pre-commit-ci[bot]
    :order: ASC
 
 
