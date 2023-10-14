@@ -22,7 +22,7 @@ Changelog
 
 * |:books:| DOCS: Calculate version for sitemap based on current tag
   `#53 <https://github.com/jdillard/sphinx-sitemap/pull/53>`_
-* |:test_tube:| TESTS: Add Sphinx 6 env to tox 
+* |:test_tube:| TESTS: Add Sphinx 6 env to tox
   `#55 <https://github.com/jdillard/sphinx-sitemap/pull/55>`_
 * |:sparkles:| NEW: Add support for Sphinx config "html_file_suffix"
   `#57 <https://github.com/jdillard/sphinx-sitemap/pull/57>`_
