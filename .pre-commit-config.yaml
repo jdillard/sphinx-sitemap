@@ -17,3 +17,11 @@ repos:
     rev: 6.1.0
     hooks:
     - id: flake8
+
+  - repo: https://github.com/sphinx-contrib/sphinx-lint
+    rev: 0.7.0
+    hooks:
+      - id: sphinx-lint
+        args: [--jobs=1]
+        files: ^docs/|CHANGELOG.rst|README.rst
+        types: [rst]
