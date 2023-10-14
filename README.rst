@@ -38,7 +38,7 @@ also licensed under the MIT license.
    :target: https://pypi.python.org/pypi/sphinx-sitemap
 .. |Conda Forge| image:: https://img.shields.io/conda/vn/conda-forge/sphinx-sitemap.svg
    :target: https://anaconda.org/conda-forge/sphinx-sitemap
-.. |Downloads| image:: https://static.pepy.tech/badge/sphinx-sitemap/month 
+.. |Downloads| image:: https://static.pepy.tech/badge/sphinx-sitemap/month
     :target: https://pepy.tech/project/sphinx-sitemap
 .. |Code style: Black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/psf/black
