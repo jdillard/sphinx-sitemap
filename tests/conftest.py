@@ -1,5 +1,6 @@
-from os import path
+from pathlib import Path
 
+import os
 import pytest
 
 pytest_plugins = "sphinx.testing.fixtures"
@@ -16,5 +17,5 @@ def pytest_configure(config):
 @pytest.fixture(scope="session")
 def rootdir():
     current_script_path = path.abspath(__file__)
-    parent_directory = path.abspath(path.dirname(current_script_path))
-    return path.join(parent_directory, "roots")
+    parent_directory = os.path.abspath(path.dirname(current_script_path))
+    return Path(os.path.join(parent_directory, "roots"))
