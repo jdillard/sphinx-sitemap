@@ -1,5 +1,5 @@
 import pytest
-from sphinx.testing.path import path
+from os import path
 
 pytest_plugins = "sphinx.testing.fixtures"
 # Exclude 'roots' dirs for pytest test collector
@@ -14,4 +14,6 @@ def pytest_configure(config):
 
 @pytest.fixture(scope="session")
 def rootdir():
-    return path(__file__).parent.abspath() / "roots"
+    current_script_path = path.abspath(__file__)
+    parent_directory = path.abspath(path.dirname(current_script_path))
+    return parent_directory / "roots"
