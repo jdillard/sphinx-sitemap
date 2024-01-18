@@ -1,5 +1,6 @@
-import pytest
 from os import path
+
+import pytest
 
 pytest_plugins = "sphinx.testing.fixtures"
 # Exclude 'roots' dirs for pytest test collector
