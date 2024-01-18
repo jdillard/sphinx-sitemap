@@ -17,4 +17,4 @@ def pytest_configure(config):
 def rootdir():
     current_script_path = path.abspath(__file__)
     parent_directory = path.abspath(path.dirname(current_script_path))
-    return parent_directory / "roots"
+    return path.join(parent_directory, "roots")
