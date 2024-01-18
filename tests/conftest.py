@@ -16,6 +16,6 @@ def pytest_configure(config):
 
 @pytest.fixture(scope="session")
 def rootdir():
-    current_script_path = path.abspath(__file__)
-    parent_directory = os.path.abspath(path.dirname(current_script_path))
+    current_script_path = os.path.abspath(__file__)
+    parent_directory = os.path.abspath(os.path.dirname(current_script_path))
     return Path(os.path.join(parent_directory, "roots"))
