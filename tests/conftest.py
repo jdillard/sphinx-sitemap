@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import pytest
+import sphinx
 
 pytest_plugins = "sphinx.testing.fixtures"
 # Exclude 'roots' dirs for pytest test collector
