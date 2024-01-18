@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 import pytest
@@ -16,6 +15,9 @@ def pytest_configure(config):
 
 @pytest.fixture(scope="session")
 def rootdir():
-    current_script_path = os.path.abspath(__file__)
-    parent_directory = os.path.abspath(os.path.dirname(current_script_path))
-    return Path(os.path.join(parent_directory, "roots"))
+    if sphinx.version_info[:2] < (7, 2):
+        from sphinx.testing.path import path
+
+        return path(__file__).parent.abspath() / 'roots'
+
+    return Path(__file__).resolve().parent / 'roots'
