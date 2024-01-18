@@ -1,5 +1,7 @@
+from pathlib import Path
+
 import pytest
-from sphinx.testing.path import path
+import sphinx
 
 pytest_plugins = "sphinx.testing.fixtures"
 # Exclude 'roots' dirs for pytest test collector
@@ -14,4 +16,9 @@ def pytest_configure(config):
 
 @pytest.fixture(scope="session")
 def rootdir():
-    return path(__file__).parent.abspath() / "roots"
+    if sphinx.version_info[:2] < (7, 2):
+        from sphinx.testing.path import path
+
+        return path(__file__).parent.abspath() / "roots"
+
+    return Path(__file__).resolve().parent / "roots"

@@ -3,6 +3,15 @@
 Changelog
 =========
 
+2.5.2
+-----
+
+*Release date: TBD*
+
+* |:wrench:| MAINT: Fix deprecated sphinx.testing.path
+  `#83 <https://github.com/jdillard/sphinx-sitemap/pull/83>`_
+* Drop test support for Sphinx 2, 3, and 4.
+
 2.5.1
 -----
 
