@@ -28,6 +28,7 @@ license = {text = "MIT"}
 readme = "README.rst"
 dynamic = [
     "version",
+    "dependencies",
 ]
 
 [project.urls]
