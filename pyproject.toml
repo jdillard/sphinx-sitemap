@@ -29,6 +29,7 @@ readme = "README.rst"
 dynamic = [
     "version",
     "dependencies",
+    "optional-dependencies",
 ]
 
 [project.urls]
@@ -36,6 +37,9 @@ documentation = "https://sphinx-sitemap.readthedocs.io/en/latest/index.html"
 download = "https://pypi.org/project/sphinx-sitemap/"
 source = "https://github.com/jdillard/sphinx-sitemap"
 changelog = "https://github.com/jdillard/sphinx-sitemap/blob/master/CHANGELOG.rst"
+
+[tool.setuptools.dynamic]
+optional-dependencies = {dev = { file = ["requirements_dev.txt"] }}
 
 [tool.isort]
 profile = "black"
