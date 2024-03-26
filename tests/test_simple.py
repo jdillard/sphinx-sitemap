@@ -99,3 +99,38 @@ def test_simple_dirhtml(app, status, warning):
             "search/",
         ]
     }
+
+
+@pytest.mark.sphinx(
+    "html",
+    freshenv=True,
+    confoverrides={
+        "html_baseurl": "https://example.org/docs/",
+        "language": "en",
+        "sitemap_suffix_included": False,
+    },
+)
+def test_sitemap_suffix_included(app, status, warning):
+    app.warningiserror = True
+    app.build()
+    assert "sitemap.xml" in os.listdir(app.outdir)
+    doc = etree.parse(app.outdir / "sitemap.xml")
+    urls = {
+        e.text
+        for e in doc.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
+    }
+
+    assert urls == {
+        f"https://example.org/docs/en/{d}"
+        for d in [
+            "index",
+            "foo",
+            "bar",
+            "lorem",
+            "ipsum",
+            "dolor",
+            "elitr",
+            "genindex",
+            "search",
+        ]
+    }
