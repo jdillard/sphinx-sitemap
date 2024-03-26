@@ -143,7 +143,9 @@ def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
         else:
             sitemap_link = pagename + "/"
     else:
-        sitemap_link = (pagename + file_suffix) if app.config.sitemap_suffix_included else pagename
+        sitemap_link = (
+            (pagename + file_suffix) if app.config.sitemap_suffix_included else pagename
+        )
 
     env.app.sitemap_links.put(sitemap_link)  # type: ignore
 
