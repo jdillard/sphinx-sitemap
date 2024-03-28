@@ -32,3 +32,11 @@ Another line to :math:`test two two`
    See :ref:`configuration_supporting_multiple_languages` for more information.
 
    .. versionadded:: 2.2.0
+
+.. confval:: sitemap_suffix_included
+
+   Whether to include file extensions in URL. Default is ``True``.
+
+   See :ref:`configuration_including_suffix` for more information.
+
+   .. versionadded:: 2.5.2
