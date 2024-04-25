@@ -21,7 +21,7 @@ from xml.etree import ElementTree
 from sphinx.application import Sphinx
 from sphinx.util.logging import getLogger
 
-__version__ = "2.5.1"
+__version__ = "2.6.0"
 
 logger = getLogger(__name__)
 
