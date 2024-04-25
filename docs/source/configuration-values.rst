@@ -3,12 +3,6 @@ Project Configuration Values
 
 A list of of possible configuration values to configure in **conf.py**:
 
-Another line to :math:`test two two`
-
-.. math::
-
-   test two two
-
 .. confval:: sitemap_url_scheme
 
    The scheme used for URL structure. Default is ``{lang}{version}{link}``.
