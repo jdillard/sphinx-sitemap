@@ -2,6 +2,6 @@ furo
 esbonio
 sphinx-contributors
 sphinx
--e ../../sphinx-sitemap
+sphinx-sitemap
 sphinxemoji
 sphinxext-opengraph
