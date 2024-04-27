@@ -127,7 +127,7 @@ For multilingual sitemaps, generate a sitemap per language and then manually add
 
 .. _configuration_excluding_pages:
 
-Excluding pages
+Excluding Pages
 ^^^^^^^^^^^^^^^
 
 To exclude a set of pages, add each page's path to ``sitemap_exclude``:
