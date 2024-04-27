@@ -115,6 +115,11 @@ ogp_image = "https://sphinx-sitemap.readthedocs.io/en/latest/_static/sitemap-ico
 
 html_baseurl = "https://sphinx-sitemap.readthedocs.org/"
 
+sitemap_excludes = [
+    "search.html",
+    "genindex.html",
+]
+
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.

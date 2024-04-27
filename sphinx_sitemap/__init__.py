@@ -42,6 +42,8 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_config_value("sitemap_filename", default="sitemap.xml", rebuild="")
 
+    app.add_config_value("sitemap_excludes", default=[], rebuild="")
+
     try:
         app.add_config_value("html_baseurl", default=None, rebuild="")
     except BaseException:
@@ -143,7 +145,8 @@ def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
     else:
         sitemap_link = pagename + file_suffix
 
-    env.app.sitemap_links.put(sitemap_link)  # type: ignore
+    if sitemap_link not in app.builder.config.sitemap_excludes:
+        env.app.sitemap_links.put(sitemap_link)  # type: ignore
 
 
 def create_sitemap(app: Sphinx, exception):
