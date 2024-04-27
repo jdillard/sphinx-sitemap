@@ -130,7 +130,15 @@ For multilingual sitemaps, generate a sitemap per language and then manually add
 Excluding pages
 ^^^^^^^^^^^^^^^
 
-Sometimes you want to exclude a set of pages.
+To exclude a set of pages, add each page's path to ``sitemap_exclude``:
+
+.. code-block:: python
+
+   sitemap_excludes = [
+       "search.html",
+       "genindex.html",
+   ]
+
 
 .. _sitemapindex.xml: https://support.google.com/webmasters/answer/75712?hl=en
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
