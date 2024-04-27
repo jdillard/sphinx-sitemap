@@ -104,7 +104,11 @@ def test_simple_dirhtml(app, status, warning):
 @pytest.mark.sphinx(
     "html",
     freshenv=True,
-    confoverrides={"html_baseurl": "https://example.org/docs/", "language": "en", "sitemap_excludes": ["search.html", "genindex.html"]},
+    confoverrides={
+        "html_baseurl": "https://example.org/docs/",
+        "language": "en",
+        "sitemap_excludes": ["search.html", "genindex.html"],
+    },
 )
 def test_simple_excludes(app, status, warning):
     app.warningiserror = True
