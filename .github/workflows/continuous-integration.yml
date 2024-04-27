@@ -57,7 +57,7 @@ jobs:
           python -m pip install .
       - name: Run Tests for ${{ matrix.python-version }}
         run: |
-          python -m tox
+          python -m tox -v
   vale:
     runs-on: ubuntu-latest
     steps:
