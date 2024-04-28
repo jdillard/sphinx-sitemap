@@ -125,5 +125,20 @@ To generate the primary language with no alternatives, set :confval:`sitemap_loc
 
 For multilingual sitemaps, generate a sitemap per language and then manually add each to a `sitemapindex.xml`_ file.
 
+.. _configuration_excluding_pages:
+
+Excluding Pages
+^^^^^^^^^^^^^^^
+
+To exclude a set of pages, add each page's path to ``sitemap_exclude``:
+
+.. code-block:: python
+
+   sitemap_excludes = [
+       "search.html",
+       "genindex.html",
+   ]
+
+
 .. _sitemapindex.xml: https://support.google.com/webmasters/answer/75712?hl=en
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
