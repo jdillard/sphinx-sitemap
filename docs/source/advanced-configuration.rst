@@ -39,6 +39,15 @@ Set :confval:`sitemap_filename` in **conf.py** to the desired filename, for exam
 
    sitemap_filename = "sitemap.xml"
 
+Excluding Pages
+^^^^^^^^^^^^^^^
+
+Set :confval:`sitemap_excludes` in **conf.py** to exclude some pages, for example:
+
+.. code-block:: python
+
+   sitemap_excludes = ["404"]
+
 Version Support
 ^^^^^^^^^^^^^^^
 
