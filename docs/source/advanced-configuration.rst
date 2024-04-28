@@ -39,6 +39,20 @@ Set :confval:`sitemap_filename` in **conf.py** to the desired filename, for exam
 
    sitemap_filename = "sitemap.xml"
 
+.. _configuration_including_suffix:
+
+Including File Extensions
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Set :confval:`sitemap_suffix_included` in **conf.py** to include/exclude file extensions in URLs, for example:
+
+.. code-block:: python
+
+   sitemap_suffix_included = True
+
+.. note:: The default value is ``True``. Set to ``False`` to suppress file extensions in URLs so that the sitemap
+   generated works better with service providers like Cloudflare Pages.
+
 Version Support
 ^^^^^^^^^^^^^^^
 
