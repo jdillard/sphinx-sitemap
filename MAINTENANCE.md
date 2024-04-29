@@ -16,7 +16,7 @@ package release.
 
 5. Upload to the test pypi.org repository:
 
-       twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+       twine upload --repository testpypi dist/*
 
 6. Upload to the production pypi.org repository:
 
