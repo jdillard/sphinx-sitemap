@@ -6,7 +6,7 @@ Changelog
 2.6.0
 -----
 
-*Release date: TBD*
+*Release date: 2024-04-28*
 
 * |:wrench:| MAINT: Fix deprecated sphinx.testing.path
   `#83 <https://github.com/jdillard/sphinx-sitemap/pull/83>`_
