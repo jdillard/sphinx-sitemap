@@ -34,3 +34,11 @@ A list of of possible configuration values to configure in **conf.py**:
    See :ref:`configuration_excluding_pages` for more information.
 
    .. versionadded:: 2.6.0
+
+.. confval:: sitemap_lastmod
+
+   The entry ``lastmod`` is added to the output file.
+
+   See :ref:`configuration_lastmod` for more information.
+
+   .. versionadded:: 2.7.0

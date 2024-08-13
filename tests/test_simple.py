@@ -68,12 +68,21 @@ def test_html_file_suffix(app, status, warning):
             "search",
         ]
     }
+    lastmod = [
+        e.text
+        for e in doc.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}lastmod")
+    ]
+    assert not lastmod
 
 
 @pytest.mark.sphinx(
     "dirhtml",
     freshenv=True,
-    confoverrides={"html_baseurl": "https://example.org/docs/", "language": "en"},
+    confoverrides={
+        "html_baseurl": "https://example.org/docs/",
+        "language": "en",
+        "sitemap_lastmod": True,
+    },
 )
 def test_simple_dirhtml(app, status, warning):
     app.warningiserror = True
@@ -99,6 +108,11 @@ def test_simple_dirhtml(app, status, warning):
             "search/",
         ]
     }
+    lastmod = [
+        e.text
+        for e in doc.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}lastmod")
+    ]
+    assert len(lastmod) == len(urls)
 
 
 @pytest.mark.sphinx(
@@ -108,6 +122,7 @@ def test_simple_dirhtml(app, status, warning):
         "html_baseurl": "https://example.org/docs/",
         "language": "en",
         "sitemap_excludes": ["search.html", "genindex.html"],
+        "sitemap_lastmod": "2024-08-13",
     },
 )
 def test_simple_excludes(app, status, warning):
@@ -131,4 +146,15 @@ def test_simple_excludes(app, status, warning):
             "dolor",
             "elitr",
         ]
+    }
+
+    lastmod = [
+        e.text
+        for e in doc.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}lastmod")
+    ]
+
+    assert len(lastmod) == len(urls)
+
+    assert set(lastmod) == {
+        app.builder.config.sitemap_lastmod,
     }
