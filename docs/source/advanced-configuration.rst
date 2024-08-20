@@ -144,7 +144,7 @@ To exclude a set of pages, add each page's path to ``sitemap_exclude``:
 Adding Last Modification Date
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To add the date of the last page modification set ``sitemap_lastmod`` to either ``True``, or a string representating
+To add the date of the last page modification set ``sitemap_lastmod`` to either ``True``, or a string representing
 the last modification date.
 
 .. code-block:: python
