@@ -11,6 +11,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+import datetime
 import re
 import subprocess
 
@@ -121,6 +122,8 @@ html_baseurl = "https://sphinx-sitemap.readthedocs.org/"
 # Output file base name for HTML help builder.
 htmlhelp_basename = "SphinxSitemapdoc"
 
+# Set last modification date in sitemap
+sitemap_lastmod = f"{datetime.datetime.now():%Y-%m-%d}"
 
 # -- Options for LaTeX output ------------------------------------------------
 

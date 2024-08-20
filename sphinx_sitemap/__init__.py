@@ -11,7 +11,6 @@
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
 
-import datetime
 import os
 import queue
 from multiprocessing import Manager
@@ -45,7 +44,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_config_value("sitemap_excludes", default=[], rebuild="")
 
-    app.add_config_value("sitemap_lastmod", default=None, rebuild="", types=[str, bool])
+    app.add_config_value("sitemap_lastmod", default=None, rebuild="", types=[str])
 
     try:
         app.add_config_value("html_baseurl", default=None, rebuild="")
@@ -190,8 +189,6 @@ def create_sitemap(app: Sphinx, exception):
     else:
         version = ""
 
-    date = f"{datetime.datetime.now():%Y-%m-%d}"
-
     while True:
         try:
             link = app.env.app.sitemap_links.get_nowait()  # type: ignore
@@ -208,13 +205,10 @@ def create_sitemap(app: Sphinx, exception):
         ElementTree.SubElement(url, "loc").text = site_url + scheme.format(
             lang=lang, version=version, link=link
         )
-        if app.builder.config.sitemap_lastmod:
-            if isinstance(app.builder.config.sitemap_lastmod, str):
-                ElementTree.SubElement(url, "lastmod").text = (
-                    app.builder.config.sitemap_lastmod
-                )
-            else:
-                ElementTree.SubElement(url, "lastmod").text = date
+        if app.builder.config.sitemap_lastmod is not None:
+            ElementTree.SubElement(url, "lastmod").text = (
+                app.builder.config.sitemap_lastmod
+            )
 
         for lang in locales:
             lang = lang + "/"

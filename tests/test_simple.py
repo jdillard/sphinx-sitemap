@@ -81,7 +81,7 @@ def test_html_file_suffix(app, status, warning):
     confoverrides={
         "html_baseurl": "https://example.org/docs/",
         "language": "en",
-        "sitemap_lastmod": True,
+        "sitemap_lastmod": "XX",
     },
 )
 def test_simple_dirhtml(app, status, warning):
