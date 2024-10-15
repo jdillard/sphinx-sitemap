@@ -20,7 +20,7 @@ Local development
 
    .. code-block:: console
 
-      pip3 install -r dev-requirements.txt
+      pip3 install -r requirements_dev.txt
 
 #. Install pre-commit Git hook scripts:
 
