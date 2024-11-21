@@ -13,6 +13,7 @@
 
 import os
 import queue
+from datetime import datetime, timezone
 from multiprocessing import Manager
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -47,6 +48,14 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     try:
         app.add_config_value("html_baseurl", default=None, rebuild="")
     except BaseException:
+        pass
+
+    # TODO cleanup
+    # TODO make sphinx-last-updated-by-git an optional install [git]
+    try:
+        app.setup_extension("sphinx_last_updated_by_git")
+    except BaseException:
+        print("failed to add extension")
         pass
 
     app.connect("builder-inited", record_builder_type)
@@ -133,6 +142,15 @@ def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
     else:
         file_suffix = app.builder.config.html_file_suffix
 
+    # TODO handle pages that don't have a last_updated
+    last_updated = None
+    if pagename in env.git_last_updated:
+        # TODO what is show_sourcelink
+        timestamp, show_sourcelink = env.git_last_updated[pagename]
+        utc_date = datetime.fromtimestamp(int(timestamp), timezone.utc)
+        # TODO verify dates
+        last_updated = utc_date.strftime("%Y-%m-%dT%H:%M:%SZ")
+
     # Support DirectoryHTMLBuilder path structure
     # where generated links between pages omit the index.html
     if env.is_directory_builder:  # type: ignore
@@ -146,7 +164,7 @@ def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
         sitemap_link = pagename + file_suffix
 
     if sitemap_link not in app.builder.config.sitemap_excludes:
-        env.app.sitemap_links.put(sitemap_link)  # type: ignore
+        env.app.sitemap_links.put((sitemap_link, last_updated))  # type: ignore
 
 
 def create_sitemap(app: Sphinx, exception):
@@ -189,7 +207,7 @@ def create_sitemap(app: Sphinx, exception):
 
     while True:
         try:
-            link = app.env.app.sitemap_links.get_nowait()  # type: ignore
+            link, last_updated = app.env.app.sitemap_links.get_nowait()  # type: ignore
         except queue.Empty:
             break
 
@@ -203,6 +221,10 @@ def create_sitemap(app: Sphinx, exception):
         ElementTree.SubElement(url, "loc").text = site_url + scheme.format(
             lang=lang, version=version, link=link
         )
+
+        # TODO clean up lastmod
+        if last_updated:
+            ElementTree.SubElement(url, "lastmod").text = last_updated
 
         for lang in locales:
             lang = lang + "/"
