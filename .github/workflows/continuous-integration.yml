@@ -63,7 +63,13 @@ jobs:
   vale:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install docutils
+        run: sudo apt-get install -y docutils
+
+      - name: Lint with Vale
       - uses: errata-ai/vale-action@reviewdog
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
