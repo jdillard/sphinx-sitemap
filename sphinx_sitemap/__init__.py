@@ -54,9 +54,9 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 
     # TODO cleanup
     # TODO make sphinx-last-updated-by-git an optional install [git]
-    # TODO set sitemap_show_lastmod to True
     try:
         app.setup_extension("sphinx_last_updated_by_git")
+        app.config.sitemap_show_lastmod = True
     except BaseException:
         print("failed to add extension")
         pass
