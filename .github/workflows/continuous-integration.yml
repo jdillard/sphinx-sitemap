@@ -70,7 +70,7 @@ jobs:
         run: sudo apt-get install -y docutils
 
       - name: Lint with Vale
-      - uses: errata-ai/vale-action@reviewdog
+        uses: errata-ai/vale-action@reviewdog
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
