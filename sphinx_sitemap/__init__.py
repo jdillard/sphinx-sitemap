@@ -45,6 +45,8 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_config_value("sitemap_excludes", default=[], rebuild="")
 
+    app.add_config_value("sitemap_show_lastmod", default=False, rebuild="")
+
     try:
         app.add_config_value("html_baseurl", default=None, rebuild="")
     except BaseException:
@@ -52,6 +54,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 
     # TODO cleanup
     # TODO make sphinx-last-updated-by-git an optional install [git]
+    # TODO set sitemap_show_lastmod to True
     try:
         app.setup_extension("sphinx_last_updated_by_git")
     except BaseException:
@@ -144,7 +147,7 @@ def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
 
     # TODO handle pages that don't have a last_updated
     last_updated = None
-    if pagename in env.git_last_updated:
+    if app.builder.config.sitemap_show_lastmod and pagename in env.git_last_updated:
         # TODO what is show_sourcelink
         timestamp, show_sourcelink = env.git_last_updated[pagename]
         utc_date = datetime.fromtimestamp(int(timestamp), timezone.utc)
