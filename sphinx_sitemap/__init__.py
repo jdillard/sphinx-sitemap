@@ -20,6 +20,7 @@ from typing import Any, Dict, List, Optional
 from xml.etree import ElementTree
 
 from sphinx.application import Sphinx
+from sphinx.errors import ExtensionError
 from sphinx.util.logging import getLogger
 
 __version__ = "2.6.0"
@@ -52,14 +53,25 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     except BaseException:
         pass
 
-    # TODO cleanup
-    # TODO make sphinx-last-updated-by-git an optional install [git]
+    # install sphinx_last_updated_by_git extension if it exists
     try:
         app.setup_extension("sphinx_last_updated_by_git")
         app.config.sitemap_show_lastmod = True
-    except BaseException:
-        print("failed to add extension")
-        pass
+    except ExtensionError as e:
+        # only throw warning if manually configured to show lastmod date
+        if app.config.sitemap_show_lastmod:
+            logger.warning(
+                f"{e}",
+                type="sitemap",
+                subtype="configuration",
+            )
+            app.config.sitemap_show_lastmod = False
+        else:
+            logger.info(
+                f"sphinx-sitemap: {e}",
+                type="sitemap",
+                subtype="configuration",
+            )
 
     app.connect("builder-inited", record_builder_type)
     app.connect("html-page-context", add_html_link)
@@ -145,14 +157,14 @@ def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
     else:
         file_suffix = app.builder.config.html_file_suffix
 
-    # TODO handle pages that don't have a last_updated
     last_updated = None
     if app.builder.config.sitemap_show_lastmod and pagename in env.git_last_updated:
-        # TODO what is show_sourcelink
         timestamp, show_sourcelink = env.git_last_updated[pagename]
-        utc_date = datetime.fromtimestamp(int(timestamp), timezone.utc)
         # TODO verify dates
-        last_updated = utc_date.strftime("%Y-%m-%dT%H:%M:%SZ")
+        # TODO handle untracked pages (option to use current timestamp?)
+        if timestamp:
+            utc_date = datetime.fromtimestamp(int(timestamp), timezone.utc)
+            last_updated = utc_date.strftime("%Y-%m-%dT%H:%M:%SZ")
 
     # Support DirectoryHTMLBuilder path structure
     # where generated links between pages omit the index.html
@@ -225,7 +237,6 @@ def create_sitemap(app: Sphinx, exception):
             lang=lang, version=version, link=link
         )
 
-        # TODO clean up lastmod
         if last_updated:
             ElementTree.SubElement(url, "lastmod").text = last_updated
 
