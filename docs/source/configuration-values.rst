@@ -34,3 +34,9 @@ A list of of possible configuration values to configure in **conf.py**:
    See :ref:`configuration_excluding_pages` for more information.
 
    .. versionadded:: 2.6.0
+
+.. confval:: sitemap_show_lastmod
+
+   Add ``<lastmod>`` to sitemap based on last updated time according to Git for each page.
+
+   .. versionadded:: 2.7.0
