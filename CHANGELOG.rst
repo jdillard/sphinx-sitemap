@@ -3,6 +3,14 @@
 Changelog
 =========
 
+2.7.0
+-----
+
+*Release date: TBD*
+
+* |:sparkles:| NEW: Add support for ``lastmod`` using **sphinx-last-updated-by-git**
+  `#95 <https://github.com/jdillard/sphinx-sitemap/pull/95>`_
+
 2.6.0
 -----
 

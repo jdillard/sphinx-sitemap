@@ -23,7 +23,7 @@ from sphinx.application import Sphinx
 from sphinx.errors import ExtensionError
 from sphinx.util.logging import getLogger
 
-__version__ = "2.6.0"
+__version__ = "2.7.0"
 
 logger = getLogger(__name__)
 
