@@ -46,7 +46,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_config_value("sitemap_excludes", default=[], rebuild="")
 
-    app.add_config_value("sitemap_show_lastmod", default=False, rebuild="")
+    app.add_config_value("sitemap_show_lastmod", default=True, rebuild="")
 
     try:
         app.add_config_value("html_baseurl", default=None, rebuild="")
@@ -54,24 +54,16 @@ def setup(app: Sphinx) -> Dict[str, Any]:
         pass
 
     # install sphinx_last_updated_by_git extension if it exists
-    try:
-        app.setup_extension("sphinx_last_updated_by_git")
-        app.config.sitemap_show_lastmod = True
-    except ExtensionError as e:
-        # only throw warning if manually configured to show lastmod date
-        if app.config.sitemap_show_lastmod:
+    if app.config.sitemap_show_lastmod:
+        try:
+            app.setup_extension("sphinx_last_updated_by_git")
+        except ExtensionError as e:
             logger.warning(
                 f"{e}",
                 type="sitemap",
                 subtype="configuration",
             )
             app.config.sitemap_show_lastmod = False
-        else:
-            logger.info(
-                f"sphinx-sitemap: {e}",
-                type="sitemap",
-                subtype="configuration",
-            )
 
     app.connect("builder-inited", record_builder_type)
     app.connect("html-page-context", add_html_link)
