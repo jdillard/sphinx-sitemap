@@ -153,7 +153,7 @@ def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
     if app.builder.config.sitemap_show_lastmod and pagename in env.git_last_updated:
         timestamp, show_sourcelink = env.git_last_updated[pagename]
         # TODO verify dates
-        # TODO handle untracked pages (option to use current timestamp?)
+        # TODO handle untracked pages (add option to use current timestamp?)
         if timestamp:
             utc_date = datetime.fromtimestamp(int(timestamp), timezone.utc)
             last_updated = utc_date.strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -225,13 +225,16 @@ def create_sitemap(app: Sphinx, exception):
         else:
             lang = ""
 
+        # add page url
         ElementTree.SubElement(url, "loc").text = site_url + scheme.format(
             lang=lang, version=version, link=link
         )
 
+        # add page lastmode date if it exists
         if last_updated:
             ElementTree.SubElement(url, "lastmod").text = last_updated
 
+        # add alternate language page urls
         for lang in locales:
             lang = lang + "/"
             ElementTree.SubElement(
