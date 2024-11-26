@@ -25,20 +25,24 @@ classifiers = [
 ]
 license = {text = "MIT"}
 readme = "README.rst"
+dependencies = [
+    "requests>=2.28.1",
+    "flask>=2.0.0",
+    "sphinx-last-updated-by-git",
+]
 dynamic = [
     "version",
-    "dependencies",
+    "optional-dependencies",
 ]
-
-[project.optional-dependencies]
-lastmod = ["sphinx-last-updated-by-git"]
-dev = []
 
 [project.urls]
 documentation = "https://sphinx-sitemap.readthedocs.io/en/latest/index.html"
 download = "https://pypi.org/project/sphinx-sitemap/"
 source = "https://github.com/jdillard/sphinx-sitemap"
 changelog = "https://github.com/jdillard/sphinx-sitemap/blob/master/CHANGELOG.rst"
+
+[tool.setuptools.dynamic]
+optional-dependencies = {dev = { file = ["requirements_dev.txt"] }}
 
 [tool.isort]
 profile = "black"
