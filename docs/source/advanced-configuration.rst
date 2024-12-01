@@ -139,6 +139,20 @@ To exclude a set of pages, add each page's path to ``sitemap_exclude``:
        "genindex.html",
    ]
 
+.. _configuration_lastmod:
+
+Adding Last Modification Date
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To add the date of the last page modification set ``sitemap_lastmod`` a string
+representing the last modification date.
+
+.. code-block:: python
+
+   sitemap_lastmod = "2024-08-13"
+   # or
+   import datetime
+   sitemap_lastmod = f"{datetime.datetime.now():%Y-%m-%d}"
 
 .. _sitemapindex.xml: https://support.google.com/webmasters/answer/75712?hl=en
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
