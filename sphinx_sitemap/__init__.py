@@ -21,7 +21,7 @@ from xml.etree import ElementTree
 from sphinx.application import Sphinx
 from sphinx.util.logging import getLogger
 
-__version__ = "2.6.0"
+__version__ = "2.7.0"
 
 logger = getLogger(__name__)
 
@@ -43,6 +43,8 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_config_value("sitemap_filename", default="sitemap.xml", rebuild="")
 
     app.add_config_value("sitemap_excludes", default=[], rebuild="")
+
+    app.add_config_value("sitemap_lastmod", default=None, rebuild="", types=[str])
 
     try:
         app.add_config_value("html_baseurl", default=None, rebuild="")
@@ -203,6 +205,10 @@ def create_sitemap(app: Sphinx, exception):
         ElementTree.SubElement(url, "loc").text = site_url + scheme.format(
             lang=lang, version=version, link=link
         )
+        if app.builder.config.sitemap_lastmod is not None:
+            ElementTree.SubElement(url, "lastmod").text = (
+                app.builder.config.sitemap_lastmod
+            )
 
         for lang in locales:
             lang = lang + "/"
