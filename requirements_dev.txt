@@ -3,4 +3,5 @@ build
 pre-commit
 flake8
 sphinx
+sphinx-last-updated-by-git
 pytest

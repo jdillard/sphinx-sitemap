@@ -2,7 +2,14 @@ import os
 from xml.etree import ElementTree as etree
 
 import pytest
+from git import Repo
 
+@pytest.fixture(autouse=True, scope="function")
+def git_setup(app):
+    repo = Repo.init(app.srcdir)
+    repo.index.add(os.listdir(app.srcdir))
+    repo.index.commit("test")
+    yield
 
 @pytest.mark.sphinx(
     "html",

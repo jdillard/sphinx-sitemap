@@ -1,1 +1,1 @@
-extensions = ["sphinx_sitemap"]
+extensions = ["sphinx_sitemap", "sphinx_last_updated_by_git"]
