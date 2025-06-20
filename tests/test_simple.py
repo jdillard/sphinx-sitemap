@@ -9,7 +9,7 @@ from git import Repo
 def git_setup(app):
     repo = Repo.init(app.srcdir)
     repo.index.add(os.listdir(app.srcdir))
-    repo.index.commit("test")
+    repo.index.commit("test: creating git record for files")
     yield
 
 
