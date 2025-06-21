@@ -13,15 +13,17 @@
 
 import os
 import queue
+from datetime import datetime, timezone
 from multiprocessing import Manager
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 from xml.etree import ElementTree
 
 from sphinx.application import Sphinx
+from sphinx.errors import ExtensionError
 from sphinx.util.logging import getLogger
 
-__version__ = "2.6.0"
+__version__ = "2.7.0"
 
 logger = getLogger(__name__)
 
@@ -44,10 +46,24 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_config_value("sitemap_excludes", default=[], rebuild="")
 
+    app.add_config_value("sitemap_show_lastmod", default=True, rebuild="")
+
     try:
         app.add_config_value("html_baseurl", default=None, rebuild="")
     except BaseException:
         pass
+
+    # install sphinx_last_updated_by_git extension if it exists
+    if app.config.sitemap_show_lastmod:
+        try:
+            app.setup_extension("sphinx_last_updated_by_git")
+        except ExtensionError as e:
+            logger.warning(
+                f"{e}",
+                type="sitemap",
+                subtype="configuration",
+            )
+            app.config.sitemap_show_lastmod = False
 
     app.connect("builder-inited", record_builder_type)
     app.connect("html-page-context", add_html_link)
@@ -133,6 +149,15 @@ def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
     else:
         file_suffix = app.builder.config.html_file_suffix
 
+    last_updated = None
+    if app.builder.config.sitemap_show_lastmod and pagename in env.git_last_updated:
+        timestamp, show_sourcelink = env.git_last_updated[pagename]
+        # TODO verify dates
+        # TODO handle untracked pages (add option to use current timestamp?)
+        if timestamp:
+            utc_date = datetime.fromtimestamp(int(timestamp), timezone.utc)
+            last_updated = utc_date.strftime("%Y-%m-%dT%H:%M:%SZ")
+
     # Support DirectoryHTMLBuilder path structure
     # where generated links between pages omit the index.html
     if env.is_directory_builder:  # type: ignore
@@ -146,7 +171,7 @@ def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
         sitemap_link = pagename + file_suffix
 
     if sitemap_link not in app.builder.config.sitemap_excludes:
-        env.app.sitemap_links.put(sitemap_link)  # type: ignore
+        env.app.sitemap_links.put((sitemap_link, last_updated))  # type: ignore
 
 
 def create_sitemap(app: Sphinx, exception):
@@ -189,7 +214,7 @@ def create_sitemap(app: Sphinx, exception):
 
     while True:
         try:
-            link = app.env.app.sitemap_links.get_nowait()  # type: ignore
+            link, last_updated = app.env.app.sitemap_links.get_nowait()  # type: ignore
         except queue.Empty:
             break
 
@@ -200,10 +225,16 @@ def create_sitemap(app: Sphinx, exception):
         else:
             lang = ""
 
+        # add page url
         ElementTree.SubElement(url, "loc").text = site_url + scheme.format(
             lang=lang, version=version, link=link
         )
 
+        # add page lastmode date if it exists
+        if last_updated:
+            ElementTree.SubElement(url, "lastmod").text = last_updated
+
+        # add alternate language page urls
         for lang in locales:
             lang = lang + "/"
             ElementTree.SubElement(

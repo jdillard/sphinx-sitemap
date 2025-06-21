@@ -3,6 +3,14 @@
 Changelog
 =========
 
+2.7.0
+-----
+
+*Release date: 2025-06-20*
+
+* |:sparkles:| NEW: Add support for ``lastmod`` using `sphinx-last-updated-by-git`_
+  `#95 <https://github.com/jdillard/sphinx-sitemap/pull/95>`_
+
 2.6.0
 -----
 
@@ -183,3 +191,6 @@ Changelog
 *Release date: 2017-11-28*
 
 * Initial Release |:tada:|
+
+
+.. _sphinx-last-updated-by-git: https://pypi.org/project/sphinx-last-updated-by-git/
