@@ -6,7 +6,7 @@ Changelog
 2.7.0
 -----
 
-*Release date: TBD*
+*Release date: 2025-06-20*
 
 * |:sparkles:| NEW: Add support for ``lastmod`` using `sphinx-last-updated-by-git`_
   `#95 <https://github.com/jdillard/sphinx-sitemap/pull/95>`_
