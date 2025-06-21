@@ -3,6 +3,13 @@
 Changelog
 =========
 
+2.7.1
+-----
+
+*Release date: 2025-06-20*
+
+- Remove support for Python 3.8
+
 2.7.0
 -----
 
