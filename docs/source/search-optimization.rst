@@ -34,3 +34,11 @@ Examples:
 - `Algolia`_
 
 .. _Algolia: https://www.algolia.com/doc/tools/crawler/apis/configuration/sitemaps/
+
+RAG (Retrieval-Augmented Generation) Ingestion
+-----------------------------------------------
+
+The sitemap can be used as a structured data source for RAG systems to efficiently discover and ingest documentation content.
+
+- **Comprehensive Discovery**: The sitemap provides a complete list of all documentation pages, ensuring no content is missed during ingestion
+- **Incremental Updates**: Use the ``<lastmod>`` timestamps to identify recently updated content and refresh only those embeddings in your RAG system.
