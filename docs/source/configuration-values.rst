@@ -44,5 +44,6 @@ A list of of possible configuration values to configure in **conf.py**:
    - **Type**: boolean
    - **Default**: ``False``
    - **Description**: Add ``<lastmod>`` to sitemap based on last updated time according to Git for each page.
+     See :ref:`configuration_lastmod` for more information.
 
    .. versionadded:: 2.7.0
