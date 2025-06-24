@@ -46,7 +46,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_config_value("sitemap_excludes", default=[], rebuild="")
 
-    app.add_config_value("sitemap_show_lastmod", default=True, rebuild="")
+    app.add_config_value("sitemap_show_lastmod", default=False, rebuild="")
 
     try:
         app.add_config_value("html_baseurl", default=None, rebuild="")
