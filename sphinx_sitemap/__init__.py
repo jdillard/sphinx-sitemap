@@ -40,7 +40,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_config_value(
         "sitemap_url_scheme", default="{lang}{version}{link}", rebuild=""
     )
-    app.add_config_value("sitemap_locales", default=None, rebuild="")
+    app.add_config_value("sitemap_locales", default=[], rebuild="")
 
     app.add_config_value("sitemap_filename", default="sitemap.xml", rebuild="")
 
