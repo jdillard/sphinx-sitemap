@@ -23,7 +23,7 @@ from sphinx.application import Sphinx
 from sphinx.errors import ExtensionError
 from sphinx.util.logging import getLogger
 
-__version__ = "2.7.1"
+__version__ = "2.7.2"
 
 logger = getLogger(__name__)
 
@@ -40,13 +40,13 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_config_value(
         "sitemap_url_scheme", default="{lang}{version}{link}", rebuild=""
     )
-    app.add_config_value("sitemap_locales", default=None, rebuild="")
+    app.add_config_value("sitemap_locales", default=[], rebuild="")
 
     app.add_config_value("sitemap_filename", default="sitemap.xml", rebuild="")
 
     app.add_config_value("sitemap_excludes", default=[], rebuild="")
 
-    app.add_config_value("sitemap_show_lastmod", default=True, rebuild="")
+    app.add_config_value("sitemap_show_lastmod", default=False, rebuild="")
 
     try:
         app.add_config_value("html_baseurl", default=None, rebuild="")

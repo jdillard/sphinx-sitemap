@@ -35,6 +35,8 @@ Examples:
 
 .. _Algolia: https://www.algolia.com/doc/tools/crawler/apis/configuration/sitemaps/
 
+.. _rag-ingestion:
+
 RAG (Retrieval-Augmented Generation) Ingestion
 -----------------------------------------------
 

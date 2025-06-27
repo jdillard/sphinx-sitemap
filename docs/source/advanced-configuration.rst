@@ -139,6 +139,35 @@ To exclude a set of pages, add each page's path to ``sitemap_exclude``:
        "genindex.html",
    ]
 
+.. _configuration_lastmod:
+
+Configuring Last Modified Timestamps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, the sitemap does not include ``<lastmod>`` elements.
+To enable last modified timestamps in your sitemap, set :confval:`sitemap_show_lastmod` to ``True`` in **conf.py**:
+
+.. code-block:: python
+
+   sitemap_show_lastmod = True
+
+When enabled, the extension uses Git to determine the last modified date for each page based on the most recent commit that modified the source file.
+This produces sitemap entries like:
+
+.. code-block:: xml
+
+   <url>
+     <loc>https://my-site.com/docs/en/index.html</loc>
+     <lastmod>2024-01-15T10:30:00+00:00</lastmod>
+   </url>
+
+.. note::
+
+   This feature requires Git to be available and your documentation to be in a Git repository.
+   If Git is not available or the file is not tracked, no ``<lastmod>`` element will be added for that page.
+
+.. tip:: The ``<lastmod>`` timestamps are particularly useful for :ref:`RAG (Retrieval-Augmented Generation) systems <rag-ingestion>` that need to identify recently updated content for incremental updates.
+
 
 .. _sitemapindex.xml: https://support.google.com/webmasters/answer/75712?hl=en
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
