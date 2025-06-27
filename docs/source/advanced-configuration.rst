@@ -141,10 +141,9 @@ To exclude a set of pages, add each page's path to ``sitemap_exclude``:
 
 .. _configuration_lastmod:
 
-Configuring Last Modified Timestamps
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Adding Last Modified Timestamps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, the sitemap does not include ``<lastmod>`` elements.
 To enable last modified timestamps in your sitemap, set :confval:`sitemap_show_lastmod` to ``True`` in **conf.py**:
 
 .. code-block:: python
@@ -161,10 +160,11 @@ This produces sitemap entries like:
      <lastmod>2024-01-15T10:30:00+00:00</lastmod>
    </url>
 
-.. note::
+.. important::
 
    This feature requires Git to be available and your documentation to be in a Git repository.
    If Git is not available or the file is not tracked, no ``<lastmod>`` element will be added for that page.
+   Shallow clones, which is the default for GitHub Actions, are not supported at this time.
 
 .. tip:: The ``<lastmod>`` timestamps are particularly useful for :ref:`RAG (Retrieval-Augmented Generation) systems <rag-ingestion>` that need to identify recently updated content for incremental updates.
 
