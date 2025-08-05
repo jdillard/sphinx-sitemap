@@ -49,6 +49,8 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_config_value("sitemap_show_lastmod", default=False, rebuild="")
 
+    app.add_config_value("sitemap_prettify", default=False, rebuild="")
+
     try:
         app.add_config_value("html_baseurl", default=None, rebuild="")
     except BaseException:
@@ -258,6 +260,14 @@ def create_sitemap(app: Sphinx, exception):
             )
 
     filename = Path(app.outdir) / app.config.sitemap_filename
+    if app.config.sitemap_prettify not in [None, False]:
+        indentation = app.config.sitemap_prettify
+        if indentation is True:
+            indentation = 2 * " "
+        else:
+            indentation = int(indentation) * " "
+        ElementTree.indent(root, space=indentation)
+
     ElementTree.ElementTree(root).write(
         filename, xml_declaration=True, encoding="utf-8", method="xml"
     )

@@ -180,3 +180,20 @@ This produces sitemap entries like:
 
 .. _sitemapindex.xml: https://support.google.com/webmasters/answer/75712?hl=en
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
+
+.. _configuration_prettify:
+
+Prettify
+^^^^^^^^
+
+To enable prettified output, set :confval:`sitemap_prettify` to ``True`` in **conf.py**:
+
+.. code-block:: python
+
+   sitemap_prettify = True
+
+If :confval:`sitemap_prettify` is set to an integer, indentation will be set to this number of spaces:
+
+.. code-block:: python
+
+   sitemap_prettify = 2

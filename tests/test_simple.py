@@ -215,3 +215,25 @@ def test_pattern_excludes(app, status, warning):
             "search",
         ]
     }
+
+
+@pytest.mark.sphinx(
+    "html",
+    freshenv=True,
+    confoverrides={
+        "html_baseurl": "https://example.org/docs/",
+        "language": "en",
+        "sitemap_prettify": True,
+    },
+)
+def test_prettify(app, status, warning):
+    """Tests that xml output is indented"""
+    app.warningiserror = True
+    app.build()
+    assert "sitemap.xml" in os.listdir(app.outdir)
+    with open(app.outdir / "sitemap.xml", "r") as fd:
+        lines = fd.readlines()
+
+    assert lines[0][0] == "<"
+    assert lines[1][0] == "<"
+    assert lines[2][0:3] == "  <"
