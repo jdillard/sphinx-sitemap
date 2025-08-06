@@ -150,7 +150,7 @@ def test_simple_excludes(app, status, warning):
         "html_baseurl": "https://example.org/docs/",
         "language": "en",
         "sitemap_excludes": ["search.html", "genindex.html"],
-        "sitemap_prettify": 2
+        "sitemap_prettify": 2,
     },
 )
 def test_simple_excludes(app, status, warning):
@@ -158,9 +158,9 @@ def test_simple_excludes(app, status, warning):
     app.build()
     assert "sitemap.xml" in os.listdir(app.outdir)
     doc = etree.parse(app.outdir / "sitemap.xml")
-    str1 = etree.tostring(doc.getroot(), encoding='unicode')
+    str1 = etree.tostring(doc.getroot(), encoding="unicode")
 
     etree.indent(doc, space="  ")
-    str2 = etree.tostring(doc.getroot(), encoding='unicode')
+    str2 = etree.tostring(doc.getroot(), encoding="unicode")
 
     assert str1 == str2
