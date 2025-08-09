@@ -7,6 +7,11 @@ documentation.
 
 |PyPI version| |Conda Forge| |Downloads| |Parallel Safe| |GitHub Stars|
 
+Demo
+----
+
+You can see this Sphinx project's `sitemap.xml`_ as a simple example.
+
 .. toctree::
    :maxdepth: 2
 
@@ -19,6 +24,7 @@ documentation.
 
 
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
+.. _sitemap.xml: https://sphinx-sitemap.readthedocs.io/en/latest/sitemap.xml
 .. _Sphinx: http://sphinx-doc.org/
 
 .. |PyPI version| image:: https://img.shields.io/pypi/v/sphinx-sitemap.svg
