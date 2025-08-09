@@ -17,11 +17,10 @@ Highlights
 
 1. **Multi-version Support**: Generates sitemaps for multiple documentation versions
 2. **Multi-language Support**: Creates sitemaps for multiple language variants of your documentation
-3. **Standards Compliant**: Produces `sitemaps.org`_ compliant XML sitemaps for better search engine indexing
-4. **Content Exclusion**: Allows you to exclude specific pages or patterns from the sitemap
-5. **Last Modified Support**: Includes lastmod timestamps to help understand content freshness
-6. **AI & RAG Optimization**: Helps AI systems and RAG pipelines discover and index your documentation content
-7. **SEO Optimization**: Improves search engine discoverability of your documentation
+3. **Content Exclusion**: Allows you to exclude specific pages or patterns from the sitemap
+4. **Last Modified Support**: Includes lastmod timestamps to help understand content freshness
+5. **AI & RAG Optimization**: Helps AI systems discover and index your documentation content
+6. **SEO Optimization**: Improves search engine discoverability of your documentation
 
 .. toctree::
    :maxdepth: 2
