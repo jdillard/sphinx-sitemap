@@ -130,14 +130,38 @@ For multilingual sitemaps, generate a sitemap per language and then manually add
 Excluding Pages
 ^^^^^^^^^^^^^^^
 
-To exclude a set of pages, add each page's path to ``sitemap_exclude``:
+To exclude a set of pages, add each page's path to ``sitemap_excludes``.
+You can use exact paths or glob patterns:
 
 .. code-block:: python
 
    sitemap_excludes = [
-       "search.html",
-       "genindex.html",
+       "search.html",        # Exact match
+       "genindex.html",      # Exact match
+       "*index*.html",       # Glob pattern - matches any page with "index" in the name
+       "api/*.html",         # Glob pattern - matches all HTML files in api/ directory
+       "temp_*.html",        # Glob pattern - matches files starting with "temp_"
    ]
+
+Glob patterns support Unix-style wildcards:
+
+- ``*`` matches any number of characters
+- ``?`` matches any single character
+- ``[seq]`` matches any character in seq
+- ``[!seq]`` matches any character not in seq
+
+Examples:
+
+.. code-block:: python
+
+   # Exclude all generated index files
+   sitemap_excludes = ["*index*.html"]
+
+   # Exclude specific file patterns
+   sitemap_excludes = ["search.*", "genindex.*", "py-modindex.*"]
+
+   # Exclude entire directories
+   sitemap_excludes = ["_sources/*", "_static/*"]
 
 .. _configuration_lastmod:
 

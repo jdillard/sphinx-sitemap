@@ -141,3 +141,71 @@ def test_simple_excludes(app, status, warning):
             "elitr",
         ]
     }
+
+
+@pytest.mark.sphinx(
+    "html",
+    freshenv=True,
+    confoverrides={
+        "html_baseurl": "https://example.org/docs/",
+        "language": "en",
+        "sitemap_excludes": ["*index*.html", "search.html"],
+    },
+)
+def test_glob_excludes(app, status, warning):
+    app.warningiserror = True
+    app.build()
+    assert "sitemap.xml" in os.listdir(app.outdir)
+    doc = etree.parse(app.outdir / "sitemap.xml")
+    urls = {
+        e.text
+        for e in doc.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
+    }
+
+    # *index*.html should exclude both "genindex.html" and "index.html"
+    assert urls == {
+        f"https://example.org/docs/en/{d}.html"
+        for d in [
+            "foo",
+            "bar",
+            "lorem",
+            "ipsum",
+            "dolor",
+            "elitr",
+        ]
+    }
+
+
+@pytest.mark.sphinx(
+    "html",
+    freshenv=True,
+    confoverrides={
+        "html_baseurl": "https://example.org/docs/",
+        "language": "en",
+        "sitemap_excludes": ["l*.html"],  # Excludes lorem.html but not other files
+    },
+)
+def test_pattern_excludes(app, status, warning):
+    app.warningiserror = True
+    app.build()
+    assert "sitemap.xml" in os.listdir(app.outdir)
+    doc = etree.parse(app.outdir / "sitemap.xml")
+    urls = {
+        e.text
+        for e in doc.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
+    }
+
+    # l*.html should exclude "lorem.html"
+    assert urls == {
+        f"https://example.org/docs/en/{d}.html"
+        for d in [
+            "index",
+            "foo",
+            "bar",
+            "ipsum",
+            "dolor",
+            "elitr",
+            "genindex",
+            "search",
+        ]
+    }
