@@ -3,12 +3,18 @@
 Changelog
 =========
 
+2.8.0
+-----
+
+- |:sparkles:| NEW: Add support for wildcard patterns to :confval:`sitemap_excludes`
+  `#113 <https://github.com/jdillard/sphinx-sitemap/pull/113>`_
+
 2.7.2
 -----
 
 *Release date: 2025-06-26*
 
-- Change ``sitemap_show_lastmod`` to default of ``False``
+- |:bug:| FIX: Change :confval:`sitemap_show_lastmod` to default of ``False``
 
 2.7.1
 -----
