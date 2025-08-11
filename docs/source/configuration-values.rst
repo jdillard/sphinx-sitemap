@@ -34,8 +34,8 @@ A list of of possible configuration values to configure in **conf.py**:
 
    - **Type**: list of strings
    - **Default**: ``[]`` (empty list)
-   - **Description**: The list of pages to exclude from the sitemap. Supports both exact matches
-     and glob patterns (e.g., ``*.html``, ``*index*``, ``search.*``).
+   - **Description**: The list of pages to exclude from the sitemap.
+     Supports wildcard patterns.
      See :ref:`configuration_excluding_pages` for more information.
 
    .. versionadded:: 2.6.0
