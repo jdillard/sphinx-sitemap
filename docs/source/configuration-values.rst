@@ -41,7 +41,7 @@ A list of of possible configuration values to configure in **conf.py**:
    .. versionadded:: 2.6.0
 
    .. versionchanged:: 2.8.0
-      Added support for glob patterns using Unix-style wildcards.
+      Added support for Unix-style wildcard patterns.
 
 .. confval:: sitemap_show_lastmod
 
