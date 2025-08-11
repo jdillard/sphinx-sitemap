@@ -123,10 +123,10 @@ def record_builder_type(app: Sphinx):
 
 def is_excluded(sitemap_link: str, exclude_patterns: List[str]) -> bool:
     """
-    Check if a sitemap link should be excluded based on glob patterns.
+    Check if a sitemap link should be excluded based on wildcard patterns.
 
     :param sitemap_link: The sitemap link to check
-    :param exclude_patterns: List of glob patterns to match against
+    :param exclude_patterns: List of wildcard patterns to match against
     :return: True if the link matches any exclude pattern, False otherwise
     """
     return any(fnmatch.fnmatch(sitemap_link, pattern) for pattern in exclude_patterns)
