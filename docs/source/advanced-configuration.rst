@@ -130,14 +130,23 @@ For multilingual sitemaps, generate a sitemap per language and then manually add
 Excluding Pages
 ^^^^^^^^^^^^^^^
 
-To exclude a set of pages, add each page's path to ``sitemap_exclude``:
+To exclude a set of pages, add each page's path to ``sitemap_excludes``.
+You can use exact paths or wildcard patterns:
 
 .. code-block:: python
 
    sitemap_excludes = [
-       "search.html",
-       "genindex.html",
+       "search.html",     # Exact match
+       "genindex.html",   # Exact match
+       "modules/*",       # Wildcard pattern - matches files starting with "_modules/"
    ]
+
+Unix-style wildcards are supported:
+
+- ``*`` matches any number of characters
+- ``?`` matches any single character
+- ``[seq]`` matches any character in seq
+- ``[!seq]`` matches any character not in seq
 
 .. _configuration_lastmod:
 

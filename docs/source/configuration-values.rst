@@ -35,9 +35,13 @@ A list of of possible configuration values to configure in **conf.py**:
    - **Type**: list of strings
    - **Default**: ``[]`` (empty list)
    - **Description**: The list of pages to exclude from the sitemap.
+     Supports wildcard patterns.
      See :ref:`configuration_excluding_pages` for more information.
 
    .. versionadded:: 2.6.0
+
+   .. versionchanged:: 2.8.0
+      Added support for Unix-style wildcard patterns.
 
 .. confval:: sitemap_show_lastmod
 

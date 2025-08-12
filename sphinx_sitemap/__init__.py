@@ -11,6 +11,7 @@
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
 
+import fnmatch
 import os
 import queue
 from datetime import datetime, timezone
@@ -23,7 +24,7 @@ from sphinx.application import Sphinx
 from sphinx.errors import ExtensionError
 from sphinx.util.logging import getLogger
 
-__version__ = "2.7.2"
+__version__ = "2.8.0"
 
 logger = getLogger(__name__)
 
@@ -120,6 +121,17 @@ def record_builder_type(app: Sphinx):
     builder.env.app.sitemap_links = Manager().Queue()
 
 
+def is_excluded(sitemap_link: str, exclude_patterns: List[str]) -> bool:
+    """
+    Check if a sitemap link should be excluded based on wildcard patterns.
+
+    :param sitemap_link: The sitemap link to check
+    :param exclude_patterns: List of wildcard patterns to match against
+    :return: True if the link matches any exclude pattern, False otherwise
+    """
+    return any(fnmatch.fnmatch(sitemap_link, pattern) for pattern in exclude_patterns)
+
+
 def hreflang_formatter(lang: str) -> str:
     """
     Format the supplied locale code into a string that is compatible with `hreflang`.
@@ -170,7 +182,7 @@ def add_html_link(app: Sphinx, pagename: str, templatename, context, doctree):
     else:
         sitemap_link = pagename + file_suffix
 
-    if sitemap_link not in app.builder.config.sitemap_excludes:
+    if not is_excluded(sitemap_link, app.builder.config.sitemap_excludes):
         env.app.sitemap_links.put((sitemap_link, last_updated))  # type: ignore
 
 

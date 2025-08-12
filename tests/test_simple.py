@@ -19,6 +19,7 @@ def git_setup(app):
     confoverrides={"html_baseurl": "https://example.org/docs/", "language": "en"},
 )
 def test_simple_html(app, status, warning):
+    """Tests basic HTML sitemap generation with all pages included."""
     app.warningiserror = True
     app.build()
     assert "sitemap.xml" in os.listdir(app.outdir)
@@ -54,6 +55,7 @@ def test_simple_html(app, status, warning):
     },
 )
 def test_html_file_suffix(app, status, warning):
+    """Tests sitemap generation with custom HTML file suffix (.htm)."""
     app.warningiserror = True
     app.build()
     assert "sitemap.xml" in os.listdir(app.outdir)
@@ -85,6 +87,7 @@ def test_html_file_suffix(app, status, warning):
     confoverrides={"html_baseurl": "https://example.org/docs/", "language": "en"},
 )
 def test_simple_dirhtml(app, status, warning):
+    """Tests sitemap generation with DirectoryHTMLBuilder (clean URLs)."""
     app.warningiserror = True
     app.build()
     assert "sitemap.xml" in os.listdir(app.outdir)
@@ -120,6 +123,7 @@ def test_simple_dirhtml(app, status, warning):
     },
 )
 def test_simple_excludes(app, status, warning):
+    """Tests exact string matching for sitemap exclusions (backward compatibility)."""
     app.warningiserror = True
     app.build()
     assert "sitemap.xml" in os.listdir(app.outdir)
@@ -139,5 +143,75 @@ def test_simple_excludes(app, status, warning):
             "ipsum",
             "dolor",
             "elitr",
+        ]
+    }
+
+
+@pytest.mark.sphinx(
+    "html",
+    freshenv=True,
+    confoverrides={
+        "html_baseurl": "https://example.org/docs/",
+        "language": "en",
+        "sitemap_excludes": ["*index*.html", "search.html"],
+    },
+)
+def test_wildcard_excludes(app, status, warning):
+    """Tests that *index*.html wildcard pattern excludes both "index.html" and "genindex.html"."""
+    app.warningiserror = True
+    app.build()
+    assert "sitemap.xml" in os.listdir(app.outdir)
+    doc = etree.parse(app.outdir / "sitemap.xml")
+    urls = {
+        e.text
+        for e in doc.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
+    }
+
+    # *index*.html should exclude both "genindex.html" and "index.html"
+    assert urls == {
+        f"https://example.org/docs/en/{d}.html"
+        for d in [
+            "foo",
+            "bar",
+            "lorem",
+            "ipsum",
+            "dolor",
+            "elitr",
+        ]
+    }
+
+
+@pytest.mark.sphinx(
+    "html",
+    freshenv=True,
+    confoverrides={
+        "html_baseurl": "https://example.org/docs/",
+        "language": "en",
+        "sitemap_excludes": ["l*.html"],  # Excludes lorem.html but not other files
+    },
+)
+def test_pattern_excludes(app, status, warning):
+    """Tests that l*.html wildcard pattern excludes only "lorem.html"."""
+    app.warningiserror = True
+    app.build()
+    assert "sitemap.xml" in os.listdir(app.outdir)
+    doc = etree.parse(app.outdir / "sitemap.xml")
+    urls = {
+        e.text
+        for e in doc.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
+    }
+
+    # l*.html should exclude "lorem.html"
+    assert urls == {
+        f"https://example.org/docs/en/{d}.html"
+        for d in [
+            "index",
+            "foo",
+            "bar",
+            "ipsum",
+            "dolor",
+            "elitr",
+            "genindex",
+            "search",
         ]
     }
