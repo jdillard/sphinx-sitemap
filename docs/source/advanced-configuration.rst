@@ -136,11 +136,9 @@ You can use exact paths or wildcard patterns:
 .. code-block:: python
 
    sitemap_excludes = [
-       "search.html",        # Exact match
-       "genindex.html",      # Exact match
-       "*index*.html",       # Wildcard pattern - matches any page with "index" in the name
-       "api/*.html",         # Wildcard pattern - matches all HTML files in api/ directory
-       "temp_*.html",        # Wildcard pattern - matches files starting with "temp_"
+       "search.html",     # Exact match
+       "genindex.html",   # Exact match
+       "modules/*",       # Wildcard pattern - matches files starting with "_modules/"
    ]
 
 Unix-style wildcards are supported:
