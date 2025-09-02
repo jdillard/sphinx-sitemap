@@ -10,7 +10,7 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Set up Python 3.10
       uses: actions/setup-python@v5
       with:
@@ -32,7 +32,7 @@ jobs:
           - python-version: '3.9'
             sphinx-version: '5'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Setup Python versions
         uses: actions/setup-python@v5
         with:
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install docutils
         run: sudo apt-get install -y docutils
