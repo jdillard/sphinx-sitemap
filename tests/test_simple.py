@@ -223,10 +223,10 @@ def test_pattern_excludes(app, status, warning):
     confoverrides={
         "html_baseurl": "https://example.org/docs/",
         "language": "en",
-        "sitemap_prettify": True,
+        "sitemap_indent": 2,
     },
 )
-def test_prettify(app, status, warning):
+def test_indent(app, status, warning):
     """Tests that xml output is indented"""
     app.warningiserror = True
     app.build()

@@ -24,7 +24,7 @@ from sphinx.application import Sphinx
 from sphinx.errors import ExtensionError
 from sphinx.util.logging import getLogger
 
-__version__ = "2.8.0"
+__version__ = "2.9.0"
 
 logger = getLogger(__name__)
 
@@ -49,7 +49,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_config_value("sitemap_show_lastmod", default=False, rebuild="")
 
-    app.add_config_value("sitemap_prettify", default=False, rebuild="")
+    app.add_config_value("sitemap_indent", default=0, rebuild="")
 
     try:
         app.add_config_value("html_baseurl", default=None, rebuild="")
@@ -260,13 +260,8 @@ def create_sitemap(app: Sphinx, exception):
             )
 
     filename = Path(app.outdir) / app.config.sitemap_filename
-    if app.config.sitemap_prettify not in [None, False]:
-        indentation = app.config.sitemap_prettify
-        if indentation is True:
-            indentation = 2 * " "
-        else:
-            indentation = int(indentation) * " "
-        ElementTree.indent(root, space=indentation)
+    if isinstance(app.config.sitemap_indent, int) and app.config.sitemap_indent > 0:
+        ElementTree.indent(root, space=app.config.sitemap_indent * " ")
 
     ElementTree.ElementTree(root).write(
         filename, xml_declaration=True, encoding="utf-8", method="xml"

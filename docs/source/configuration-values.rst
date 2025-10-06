@@ -51,3 +51,12 @@ A list of of possible configuration values to configure in **conf.py**:
      See :ref:`configuration_lastmod` for more information.
 
    .. versionadded:: 2.7.0
+
+.. confval:: sitemap_indent
+
+   - **Type**: integer
+   - **Default**: ``0``
+   - **Description**: Number of spaces to use for indentation in the sitemap XML output.
+     See :ref:`configuration_indent` for more information.
+
+   .. versionadded:: 2.9.0

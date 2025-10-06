@@ -181,19 +181,19 @@ This produces sitemap entries like:
 .. _sitemapindex.xml: https://support.google.com/webmasters/answer/75712?hl=en
 .. _sitemaps.org: https://www.sitemaps.org/protocol.html
 
-.. _configuration_prettify:
+.. _configuration_indent:
 
-Prettify
-^^^^^^^^
+Formatting XML Output
+^^^^^^^^^^^^^^^^^^^^^
 
-To enable prettified output, set :confval:`sitemap_prettify` to ``True`` in **conf.py**:
-
-.. code-block:: python
-
-   sitemap_prettify = True
-
-If :confval:`sitemap_prettify` is set to an integer, indentation will be set to this number of spaces:
+To add indention to the XML output, set :confval:`sitemap_indent` to the number of spaces for indentation in **conf.py**:
 
 .. code-block:: python
 
-   sitemap_prettify = 2
+   sitemap_indent = 2
+
+Set to ``0`` (the default) to disable indentation:
+
+.. code-block:: python
+
+   sitemap_indent = 0

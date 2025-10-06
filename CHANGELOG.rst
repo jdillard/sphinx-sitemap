@@ -3,6 +3,12 @@
 Changelog
 =========
 
+2.9.0
+-----
+
+- |:sparkles:| NEW: Add :confval:`sitemap_indent` configuration value to control XML indentation
+  `#112 <https://github.com/jdillard/sphinx-sitemap/pull/112>`_
+
 2.8.0
 -----
 
