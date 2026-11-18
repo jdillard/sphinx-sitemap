@@ -1,5 +1,7 @@
+import os
 from pathlib import Path
 
+from git import Repo
 import pytest
 import sphinx
 
@@ -22,3 +24,11 @@ def rootdir():
         return path(__file__).parent.abspath() / "roots"
 
     return Path(__file__).resolve().parent / "roots"
+
+
+@pytest.fixture(autouse=True, scope="function")
+def git_setup(app):
+    repo = Repo.init(app.srcdir)
+    repo.index.add([p for p in os.listdir(app.srcdir) if p != ".git"])
+    repo.index.commit("test: creating git record for files")
+    yield
