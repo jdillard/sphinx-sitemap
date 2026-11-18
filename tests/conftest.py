@@ -1,9 +1,9 @@
 import os
 from pathlib import Path
 
-from git import Repo
 import pytest
 import sphinx
+from git import Repo
 
 pytest_plugins = "sphinx.testing.fixtures"
 # Exclude 'roots' dirs for pytest test collector
